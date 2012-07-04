@@ -1,0 +1,46 @@
+#include "windows\resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+#include "atlres.h"
+#undef APSTUDIO_READONLY_SYMBOLS
+
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION @COMMA.VERSION@
+ PRODUCTVERSION @COMMA.VERSION@
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041904e3"
+        BEGIN
+            VALUE "Comments", "Compiled on @COMPILE.DATETIME@"
+            VALUE "CompanyName", "Inetra"
+            VALUE "FileDescription", "Peers"
+            VALUE "FileVersion", "@VERSION@"
+            VALUE "InternalName", "Peers"
+            VALUE "LegalCopyright", "Peers Team"
+            VALUE "OriginalFilename", "Peers.exe"
+            VALUE "ProductName", "Peers"
+            VALUE "ProductVersion", "@PRODUCT.VERSION@"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x419, 1251
+    END
+END

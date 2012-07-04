@@ -1,0 +1,2983 @@
+﻿###
+###  VLC media player - version 1.0.5 Goldeneye - (c) 1996-2010 the VideoLAN team
+###
+
+###
+### lines beginning with a '#' character are comments
+###
+
+[main] # главная программа
+
+# Включить аудио (boolean)
+#audio=1
+
+# Громкость по умолчанию (целое)
+#volume=256
+
+# Шаг громкости вывода аудио (целое)
+#volume-step=32
+
+# Частота вывода аудио (Гц) (целое)
+#aout-rate=-1
+
+# Высококачественная обработка аудио (boolean)
+#hq-resampling=1
+
+# Использовать S/PDIF при его наличии (boolean)
+#spdif=0
+
+# Принудительное обнаружение Dolby Surround (целое)
+#force-dolby-surround=0
+
+# Компенсация десинхронизации аудио (целое)
+#audio-desync=0
+
+# Режим Replay Gain (строка)
+#audio-replay-gain-mode=none
+
+# Предусиление для Replay Gain (дробное)
+#audio-replay-gain-preamp=0.000000
+
+# Replay Gain по умолчанию (дробное)
+#audio-replay-gain-default=-7.000000
+
+# Защита пиков (boolean)
+#audio-replay-gain-peak-protection=1
+
+# Включить ускорение аудио (boolean)
+#audio-time-stretch=1
+
+# Модуль вывода аудио (строка)
+#aout=
+
+# Аудио-фильтры (строка)
+#audio-filter=
+
+# Визуализация аудио  (строка)
+#audio-visual=
+
+# Включить видео (boolean)
+#video=1
+
+# Вывод видео полутонами серого (boolean)
+#grayscale=0
+
+# Полноэкранный вывод видео (boolean)
+#fullscreen=0
+
+# Встроенное видео (boolean)
+#embedded-video=1
+
+# Пропускать опоздавшие кадры (boolean)
+#drop-late-frames=1
+
+# Пропускать кадры (boolean)
+#skip-frames=1
+
+# Тихая синхронизация (boolean)
+#quiet-synchro=0
+
+# обработка событий от клавиатуры и мыши на уровне В-выхода. (целое)
+#vout-event=1
+
+# Оверлейный вывод видео (boolean)
+#overlay=1
+
+# Поверх всех окон (boolean)
+#video-on-top=0
+
+# Отключать заставку (boolean)
+#disable-screensaver=1
+
+# Показывать название медиа-файла (boolean)
+#video-title-show=1
+
+# Отображать название видео в течение x миллисекунд (целое)
+#video-title-timeout=5000
+
+# Расположение названия дорожки (целое)
+#video-title-position=8
+
+# Скрывать курсор и панель управления в
+полноэкранном режиме через x миллисекунд (целое)
+#mouse-hide-timeout=1500
+
+# Директория для видео-снимков (строка)
+#snapshot-path=
+
+# Префикс в названиях файлов снимков (строка)
+#snapshot-prefix=vlcsnap-
+
+# Формат снимков (строка)
+#snapshot-format=png
+
+# Предпросмотр снимка (boolean)
+#snapshot-preview=1
+
+# Порядковые номера вместо отметок времени (boolean)
+#snapshot-sequential=0
+
+# Ширина снимков (целое)
+#snapshot-width=-1
+
+# Высота снимков (целое)
+#snapshot-height=-1
+
+# Ширина видео (целое)
+#width=-1
+
+# Высота видео (целое)
+#height=-1
+
+# Координата X видео (целое)
+#video-x=-1
+
+# Координата Y видео (целое)
+#video-y=-1
+
+# Кадрирование видео (строка)
+#crop=
+
+# Список других соотношений сторон для кадрирования (строка)
+#custom-crop-ratios=
+
+# Исходное соотношение сторон (строка)
+#aspect-ratio=
+
+# Автом. масштабирование видео (boolean)
+#autoscale=1
+
+# Масштаб видео (дробное)
+#scale=1.000000
+
+# Соотношение сторон для пикселей монитора (строка)
+#monitor-par=
+
+# Список других соотношений сторон (строка)
+#custom-aspect-ratios=
+
+# Исправлять высоту HDTV (boolean)
+#hdtv-fix=1
+
+# Оформление окна (boolean)
+#video-deco=1
+
+# Заголовок видео (строка)
+#video-title=
+
+# Выравнивание видео (целое)
+#align=0
+
+# Масштаб видео (дробное)
+#zoom=1.000000
+
+# Модуль вывода видео (строка)
+#vout=
+
+# Модуль видео-фильтра (строка)
+#video-filter=
+
+# Модуль фильтра вывода видео (строка)
+#vout-filter=
+
+# Включить модуль "Слои" (boolean)
+#spu=1
+
+# Экранная индикация (boolean)
+#osd=1
+
+# Модуль визуализации текста (строка)
+#text-renderer=
+
+# Использовать файл субтитров (строка)
+#sub-file=
+
+# Автоматически определять файлы субтитров (boolean)
+#sub-autodetect-file=1
+
+# Нечеткое определение файлов субтитров (целое)
+#sub-autodetect-fuzzy=3
+
+# Пути автоопределения файлов субтитров (строка)
+#sub-autodetect-path=.\subtitles
+
+# Задать позицию субтитров (целое)
+#sub-margin=0
+
+# Модуль фильтров слоёв (строка)
+#sub-filter=
+
+# Программа (целое)
+#program=0
+
+# Программы (строка)
+#programs=
+
+# Аудио-дорожка (целое)
+#audio-track=-1
+
+# Дорожка субтитров (целое)
+#sub-track=-1
+
+# Язык аудио (строка)
+#audio-language=
+
+# Язык субтитров (строка)
+#sub-language=
+
+# № аудио-дорожки (целое)
+#audio-track-id=-1
+
+# № дорожки субтитров (целое)
+#sub-track-id=-1
+
+# Повторение ввода (целое)
+#input-repeat=0
+
+# Время начала (дробное)
+#start-time=0.000000
+
+# Время остановки (дробное)
+#stop-time=0.000000
+
+# Продолжительность работы (дробное)
+#run-time=0.000000
+
+# Быстрый поиск (boolean)
+#input-fast-seek=0
+
+# Входной список (строка)
+#input-list=
+
+# Ведомые потоки ввода (экспериментально) (строка)
+#input-slave=
+
+# Список закладок для потока (строка)
+#bookmarks=
+
+# Устройство DVD (строка)
+#dvd=
+
+# Устройство VCD (строка)
+#vcd=D:
+
+# Устройство аудио-CD (строка)
+#cd-audio=D:
+
+# UDP порт (целое)
+#server-port=1234
+
+# MTU сетевого интерфейса (целое)
+#mtu=1400
+
+# Использовать только IPv6 (boolean)
+#ipv6=0
+
+# Использовать только IPv4 (boolean)
+#ipv4=0
+
+# Таймаут TCP-соединения (целое)
+#ipv4-timeout=5000
+
+# SOCKS сервер (строка)
+#socks=
+
+# Имя пользователя (строка)
+#socks-user=
+
+# Пароль (строка)
+#socks-pwd=
+
+# Название (строка)
+#meta-title=
+
+# Автор (строка)
+#meta-author=
+
+# "Исполнитель" (строка)
+#meta-artist=
+
+# Жанр (строка)
+#meta-genre=
+
+# Авторское право (строка)
+#meta-copyright=
+
+# Описание (строка)
+#meta-description=
+
+# Дата (строка)
+#meta-date=
+
+# URL (строка)
+#meta-url=
+
+# Средний референсный счетчик (целое)
+#cr-average=40
+
+# Синхронизация часов (целое)
+#clock-synchro=-1
+
+# Сетевая синхронизация (boolean)
+#network-synchronisation=0
+
+# Директория или имя файла для записей (строка)
+#input-record-path=
+
+# Использовать собств. запись потока (boolean)
+#input-record-native=1
+
+# Директория для сдвига по времени (строка)
+#input-timeshift-path=
+
+# Глубина детализации сдвига по времени (целое)
+#input-timeshift-granularity=-1
+
+# Список предпочитаемых декодеров (строка)
+#codec=
+
+# Список предпочитаемых кодировщиков (строка)
+#encoder=
+
+# Модуль ввода (строка)
+#access=
+
+# Модуль демультиплексора (строка)
+#demux=
+
+# Использовать системные модули вместо VLC (boolean)
+#prefer-system-codecs=0
+
+# Модуль фильтров для потока (строка)
+#stream-filter=
+
+# Цепочка вывода потока по умолчанию (строка)
+#sout=
+
+# Показывать во время вещания (boolean)
+#sout-display=0
+
+# Сохранять поток вывода открытым (boolean)
+#sout-keep=0
+
+# Включить вещание всех элементарных потоков (boolean)
+#sout-all=0
+
+# Включить вывод аудиопотока (boolean)
+#sout-audio=1
+
+# Включить вывод видео потока (boolean)
+#sout-video=1
+
+# Включить вывод субтитров (boolean)
+#sout-spu=1
+
+# Кэширование мультиплексора (мс) (целое)
+#sout-mux-caching=1500
+
+# Конфигурационный файл VLM (строка)
+vlm-conf=C:\Users\Alex\Projects\PEERS-STD\src\compiled\VLC\Data\settings\vlcrc
+
+# Модуль мультиплексирования (строка)
+#mux=
+
+# Модуль вывода (строка)
+#access_output=
+
+# Лимит хопов (TTL) (целое)
+#ttl=-1
+
+# Интерфейс вывода групповой передачи (строка)
+#miface=
+
+# Интерфейс вывода IPv4 multicast (строка)
+#miface-addr=
+
+# Точка кода дифференцированных услуг (целое)
+#dscp=0
+
+# Cписок предпочитаемых упаковщиков (строка)
+#packetizer=
+
+# Период оповещений SAP (целое)
+#sap-interval=5
+
+# Включить поддержку сопроцессора для операций с плавающей точкой (FPU) (boolean)
+#fpu=1
+
+# Включить поддержку MMX (boolean)
+#mmx=1
+
+# Включить поддержку 3D Now! (boolean)
+#3dn=1
+
+# Включить поддержку MMX EXT (boolean)
+#mmxext=1
+
+# Включить поддержку SSE (boolean)
+#sse=1
+
+# Включить поддержку SSE2 (boolean)
+#sse2=1
+
+# Модуль памяти (строка)
+#memcpy=
+
+# Использовать кэш плагинов (boolean)
+plugins-cache=0
+
+# Путь поиска модулей (строка)
+#plugin-path=
+
+# Разрешать запуск только одной копии VLC (boolean)
+one-instance=1
+
+# Одна копия при запуске из файла (boolean)
+#one-instance-when-started-from-file=1
+
+# Увеличить приоритет процесса (boolean)
+#high-priority=0
+
+# Всегда воспроизводить файлы в случайном порядке (boolean)
+#random=0
+
+# Повторять все (boolean)
+#loop=0
+
+# Повторить текущий элемент (boolean)
+#repeat=0
+
+# Воспроизвести и выйти (boolean)
+#play-and-exit=0
+
+# Воспроизвести и остановить (boolean)
+#play-and-stop=0
+
+# Использовать медиа-библиотеку (boolean)
+#media-library=1
+
+# Отображать список в виде дерева (boolean)
+#playlist-tree=0
+
+# Поток по умолчанию (строка)
+#open=
+
+# Автоматически загружать файлы (boolean)
+#auto-preparse=1
+
+# Скачивание обложки альбома (целое)
+#album-art=0
+
+# Модули поиска служб (строка)
+#services-discovery=
+
+# Детальность сообщений (0,1,2) (целое)
+#verbose=0
+
+# Выбор объектов, которые должны выдавать сообщения отладки (строка)
+#verbose-objects=
+
+# Режим тишины (boolean)
+#quiet=0
+
+# Сохранять журнал в файл (boolean)
+#file-logging=0
+
+# Язык (строка)
+language=ru
+
+# Цветные сообщения (boolean)
+#color=1
+
+# Показать дополнительные параметры (boolean)
+#advanced=0
+
+# Взаимодействие интерфейсов (boolean)
+#interact=1
+
+# Показывать интерфейс мышью (boolean)
+#show-intf=0
+
+# Собирать статистику (boolean)
+#stats=1
+
+# Модуль интерфейса (строка)
+#intf=
+
+# Дополнительные модули интерфейса (строка)
+#extraintf=
+
+# Интерфейсы управления (строка)
+#control=
+
+# Полноэкранный режим (key)
+#key-toggle-fullscreen=f
+
+# Полноэкранный режим (key)
+#global-key-toggle-fullscreen=Unset
+
+# Выйти из полноэкранного режима (key)
+#key-leave-fullscreen=Esc
+
+# Выйти из полноэкранного режима (key)
+#global-key-leave-fullscreen=Unset
+
+# Воспроизведение/Пауза (key)
+#key-play-pause=Space
+
+# Воспроизведение/Пауза (key)
+#global-key-play-pause=Unset
+
+# Только пауза (key)
+#key-pause=Unset
+
+# Только пауза (key)
+#global-key-pause=Unset
+
+# Только воспроизведение (key)
+#key-play=Unset
+
+# Только воспроизведение (key)
+#global-key-play=Unset
+
+# Быстрее (key)
+#key-faster=+
+
+# Быстрее (key)
+#global-key-faster=Unset
+
+# Медленнее (key)
+#key-slower=-
+
+# Медленнее (key)
+#global-key-slower=Unset
+
+# Нормальная скорость (key)
+#key-rate-normal==
+
+# Нормальная скорость (key)
+#global-key-rate-normal=Unset
+
+# Немного быстрее (key)
+#key-rate-faster-fine=]
+
+# Немного быстрее (key)
+#global-key-rate-faster-fine=Unset
+
+# Немного медленнее (key)
+#key-rate-slower-fine=[
+
+# Немного медленнее (key)
+#global-key-rate-slower-fine=Unset
+
+# Следующий (key)
+#key-next=n
+
+# Следующий (key)
+#global-key-next=Unset
+
+# Предыдущий (key)
+#key-prev=p
+
+# Предыдущий (key)
+#global-key-prev=Unset
+
+# Останов (key)
+#key-stop=s
+
+# Останов (key)
+#global-key-stop=Unset
+
+# Расположение (key)
+#key-position=t
+
+# Расположение (key)
+#global-key-position=Unset
+
+# Очень короткий скачок назад (key)
+#key-jump-extrashort=Shift-Left
+
+# Очень короткий скачок назад (key)
+#global-key-jump-extrashort=Unset
+
+# Очень короткий скачок вперед (key)
+#key-jump+extrashort=Shift-Right
+
+# Очень короткий скачок вперед (key)
+#global-key-jump+extrashort=Unset
+
+# Короткий скачок назад (key)
+#key-jump-short=Alt-Left
+
+# Короткий скачок назад (key)
+#global-key-jump-short=Unset
+
+# Короткий скачок вперед (key)
+#key-jump+short=Alt-Right
+
+# Короткий скачок вперед (key)
+#global-key-jump+short=Unset
+
+# Средний скачок назад (key)
+#key-jump-medium=Ctrl-Left
+
+# Средний скачок назад (key)
+#global-key-jump-medium=Unset
+
+# Средний скачок вперед (key)
+#key-jump+medium=Ctrl-Right
+
+# Средний скачок вперед (key)
+#global-key-jump+medium=Unset
+
+# Длинный скачок назад (key)
+#key-jump-long=Alt-Ctrl-Left
+
+# Длинный скачок назад (key)
+#global-key-jump-long=Unset
+
+# Длинный скачок вперед (key)
+#key-jump+long=Alt-Ctrl-Right
+
+# Длинный скачок вперед (key)
+#global-key-jump+long=Unset
+
+# Следующий кадр (key)
+#key-frame-next=e
+
+# Следующий кадр (key)
+#global-key-frame-next=Unset
+
+# Активировать (key)
+#key-nav-activate=Enter
+
+# Активировать (key)
+#global-key-nav-activate=Unset
+
+# Перемещение вверх (key)
+#key-nav-up=Up
+
+# Перемещение вверх (key)
+#global-key-nav-up=Unset
+
+# Перемещение вниз (key)
+#key-nav-down=Down
+
+# Перемещение вниз (key)
+#global-key-nav-down=Unset
+
+# Перемещение влево (key)
+#key-nav-left=Left
+
+# Перемещение влево (key)
+#global-key-nav-left=Unset
+
+# Перемещение вправо (key)
+#key-nav-right=Right
+
+# Перемещение вправо (key)
+#global-key-nav-right=Unset
+
+# Перейти к DVD-меню (key)
+#key-disc-menu=Shift-m
+
+# Перейти к DVD-меню (key)
+#global-key-disc-menu=Unset
+
+# Выбрать предыдущий раздел DVD (key)
+#key-title-prev=Shift-o
+
+# Выбрать предыдущий раздел DVD (key)
+#global-key-title-prev=Unset
+
+# Выбрать следующий раздел DVD (key)
+#key-title-next=Shift-b
+
+# Выбрать следующий раздел DVD (key)
+#global-key-title-next=Unset
+
+# Выбрать предыдущую главу DVD (key)
+#key-chapter-prev=Shift-p
+
+# Выбрать предыдущую главу DVD (key)
+#global-key-chapter-prev=Unset
+
+# Выбрать следующую главу DVD (key)
+#key-chapter-next=Shift-n
+
+# Выбрать следующую главу DVD (key)
+#global-key-chapter-next=Unset
+
+# Выход (key)
+#key-quit=Ctrl-q
+
+# Выход (key)
+#global-key-quit=Unset
+
+# Громче (key)
+#key-vol-up=Ctrl-Up
+
+# Громче (key)
+#global-key-vol-up=Unset
+
+# Тише (key)
+#key-vol-down=Ctrl-Down
+
+# Тише (key)
+#global-key-vol-down=Unset
+
+# Выключить аудио (key)
+#key-vol-mute=m
+
+# Выключить аудио (key)
+#global-key-vol-mute=Unset
+
+# Увеличить задержку субтитров (key)
+#key-subdelay-up=h
+
+# Увеличить задержку субтитров (key)
+#global-key-subdelay-up=Unset
+
+# Уменьшить задержку субтитров (key)
+#key-subdelay-down=g
+
+# Уменьшить задержку субтитров (key)
+#global-key-subdelay-down=Unset
+
+# Увеличить задержку аудио (key)
+#key-audiodelay-up=k
+
+# Увеличить задержку аудио (key)
+#global-key-audiodelay-up=Unset
+
+# Уменьшить задержку аудио (key)
+#key-audiodelay-down=j
+
+# Уменьшить задержку аудио (key)
+#global-key-audiodelay-down=Unset
+
+# Переключить аудио дорожку (key)
+#key-audio-track=b
+
+# Переключить аудио дорожку (key)
+#global-key-audio-track=Unset
+
+# Циклически переключать аудио-устройства (key)
+#key-audiodevice-cycle=Shift-a
+
+# Циклически переключать аудио-устройства (key)
+#global-key-audiodevice-cycle=Unset
+
+# Переключить дорожку субтитров (key)
+#key-subtitle-track=v
+
+# Переключить дорожку субтитров (key)
+#global-key-subtitle-track=Unset
+
+# Переключить соотношение сторон (key)
+#key-aspect-ratio=a
+
+# Переключить соотношение сторон (key)
+#global-key-aspect-ratio=Unset
+
+# Переключить обрезание (key)
+#key-crop=c
+
+# Переключить обрезание (key)
+#global-key-crop=Unset
+
+# Вкл./выкл. автом. масштабирование (key)
+#key-toggle-autoscale=o
+
+# Вкл./выкл. автом. масштабирование (key)
+#global-key-toggle-autoscale=Unset
+
+# Увеличить масштаб (key)
+#key-incr-scalefactor=Alt-o
+
+# Увеличить масштаб (key)
+#global-key-incr-scalefactor=Unset
+
+# Уменьшить масштаб (key)
+#key-decr-scalefactor=Alt-Shift-o
+
+# Уменьшить масштаб (key)
+#global-key-decr-scalefactor=Unset
+
+# Переключать режимы устранения чересстрочности (key)
+#key-deinterlace=d
+
+# Переключать режимы устранения чересстрочности (key)
+#global-key-deinterlace=Unset
+
+# Показать интерфейс (key)
+#key-intf-show=i
+
+# Показать интерфейс (key)
+#global-key-intf-show=Unset
+
+# Скрыть интерфейс (key)
+#key-intf-hide=Shift-i
+
+# Скрыть интерфейс (key)
+#global-key-intf-hide=Unset
+
+# Сделать стоп-кадр (key)
+#key-snapshot=Shift-s
+
+# Сделать стоп-кадр (key)
+#global-key-snapshot=Unset
+
+# Возврат по списку (key)
+#key-history-back=Shift-g
+
+# Возврат по списку (key)
+#global-key-history-back=Unset
+
+# Вперед по списку (key)
+#key-history-forward=Shift-h
+
+# Вперед по списку (key)
+#global-key-history-forward=Unset
+
+# Запись (key)
+#key-record=Shift-r
+
+# Запись (key)
+#global-key-record=Unset
+
+# Сброс (key)
+#key-dump=Shift-d
+
+# Сброс (key)
+#global-key-dump=Unset
+
+# Увеличение (key)
+#key-zoom=z
+
+# Увеличение (key)
+#global-key-zoom=Unset
+
+# Отмена увеличения (key)
+#key-unzoom=Shift-z
+
+# Отмена увеличения (key)
+#global-key-unzoom=Unset
+
+# Вкл./выкл. режим обоев для вывода видео (key)
+#key-wallpaper=w
+
+# Вкл./выкл. режим обоев для вывода видео (key)
+#global-key-wallpaper=Unset
+
+# Показывать экранное меню поверх вывода видео (key)
+#key-menu-on=Alt-Shift-m
+
+# Показывать экранное меню поверх вывода видео (key)
+#global-key-menu-on=Unset
+
+# Не показывать экранное меню на выводе видео (key)
+#key-menu-off=Alt-Ctrl-m
+
+# Не показывать экранное меню на выводе видео (key)
+#global-key-menu-off=Unset
+
+# Выделить элемент интерфейса справа (key)
+#key-menu-right=Alt-Shift-Right
+
+# Выделить элемент интерфейса справа (key)
+#global-key-menu-right=Unset
+
+# Выделить элемент интерфейса слева (key)
+#key-menu-left=Alt-Shift-Left
+
+# Выделить элемент интерфейса слева (key)
+#global-key-menu-left=Unset
+
+# Выделить элемент интерфейса вверху (key)
+#key-menu-up=Alt-Shift-Up
+
+# Выделить элемент интерфейса вверху (key)
+#global-key-menu-up=Unset
+
+# Выделить элемент интерфейса внизу (key)
+#key-menu-down=Alt-Shift-Down
+
+# Выделить элемент интерфейса внизу (key)
+#global-key-menu-down=Unset
+
+# Выбрать текущий элемент интерфейса (key)
+#key-menu-select=Alt-Shift-Enter
+
+# Выбрать текущий элемент интерфейса (key)
+#global-key-menu-select=Unset
+
+# Обрезать один пиксел сверху (key)
+#key-crop-top=Alt-r
+
+# Обрезать один пиксел сверху (key)
+#global-key-crop-top=Unset
+
+# Вернуть один пиксел сверху (key)
+#key-uncrop-top=Alt-Shift-r
+
+# Вернуть один пиксел сверху (key)
+#global-key-uncrop-top=Unset
+
+# Обрезать один пиксел слева (key)
+#key-crop-left=Alt-d
+
+# Обрезать один пиксел слева (key)
+#global-key-crop-left=Unset
+
+# Вернуть один пиксел слева (key)
+#key-uncrop-left=Alt-Shift-d
+
+# Вернуть один пиксел слева (key)
+#global-key-uncrop-left=Unset
+
+# Обрезать один пиксел снизу (key)
+#key-crop-bottom=Alt-c
+
+# Обрезать один пиксел снизу (key)
+#global-key-crop-bottom=Unset
+
+# Вернуть один пиксел снизу (key)
+#key-uncrop-bottom=Alt-Shift-c
+
+# Вернуть один пиксел снизу (key)
+#global-key-uncrop-bottom=Unset
+
+# Обрезать один пиксел справа (key)
+#key-crop-right=Alt-f
+
+# Обрезать один пиксел справа (key)
+#global-key-crop-right=Unset
+
+# Вернуть один пиксел справа (key)
+#key-uncrop-right=Alt-Shift-f
+
+# Вернуть один пиксел справа (key)
+#global-key-uncrop-right=Unset
+
+# Случайный порядок (key)
+#key-random=r
+
+# Случайный порядок (key)
+#global-key-random=Unset
+
+# Обычный/Повтор/Цикл (key)
+#key-loop=l
+
+# Обычный/Повтор/Цикл (key)
+#global-key-loop=Unset
+
+# 1:4 Четверть (key)
+#key-zoom-quarter=Ctrl-1
+
+# 1:4 Четверть (key)
+#global-key-zoom-quarter=Unset
+
+# 1:2 Половина (key)
+#key-zoom-half=Ctrl-2
+
+# 1:2 Половина (key)
+#global-key-zoom-half=Unset
+
+# 1:1 Оригинал (key)
+#key-zoom-original=Ctrl-3
+
+# 1:1 Оригинал (key)
+#global-key-zoom-original=Unset
+
+# 2:1 Двойной (key)
+#key-zoom-double=Ctrl-4
+
+# 2:1 Двойной (key)
+#global-key-zoom-double=Unset
+
+# Длина очень короткого скачка (целое)
+#extrashort-jump-size=3
+
+# Длина короткого скачка (целое)
+#short-jump-size=10
+
+# Длина среднего скачка (целое)
+#medium-jump-size=60
+
+# Длина длинного скачка (целое)
+#long-jump-size=300
+
+# Установить закладку 1 (key)
+#key-set-bookmark1=Ctrl-F1
+
+# Установить закладку 1 (key)
+#global-key-set-bookmark1=Unset
+
+# Установить закладку 2 (key)
+#key-set-bookmark2=Ctrl-F2
+
+# Установить закладку 2 (key)
+#global-key-set-bookmark2=Unset
+
+# Установить закладку 3 (key)
+#key-set-bookmark3=Ctrl-F3
+
+# Установить закладку 3 (key)
+#global-key-set-bookmark3=Unset
+
+# Установить закладку 4 (key)
+#key-set-bookmark4=Ctrl-F4
+
+# Установить закладку 4 (key)
+#global-key-set-bookmark4=Unset
+
+# Установить закладку 5 (key)
+#key-set-bookmark5=Ctrl-F5
+
+# Установить закладку 5 (key)
+#global-key-set-bookmark5=Unset
+
+# Установить закладку 6 (key)
+#key-set-bookmark6=Ctrl-F6
+
+# Установить закладку 6 (key)
+#global-key-set-bookmark6=Unset
+
+# Установить закладку 7 (key)
+#key-set-bookmark7=Ctrl-F7
+
+# Установить закладку 7 (key)
+#global-key-set-bookmark7=Unset
+
+# Установить закладку 8 (key)
+#key-set-bookmark8=Ctrl-F8
+
+# Установить закладку 8 (key)
+#global-key-set-bookmark8=Unset
+
+# Установить закладку 9 (key)
+#key-set-bookmark9=Ctrl-F9
+
+# Установить закладку 9 (key)
+#global-key-set-bookmark9=Unset
+
+# Установить закладку 10 (key)
+#key-set-bookmark10=Ctrl-F10
+
+# Установить закладку 10 (key)
+#global-key-set-bookmark10=Unset
+
+# Воспроизвести закладку 1 (key)
+#key-play-bookmark1=F1
+
+# Воспроизвести закладку 1 (key)
+#global-key-play-bookmark1=Unset
+
+# Воспроизвести закладку 2 (key)
+#key-play-bookmark2=F2
+
+# Воспроизвести закладку 2 (key)
+#global-key-play-bookmark2=Unset
+
+# Воспроизвести закладку 3 (key)
+#key-play-bookmark3=F3
+
+# Воспроизвести закладку 3 (key)
+#global-key-play-bookmark3=Unset
+
+# Воспроизвести закладку 4 (key)
+#key-play-bookmark4=F4
+
+# Воспроизвести закладку 4 (key)
+#global-key-play-bookmark4=Unset
+
+# Воспроизвести закладку 5 (key)
+#key-play-bookmark5=F5
+
+# Воспроизвести закладку 5 (key)
+#global-key-play-bookmark5=Unset
+
+# Воспроизвести закладку 6 (key)
+#key-play-bookmark6=F6
+
+# Воспроизвести закладку 6 (key)
+#global-key-play-bookmark6=Unset
+
+# Воспроизвести закладку 7 (key)
+#key-play-bookmark7=F7
+
+# Воспроизвести закладку 7 (key)
+#global-key-play-bookmark7=Unset
+
+# Воспроизвести закладку 8 (key)
+#key-play-bookmark8=F8
+
+# Воспроизвести закладку 8 (key)
+#global-key-play-bookmark8=Unset
+
+# Воспроизвести закладку 9 (key)
+#key-play-bookmark9=F9
+
+# Воспроизвести закладку 9 (key)
+#global-key-play-bookmark9=Unset
+
+# Воспроизвести закладку 10 (key)
+#key-play-bookmark10=F10
+
+# Воспроизвести закладку 10 (key)
+#global-key-play-bookmark10=Unset
+
+# Закладка 1 (строка)
+#bookmark1=
+
+# Закладка 2 (строка)
+#bookmark2=
+
+# Закладка 3 (строка)
+#bookmark3=
+
+# Закладка 4 (строка)
+#bookmark4=
+
+# Закладка 5 (строка)
+#bookmark5=
+
+# Закладка 6 (строка)
+#bookmark6=
+
+# Закладка 7 (строка)
+#bookmark7=
+
+# Закладка 8 (строка)
+#bookmark8=
+
+# Закладка 9 (строка)
+#bookmark9=
+
+# Закладка 10 (строка)
+#bookmark10=
+
+[zvbi] # Декодировщик VBI и телетекста
+# Страница телетекста (целое)
+#vbi-page=100
+# Текст всегда непрозрачен (boolean)
+#vbi-opaque=1
+# Выравнивание телетекста (целое)
+#vbi-position=4
+# Текстовые субтитры телетекста (boolean)
+#vbi-text=0
+[yuv] # Вывод видео через YUV
+# устройство, именованный канал или имя файла (строка)
+#yuv-file=stream.yuv
+# Используемая цветность (строка)
+#yuv-chroma=
+# Заголовок YUV4MPEG2 (по умолчанию выключено) (boolean)
+#yuv-yuv4mpeg2=0
+[x264] # Кодировщик AVC H.264/MPEG4 (x264)
+# Максимальный размер GOP (целое)
+#sout-x264-keyint=250
+# Минимальный размер GOP (целое)
+#sout-x264-min-keyint=25
+# Плотность дополнительных I-кадров (целое)
+#sout-x264-scenecut=40
+# B-кадры между I и P-кадрами (целое)
+#sout-x264-bframes=3
+# Адаптивное размещение B-кадров (целое)
+#sout-x264-b-adapt=1
+# Плотность B-кадров (целое)
+#sout-x264-b-bias=0
+# Использовать некоторые B-кадры как референсные (строка)
+#sout-x264-bpyramid=none
+# CABAC (boolean)
+#sout-x264-cabac=1
+# Количество референсных кадров (целое)
+#sout-x264-ref=3
+# Пропускать фильтр устранения блочности (boolean)
+#sout-x264-nf=0
+# AlphaC0 и Beta фильтра устранения блочности, alpha:beta (строка)
+#sout-x264-deblock=0:0
+# Уровень H.264 (строка)
+#sout-x264-level=5.1
+# H.264 profile (строка)
+#sout-x264-profile=high
+# Режим чересстрочной развёртки (boolean)
+#sout-x264-interlaced=0
+# Коэффициент квантования (целое)
+#sout-x264-qp=-1
+# Режим VBR с фиксированным качеством (целое)
+#sout-x264-crf=23
+# Минимальный коэффициент квантования (QP) (целое)
+#sout-x264-qpmin=10
+# Максимальный коэффициент квантования (QP) (целое)
+#sout-x264-qpmax=51
+# Максимальный шаг изменения QP (целое)
+#sout-x264-qpstep=4
+# Среднее допустимое отклонение битрейта (дробное)
+#sout-x264-ratetol=1.000000
+# Максимальный локальный битрейт (целое)
+#sout-x264-vbv-maxrate=0
+# Буфер VBV (целое)
+#sout-x264-vbv-bufsize=0
+# Начальная заполненность буфера VBV (дробное)
+#sout-x264-vbv-init=0.900000
+# Множитель QP между I и P (дробное)
+#sout-x264-ipratio=1.400000
+# Множитель QP между P и B (дробное)
+#sout-x264-pbratio=1.300000
+# Разница QP между цветностью и яркостью (целое)
+#sout-x264-chroma-qp-offset=0
+# Контроль скорости для нескольких проходов (целое)
+#sout-x264-pass=0
+# Сжатие кривой QP (дробное)
+#sout-x264-qcomp=0.600000
+# Уменьшать колебания в QP (дробное)
+#sout-x264-cplxblur=20.000000
+# Уменьшать колебания в QP (дробное)
+#sout-x264-qblur=0.500000
+# Как АК распределяет биты (целое)
+#sout-x264-aq-mode=1
+# Интенсивность АК (дробное)
+#sout-x264-aq-strength=1.000000
+# Работа с макроблоками (строка)
+#sout-x264-partitions=normal
+# Режим прямого предсказания вектора движения (строка)
+#sout-x264-direct=spatial
+# Размер для прямого предсказания (целое)
+#sout-x264-direct-8x8=1
+# Взвешенное предсказание для B-кадров (boolean)
+#sout-x264-weightb=1
+# Weighted prediction for P-frames (целое)
+#sout-x264-weightp=2
+# Целочисленный пиксельный метод оценки движения (строка)
+#sout-x264-me=hex
+# Максимальный диапазон поиска векторов движения (целое)
+#sout-x264-merange=16
+# Максимальная длина вектора движения (целое)
+#sout-x264-mvrange=-1
+# Минимальное буферное пространство между потоками (целое)
+#sout-x264-mvrange-thread=-1
+# Субпиксельная оценка движения и качество макроблоков (целое)
+#sout-x264-subme=5
+# Выбор референсных кадров на основе макроблоков (boolean)
+#sout-x264-mixed-refs=1
+# Цветность при оценке движения (boolean)
+#sout-x264-chroma-me=1
+# Адаптивная пространственная трансформация (boolean)
+#sout-x264-8x8dct=0
+# Квантование trellis RD (целое)
+#sout-x264-trellis=1
+# Раннее определение пропущенных P-кадров (boolean)
+#sout-x264-fast-pskip=1
+# Framecount to use on frametype lookahead (целое)
+#sout-x264-lookahead=5
+# Задание порога коэффициента на P-кадрах (boolean)
+#sout-x264-dct-decimate=1
+# Уменьшение шума (целое)
+#sout-x264-nr=0
+# Мёртвая зона временного квантования яркости (целое)
+#sout-x264-deadzone-inter=21
+# Мёртвая зона пространственного квантования яркости (целое)
+#sout-x264-deadzone-intra=11
+# Недетерминированные оптимизации при поточности (boolean)
+#sout-x264-non-deterministic=0
+# Оптимизация CPU (boolean)
+#sout-x264-asm=1
+# Вычисление PSNR (boolean)
+#sout-x264-psnr=0
+# Вычисление SSIM (boolean)
+#sout-x264-ssim=0
+# Тихий режим (boolean)
+#sout-x264-quiet=0
+# Идентификационные номера НПП и НПИ (целое)
+#sout-x264-sps-id=0
+# Разделители пакетов доступа (boolean)
+#sout-x264-aud=0
+# Статистика (boolean)
+#sout-x264-verbose=0
+# Название файла статистики 2-го прохода (строка)
+#sout-x264-stats=x264_2pass.log
+[waveout] # Вывод аудио через Win32 waveOut
+# Использовать 32-битный вывод с плавающей точкой (boolean)
+#waveout-float32=1
+# Выбрать аудио-устройство (строка)
+#waveout-audio-device=wavemapper
+[wall] # Стена
+# Количество столбцов (целое)
+#wall-cols=3
+# Количество строк (целое)
+#wall-rows=3
+# Активные окна (строка)
+#wall-active=
+# Соотношение сторон у элемента (строка)
+#wall-element-aspect=4:3
+[vout_directx] # Видео вывод через DirectX
+# Использовать аппаратное преобразование YUV->RGB (boolean)
+#directx-hw-yuv=1
+# Видео-буферы в системной памяти (boolean)
+#directx-use-sysmem=0
+# Использовать тройную буферизацию для слоев (boolean)
+#directx-3buffering=1
+# Название желаемого устройства дисплея (строка)
+#directx-device=
+# Видео на рабочем столе (boolean)
+#directx-wallpaper=0
+[vorbis] # Аудио-декодировщик Vorbis
+# Качество кодирования (целое)
+#sout-vorbis-quality=0
+# Максимальный битрейт (целое)
+#sout-vorbis-max-bitrate=0
+# Минимальный битрейт. (целое)
+#sout-vorbis-min-bitrate=0
+# Кодирование CBR (boolean)
+#sout-vorbis-cbr=0
+[vod_rtsp] # Сервер RTSP VoD
+# Адрес сервера RTSP (строка)
+#rtsp-host=
+# Мультиплексор для транспорта RAW RTSP (строка)
+#rtsp-raw-mux=ts
+# Максимальное количество соединений (целое)
+#rtsp-throttle-users=0
+# Параметр "Время ожидания" в строке RTSP-сессии (целое)
+#rtsp-session-timeout=5
+[vmem] # Вывод в видео-память
+# Ширина (целое)
+#vmem-width=320
+# Высота (целое)
+#vmem-height=200
+# Полная ширина (целое)
+#vmem-pitch=640
+# Цветность (строка)
+#vmem-chroma=RV16
+# Блокирующая функция (строка)
+#vmem-lock=0
+# Деблокирующая функция (строка)
+#vmem-unlock=0
+# Данные для обратного вызова (строка)
+#vmem-data=0
+[visual] # Фильтр визуализатора
+# Список эффектов (строка)
+#effect-list=spectrum
+# Ширина видео (целое)
+#effect-width=533
+# Высота видео (целое)
+#effect-height=400
+# More bands : 80 / 20 (boolean)
+#visual-80-bands=1
+# Включить пики (boolean)
+#visual-peaks=1
+# Включить оригинальный графический спектр (boolean)
+#spect-show-original=0
+# Включить основание (boolean)
+#spect-show-base=1
+# Радиус основания (целое)
+#spect-radius=42
+# Части спектра (целое)
+#spect-sections=3
+# Цвета V-plane (целое)
+#spect-color=80
+# Включить полосы (boolean)
+#spect-show-bands=1
+# More bands : 80 / 20 (boolean)
+#spect-80-bands=1
+# Разделитель полос (целое)
+#spect-separ=1
+# Усиление (целое)
+#spect-amp=8
+# Включить пики (boolean)
+#spect-show-peaks=1
+# Дополнительная ширина пиков (целое)
+#spect-peak-width=61
+# Высота пиков (целое)
+#spect-peak-height=1
+[vcd] # Ввод с VCD
+# Размер кэша в мс. (целое)
+#vcd-caching=300
+[vc1] # Видео-демультиплексор VC1
+# Кадры в секунду (дробное)
+#vc1-fps=25.000000
+[twolame] # Аудио кодировщик libtwolame
+# Качество кодирования (дробное)
+#sout-twolame-quality=0.000000
+# Стерео режим (целое)
+#sout-twolame-mode=0
+# Режим VBR (boolean)
+#sout-twolame-vbr=0
+# Психоакустическая модель (целое)
+#sout-twolame-psy=3
+[ts] # Демультиплексор MPEG TS
+# Дополнительная PMT (строка)
+#ts-extra-pmt=
+# Установить ES ID в PID ID (boolean)
+#ts-es-id-pid=1
+# Быстрое вещание UDP (строка)
+#ts-out=
+# MTU выхода (целое)
+#ts-out-mtu=1400
+# Слово для CSA (строка)
+#ts-csa-ck=
+# Слово для CSA (строка)
+#ts-csa2-ck=
+# Размер пакета в байтах для расшифровки (целое)
+#ts-csa-pkt=188
+# Тихий режим (boolean)
+#ts-silent=0
+# Имя файла для сохранения (строка)
+#ts-dump-file=
+# Добавить (boolean)
+#ts-dump-append=0
+# Размер буфера дампа (целое)
+#ts-dump-size=16384
+[transform] # Трансформация
+# Тип трансформации (строка)
+#transform-type=90
+[theora] # Видео-декодировщик Theora
+# Качество кодирования (целое)
+#sout-theora-quality=2
+[telnet] # Интерфейс управления VLM
+# Адрес (строка)
+#telnet-host=
+# Порт (целое)
+#telnet-port=4212
+# Пароль (строка)
+#telnet-password=admin
+[swscale] # Масштабирование видео
+# Режим масштабирования (целое)
+#swscale-mode=2
+[svcdsub] # Декодировщик Philips OGT (субтитры SVCD)
+# Включить отладку (целое)
+#svcdsub-debug=0
+[subtitle] # Анализатор текстовых субтитров
+# Кадры в секунду (дробное)
+#sub-fps=0.000000
+# Задержка субтитров (целое)
+#sub-delay=0
+# Формат субтитров (строка)
+#sub-type=auto
+[subsdec] # Декодировщик текстовых субтитров
+# Выравнивание субтитров (целое)
+#subsdec-align=0
+# Кодировка текста в субтитрах (строка)
+#subsdec-encoding=
+# Автоопределение UTF-8 (boolean)
+#subsdec-autodetect-utf8=1
+# Форматированные субтитры (boolean)
+#subsdec-formatted=1
+[stream_out_transcode] # Перекодирование вывода потока
+# Видео-кодировщик (строка)
+#sout-transcode-venc=
+# Конечный видео-кодек (строка)
+#sout-transcode-vcodec=
+# Видео-битрейт (целое)
+#sout-transcode-vb=800000
+# Масштабирование (дробное)
+#sout-transcode-scale=1.000000
+# Частота кадров (дробное)
+#sout-transcode-fps=0.000000
+# Ускорить (boolean)
+#sout-transcode-hurry-up=1
+# Устранение чересстрочности видео (boolean)
+#sout-transcode-deinterlace=0
+# Модуль устранения чересстрочности (строка)
+#sout-transcode-deinterlace-module=deinterlace
+# Ширина видео (целое)
+#sout-transcode-width=0
+# Высота видео (целое)
+#sout-transcode-height=0
+# Максимальная ширина (целое)
+#sout-transcode-maxwidth=0
+# Максимальная высота (целое)
+#sout-transcode-maxheight=0
+# Видео-фильтр (строка)
+#sout-transcode-vfilter=
+# Аудио-кодировщик (строка)
+#sout-transcode-aenc=
+# Конечный аудио-кодек (строка)
+#sout-transcode-acodec=
+# Аудио-битрейт (целое)
+#sout-transcode-ab=0
+# Аудио-каналы (целое)
+#sout-transcode-channels=0
+# Частота дискретизации аудио (целое)
+#sout-transcode-samplerate=0
+# Синхронизировать по аудио-дорожке (boolean)
+#sout-transcode-audio-sync=0
+# Аудио-фильтр (строка)
+#sout-transcode-afilter=
+# Кодировщик субтитров (строка)
+#sout-transcode-senc=
+# Конечный кодек субтитров (строка)
+#sout-transcode-scodec=
+# Конечный кодек субтитров (boolean)
+#sout-transcode-soverlay=0
+# Наложения (строка)
+#sout-transcode-sfilter=
+# Экранное меню (boolean)
+#sout-transcode-osd=0
+# Количество потоков (целое)
+#sout-transcode-threads=0
+# Высокий приоритет (boolean)
+#sout-transcode-high-priority=0
+[stream_out_standard] # Стандартный вывод потока
+# Режим вывода (строка)
+#sout-standard-access=
+# Выходной мультиплексор (строка)
+#sout-standard-mux=
+# Адрес назначения вывода (dst) (строка)
+#sout-standard-dst=
+# Адрес для привязки (вспомог. параметр bind для dst) (строка)
+#sout-standard-bind=
+# Файл для потока (вспомог. параметр path для dst) (строка)
+#sout-standard-path=
+# Оповещение SAP (boolean)
+#sout-standard-sap=0
+# Название сессии (строка)
+#sout-standard-name=
+# Группа сессии (строка)
+#sout-standard-group=
+# Описание сессии (строка)
+#sout-standard-description=
+# URL сессии (строка)
+#sout-standard-url=
+# E-mail сессии (строка)
+#sout-standard-email=
+# Номер телефона сессии (строка)
+#sout-standard-phone=
+[stream_out_rtp] # Вывод RTP-потока
+# Адрес (строка)
+#sout-rtp-dst=
+# SDP (строка)
+#sout-rtp-sdp=
+# Мультиплексор (строка)
+#sout-rtp-mux=
+# Оповещение SAP (boolean)
+#sout-rtp-sap=0
+# Название сессии (строка)
+#sout-rtp-name=
+# Описание сессии (строка)
+#sout-rtp-description=
+# URL сессии (строка)
+#sout-rtp-url=
+# E-mail сессии (строка)
+#sout-rtp-email=
+# Номер телефона сессии (строка)
+#sout-rtp-phone=
+# Транспортный протокол (строка)
+#sout-rtp-proto=udp
+# Порт (целое)
+#sout-rtp-port=5004
+# Порт аудио (целое)
+#sout-rtp-port-audio=0
+# Порт видео (целое)
+#sout-rtp-port-video=0
+# Лимит хопов (TTL) (целое)
+#sout-rtp-ttl=-1
+# RTP/RTCP-мультиплексирование (boolean)
+#sout-rtp-rtcp-mux=0
+# SRTP-ключ (шестнадцатеричный) (строка)
+#sout-rtp-key=
+# SRTP salt (шестнадцатеричный) (строка)
+#sout-rtp-salt=
+# MP4A LATM (boolean)
+#sout-rtp-mp4a-latm=0
+[stream_out_record] # Запись с вывода потока
+# Префикс пути назначения (строка)
+#sout-record-dst-prefix=
+[stream_out_raop] # Remote Audio Output Protocol stream output
+# Адрес (строка)
+#sout-raop-host=
+# Громкость (целое)
+#sout-raop-volume=100
+[stream_out_mosaic_bridge] # Вывод через мост мозаики
+# № (строка)
+#sout-mosaic-bridge-id=Id
+# Ширина видео (целое)
+#sout-mosaic-bridge-width=0
+# Высота видео (целое)
+#sout-mosaic-bridge-height=0
+# Соотношение сторон (строка)
+#sout-mosaic-bridge-sar=1:1
+# Цветность изображения (строка)
+#sout-mosaic-bridge-chroma=
+# Видео-фильтр (строка)
+#sout-mosaic-bridge-vfilter=
+# Прозрачность (целое)
+#sout-mosaic-bridge-alpha=255
+# Смещение по X (целое)
+#sout-mosaic-bridge-x=-1
+# Смещение по Y (целое)
+#sout-mosaic-bridge-y=-1
+[stream_out_es] # Вывод элементарных потоков
+# Режим вывода (строка)
+#sout-es-access=
+# Выходной мультиплексор (строка)
+#sout-es-mux=
+# Выходной URL (строка)
+#sout-es-dst=
+# Режим вывода аудио (строка)
+#sout-es-access-audio=
+# Выходной аудио мультиплексор. (строка)
+#sout-es-mux-audio=
+# Выходной URL аудио (строка)
+#sout-es-dst-audio=
+# Режим вывода видео (строка)
+#sout-es-access-video=
+# Выходной видео мультиплексор (строка)
+#sout-es-mux-video=
+# Выходной URL видео (строка)
+#sout-es-dst-video=
+[stream_out_display] # Вывод потока на дисплей
+# Включить аудио (boolean)
+#sout-display-audio=1
+# Включить видео (boolean)
+#sout-display-video=1
+# Задержка (целое)
+#sout-display-delay=100
+[stream_out_bridge] # Вывод потока на мост
+# № (целое)
+#sout-bridge-out-id=0
+# Destination bridge-in name (строка)
+#sout-bridge-out-in-name=default
+# Задержка (целое)
+#sout-bridge-in-delay=0
+# Смещение ID (целое)
+#sout-bridge-in-id-offset=8192
+# Название текущей копии (строка)
+#sout-bridge-in-name=default
+# Fallback to placeholder stream when out of data (boolean)
+#sout-bridge-in-placeholder=0
+# Placeholder delay (целое)
+#sout-bridge-in-placeholder-delay=200
+# Wait for I frame before toggling placholder (boolean)
+#sout-bridge-in-placeholder-switch-on-iframe=1
+[speex] # Аудио-декодировщик Speex
+# Режим (целое)
+#sout-speex-mode=0
+# Уровень сложности кодирования (целое)
+#sout-speex-complexity=3
+# Кодирование CBR (boolean)
+#sout-speex-cbr=0
+# Качество кодирования (дробное)
+#sout-speex-quality=8.000000
+# Максимальный битрейт (целое)
+#sout-speex-max-bitrate=0
+# Обнаружение присутствия голосового сигнала (boolean)
+#sout-speex-vad=1
+# Прерывистая передача (boolean)
+#sout-speex-dtx=0
+[spatializer] # Аудио-спэйшелайзер
+# Размер комнаты (дробное)
+#spatializer-roomsize=1.050000
+# Ширина комнаты (дробное)
+#spatializer-width=10.000000
+# Сырой (дробное)
+#spatializer-wet=3.000000
+# Сухой (дробное)
+#spatializer-dry=2.000000
+# Влажный (дробное)
+#spatializer-damp=1.000000
+[skins2] # Интерфейс с оболочками
+# Используемая оболочка (строка)
+#skins2-last=
+# Конфигурация последней оболочки (строка)
+#skins2-config=
+# Значок в системном трее (boolean)
+#skins2-systray=0
+# Показывать VLC на панели задач (boolean)
+#skins2-taskbar=1
+# Включить эффект прозрачности (boolean)
+#skins2-transparency=0
+# Применять оболочку к плейлисту (boolean)
+#skinned-playlist=1
+# Display video in a skinned window if any (boolean)
+#skinned-video=1
+[showintf] # Показывать интерфейс мышью
+# Порог (целое)
+#showintf-threshold=10
+[shout] # Радио shoutcast
+[sharpen] # Усиление контраста между контурами
+# Интенсивность усиления резкости (0-2) (дробное)
+#sharpen-sigma=0.050000
+[screen] # Ввод с экрана
+# Размер кэша в мс. (целое)
+#screen-caching=300
+# Частота кадров (дробное)
+#screen-fps=1.000000
+# Верхний левый угол подэкрана (целое)
+#screen-top=0
+# Верхний левый угол подэкрана (целое)
+#screen-left=0
+# Ширина подэкрана (целое)
+#screen-width=0
+# Высота подэкрана (целое)
+#screen-height=0
+# Следовать за мышью (boolean)
+#screen-follow-mouse=0
+# Изображение указателя мыши (строка)
+#screen-mouse-image=
+# Размер фрагмента захвата (целое)
+#screen-fragment-size=0
+[scene] # Видео-фильтр "Сцены"
+# Формат изображения (строка)
+#scene-format=png
+# Ширина изображения (целое)
+#scene-width=-1
+# Высота изображения (целое)
+#scene-height=-1
+# Префикс в названиях файлов (строка)
+#scene-prefix=scene
+# Префикс пути директории (строка)
+#scene-path=
+# Всегда записывать в тот же файл (boolean)
+#scene-replace=0
+# Частота записи (целое)
+#scene-ratio=50
+[scaletempo] # Синхронизатор аудио и видео
+# Длина шага (целое)
+#scaletempo-stride=30
+# Длина наложения (дробное)
+#scaletempo-overlap=0.200000
+# Длина поиска (целое)
+#scaletempo-search=14
+[sap] # Оповещения SAP
+# Multicast-адрес SAP (строка)
+#sap-addr=
+# IPv4 SAP (boolean)
+#sap-ipv4=1
+# IPv6 SAP (boolean)
+#sap-ipv6=1
+# Таймаут SAP (секунды) (целое)
+#sap-timeout=1800
+# Пытаться самому обработать оповещения (boolean)
+#sap-parse=1
+# Строгий режим SAP (boolean)
+#sap-strict=0
+[rtp] # Ввод по Протоколу для передачи данных в реальном масштабе времени (RTP)
+# Длина буфера для устранения дрожания в RTP (мс) (целое)
+#rtp-caching=1000
+# (Локальный) RTCP-порт (целое)
+#rtcp-port=0
+# SRTP-ключ (шестнадцатеричный) (строка)
+#srtp-key=
+# SRTP salt (шестнадцатеричный) (строка)
+#srtp-salt=
+# Максимум RTP-источников (целое)
+#rtp-max-src=1
+# Время ожидания RTP-источника (сек) (целое)
+#rtp-timeout=5
+# Макс. номер RTP-последовательности, приводящий к сбросу (целое)
+#rtp-max-dropout=3000
+# Макс. номер RTP-последовательности, нарушающий порядок (целое)
+#rtp-max-misorder=100
+[rss] # Фильтр "Рассылки RSS и Atom"
+# URL рассылок (строка)
+#rss-urls=rss
+# Смещение по X (целое)
+#rss-x=0
+# Смещение по Y (целое)
+#rss-y=0
+# Позиция текста (целое)
+#rss-position=-1
+# Непрозрачность (целое)
+#rss-opacity=255
+# Цвет (целое)
+#rss-color=16777215
+# Размер шрифта в пикселах (целое)
+#rss-size=-1
+# Скорость рассылок (целое)
+#rss-speed=100000
+# Максимальная длина (целое)
+#rss-length=60
+# Время обновления (целое)
+#rss-ttl=1800
+# Изображения в рассылках (boolean)
+#rss-images=1
+# Режим отображения названия (целое)
+#rss-title=-1
+[rotate] # Вращение
+# Угол в градусах (целое)
+#rotate-angle=30
+[remoteosd] # Удалённая экранная индикация через VNC
+# Узел VNC (строка)
+#rmtosd-host=myvdr
+# Порт VNC (целое)
+#rmtosd-port=20001
+# Пароль VNC (строка)
+#rmtosd-password=
+# Интервал между опросами VNC (целое)
+#rmtosd-update=1000
+# Опрос VNC (boolean)
+#rmtosd-vnc-polling=0
+# События от мыши (boolean)
+#rmtosd-mouse-events=0
+# События от клавиатуры (boolean)
+#rmtosd-key-events=0
+# Величина альфа-прозрачности (по умолчанию 255) (целое)
+#rmtosd-alpha=255
+[rc] # Интерфейс дистанционного управления
+# Показывать позицию в потоке (boolean)
+#rc-show-pos=0
+# Не открывать интерфейс ввода команд DOS (boolean)
+#rc-quiet=0
+# Ввод команд из TCP (строка)
+#rc-host=
+[rawvid] # Демультиплексор Raw Video
+# Кадры в секунду (строка)
+#rawvid-fps=
+# Ширина (целое)
+#rawvid-width=0
+# Высота (целое)
+#rawvid-height=0
+# Принуд. использование цветности
+(использовать осторожно) (строка)
+#rawvid-chroma=
+# Соотношение сторон (строка)
+#rawvid-aspect-ratio=
+[rawdv] # Демультиплексор DV (Digital Video)
+# Ускорить (boolean)
+#rawdv-hurry-up=0
+[rawaud] # Raw audio demuxer
+# Аудио-каналы (целое)
+#rawaud-channels=2
+# Audio samplerate (Hz) (целое)
+#rawaud-samplerate=48000
+# FOURCC code of raw input format (строка)
+#rawaud-fourcc=s16l
+# Forces the audio language. (строка)
+#rawaud-lang=eng
+[qt4] # Интерфейс Qt
+# Выбор режима запуска и оформления (целое)
+qt-display-mode=1
+# Всплывающее уведомление при смене дорожки (boolean)
+#qt-notification=1
+# Непрозрачность окон между 0,1 и 1. (дробное)
+#qt-opacity=1.000000
+# Непрозрачность панели в полноэкранном режиме, между 0,1 и 1. (дробное)
+#qt-fs-opacity=0.800000
+# Значок в системном трее (boolean)
+#qt-system-tray=1
+# Запуск VLC в виде значка в области уведомлений (boolean)
+#qt-start-minimized=0
+# Подгонять размер интерфейса под исходный размер видео (boolean)
+#qt-video-autoresize=1
+# Показывать название в заголовке окна (boolean)
+#qt-name-in-title=1
+# Показывать панель управления в полноэкранном режиме (boolean)
+#qt-fs-controller=1
+# Разрешить уровень громкости 400% (boolean)
+#qt-volume-complete=0
+# Автоматическое сохранение уровня громкости при выходе (boolean)
+#qt-autosave-volume=0
+# Встроить обозреватель файлов в окно открытия файла (boolean)
+#qt-embedded-open=0
+# Сохранять в меню последние открытые файлы (boolean)
+#qt-recentplay=1
+# List of words separated by | to filter (строка)
+#qt-recentplay-filter=
+# Расширенные параметры (boolean)
+#qt-adv-options=0
+# Показывать расширенные настройки, а не простые (boolean)
+#qt-advanced-pref=0
+# Второстепенные ошибки и предупреждения (boolean)
+#qt-error-dialogs=1
+# Включить уведомление о новых версиях (boolean)
+qt-updates-notif=0
+# Количество дней между двумя проверками обновлений (целое)
+#qt-updates-days=7
+# Определить цвета для регулятора громкости (строка)
+#qt-slider-colours=255;255;255;20;210;20;255;199;15;245;39;29
+# Выбрать сетевую политику при запуске (boolean)
+qt-privacy-ask=0
+[puzzle] # Интерактивная головоломка
+# Количество строк головоломки (целое)
+#puzzle-rows=4
+# Количество столбцов головоломки (целое)
+#puzzle-cols=4
+# Сделать одну ячейку чёрной (boolean)
+#puzzle-black-slot=0
+[ps] # Демультиплексор MPEG-PS
+# Доверять меткам времени MPEG (boolean)
+#ps-trust-timestamps=1
+[postproc] # Пост-обработка видео
+# Качество пост-обработки (целое)
+#postproc-q=6
+# Цепочки фильтров пост-обработки FFmpeg (строка)
+#postproc-name=default
+[portaudio] # Вывод аудио через PORTAUDIO
+# Устройство вывода (целое)
+#portaudio-audio-device=0
+[podcast] # Подкасты
+# Список Podcast URL (строка)
+#podcast-urls=
+[playlist] # Плейлист
+# Автозапуск (boolean)
+#playlist-autostart=1
+# ? (целое)
+#parent-item=0
+# Пропускать рекламу (boolean)
+#playlist-skip-ads=1
+# Показывать содержимое shoutcast для взрослых (boolean)
+#shoutcast-show-adult=0
+[param_eq] # Параметрический эквалайзер
+# Низкая частота (Гц) (дробное)
+#param-eq-lowf=100.000000
+# Усиление низкой частоты (дБ) (дробное)
+#param-eq-lowgain=0.000000
+# Высокая частота (Гц) (дробное)
+#param-eq-highf=10000.000000
+# Усиление высокой частоты (дБ) (дробное)
+#param-eq-highgain=0.000000
+# Частота 1 (Гц) (дробное)
+#param-eq-f1=300.000000
+# Усиление частоты 1 (дБ) (дробное)
+#param-eq-gain1=0.000000
+# Q частоты 1 (дробное)
+#param-eq-q1=3.000000
+# Частота 2 (Гц) (дробное)
+#param-eq-f2=1000.000000
+# Усиление частоты 2 (дБ) (дробное)
+#param-eq-gain2=0.000000
+# Q частоты 2 (дробное)
+#param-eq-q2=3.000000
+# Частота 3 (Гц) (дробное)
+#param-eq-f3=3000.000000
+# Усиление частоты 3 (дБ) (дробное)
+#param-eq-gain3=0.000000
+# Q частоты 3 (дробное)
+#param-eq-q3=3.000000
+[panoramix] # Панорамикс: "стена" с накладыванием
+# Количество столбцов (целое)
+#panoramix-cols=-1
+# Количество строк (целое)
+#panoramix-rows=-1
+# Смещение X (автоматическая компенсация) (boolean)
+#panoramix-offset-x=1
+# Длина области накладывания (в %) (целое)
+#panoramix-bz-length=100
+# Высота области накладывания (в %) (целое)
+#panoramix-bz-height=100
+# Смягчение (boolean)
+#panoramix-attenuate=1
+# Смягчение, начало (в %) (целое)
+#panoramix-bz-begin=0
+# Смягчение, середина (в %) (целое)
+#panoramix-bz-middle=50
+# Смягчение, конец (в %) (целое)
+#panoramix-bz-end=100
+# Расположение середины (в %) (целое)
+#panoramix-bz-middle-pos=50
+# Гамма-коррекция красного (дробное)
+#panoramix-bz-gamma-red=1.000000
+# Гамма-коррекция зелёного (дробное)
+#panoramix-bz-gamma-green=1.000000
+# Гамма-коррекция синего (дробное)
+#panoramix-bz-gamma-blue=1.000000
+# Сжатие чёрного для красного (целое)
+#panoramix-bz-blackcrush-red=140
+# Сжатие чёрного для зелёного (целое)
+#panoramix-bz-blackcrush-green=140
+# Сжатие чёрного для синего (целое)
+#panoramix-bz-blackcrush-blue=140
+# Сжатие белого для красного (целое)
+#panoramix-bz-whitecrush-red=200
+# Сжатие белого для зелёного (целое)
+#panoramix-bz-whitecrush-green=200
+# Сжатие белого для синего (целое)
+#panoramix-bz-whitecrush-blue=200
+# Уровень чёрного для красного (целое)
+#panoramix-bz-blacklevel-red=150
+# Уровень чёрного для зелёного (целое)
+#panoramix-bz-blacklevel-green=150
+# Уровень чёрного для синего (целое)
+#panoramix-bz-blacklevel-blue=150
+# Уровень белого для красного (целое)
+#panoramix-bz-whitelevel-red=0
+# Уровень белого для зелёного (целое)
+#panoramix-bz-whitelevel-green=0
+# Уровень белого для синего (целое)
+#panoramix-bz-whitelevel-blue=0
+# Активные окна (строка)
+#panoramix-active=
+[packetizer_mpegvideo] # Видео упаковщик MPEG I/II
+# Синхронизировать по I-кадрам (boolean)
+#packetizer-mpegvideo-sync-iframe=0
+[osdmenu] # Экранное меню
+# Координата X (целое)
+#osdmenu-x=-1
+# Координата Y (целое)
+#osdmenu-y=-1
+# Расположение меню (целое)
+#osdmenu-position=8
+# Файл конфигурации (строка)
+#osdmenu-file=osdmenu/default.cfg
+# Путь к изображениям меню (строка)
+#osdmenu-file-path=
+# Задержка (целое)
+#osdmenu-timeout=15
+# Период обновления (целое)
+#osdmenu-update=300
+# Величина альфа-прозрачности (по умолчанию 255) (целое)
+#osdmenu-alpha=255
+[opengl] # Вывод видео через OpenGL
+# Провайдер OpenGL (строка)
+#opengl-provider=
+[ntservice] # Интерфейс службы Windows
+# Установить службу Windows (boolean)
+#ntservice-install=0
+# Удалить службу Windows (boolean)
+#ntservice-uninstall=0
+# Имя службы (строка)
+#ntservice-name=VLC media player
+# Параметры (строка)
+#ntservice-options=
+# Дополнительные модули интерфейса (строка)
+#ntservice-extraintf=
+[normvol] # Нормализация громкости
+# Количество аудио буферов (целое)
+#norm-buff-size=20
+# Максимальный уровень (дробное)
+#norm-max-level=2.000000
+[mux_ts] # Мультиплексор TS (libdvbpsi)
+# Видео PID (целое)
+#sout-ts-pid-video=0
+# Аудио PID (целое)
+#sout-ts-pid-audio=0
+# SPU PID (целое)
+#sout-ts-pid-spu=0
+# PMT PID (целое)
+#sout-ts-pid-pmt=0
+# TS ID (целое)
+#sout-ts-tsid=0
+# NET ID (целое)
+#sout-ts-netid=0
+# Номера программ PMT (строка)
+#sout-ts-program-pmt=
+# PID равен ES ID (boolean)
+#sout-ts-es-id-pid=0
+# Инкапсулировать PMT (требует --sout-ts-es-id-pid) (строка)
+#sout-ts-muxpmt=
+# Дескрипторы SDT (требует --sout-ts-es-id-pid) (строка)
+#sout-ts-sdtdesc=
+# Выравнивание данных (boolean)
+#sout-ts-alignment=1
+# Задержка шейпирования (мс) (целое)
+#sout-ts-shaping=200
+# Использовать ключевые кадры (boolean)
+#sout-ts-use-key-frames=0
+# Задержка PCR (мс) (целое)
+#sout-ts-pcr=70
+# Минимальный B (устаревший) (целое)
+#sout-ts-bmin=0
+# Максимальный B (устаревший) (целое)
+#sout-ts-bmax=0
+# Задержка DTS (мс) (целое)
+#sout-ts-dts-delay=400
+# Шифрование аудио (boolean)
+#sout-ts-crypt-audio=1
+# Шифрование видео (boolean)
+#sout-ts-crypt-video=1
+# Ключ CSA (строка)
+#sout-ts-csa-ck=
+# Второй CSA-ключ (строка)
+#sout-ts-csa2-ck=
+# Используемый CSA-ключ (строка)
+#sout-ts-csa-use=1
+# Размер пакета для шифрования, в байтах (целое)
+#sout-ts-csa-pkt=188
+[mux_ps] # Мультиплексор PS
+# Задержка DTS (мс) (целое)
+#sout-ps-dts-delay=200
+# Максимальный размер PES (целое)
+#sout-ps-pes-max-size=65500
+[mux_mpjpeg] # Мультиплексор Multipart JPEG
+[mux_mp4] # Мультиплексор MP4/MOV
+# Создавать файлы "Быстрый запуск" (boolean)
+#sout-mp4-faststart=1
+[mux_asf] # Мультиплексор ASF
+# Название (строка)
+#sout-asf-title=
+# Автор (строка)
+#sout-asf-author=
+# Авторские права (строка)
+#sout-asf-copyright=
+# Комментарий (строка)
+#sout-asf-comment=
+# Рейтинг (строка)
+#sout-asf-rating=
+# Размер пакета (целое)
+#sout-asf-packet-size=4096
+# Переопределить битрейт (целое)
+#sout-asf-bitrate-override=0
+[msn] # Информация о воспроизведении в MSN
+# Строка формата названия (строка)
+#msn-format={0} - {1}
+[motionblur] # Размывание движения
+# Коэффициент размывания (1-127) (целое)
+#blur-factor=80
+[mosaic] # Мозаика
+# Прозрачность (целое)
+#mosaic-alpha=255
+# Высота (целое)
+#mosaic-height=100
+# Ширина (целое)
+#mosaic-width=100
+# Выравнивание мозаики (целое)
+#mosaic-align=5
+# Координата X верхнего левого угла (целое)
+#mosaic-xoffset=0
+# Координата Y верхнего левого угла (целое)
+#mosaic-yoffset=0
+# Ширина границы (целое)
+#mosaic-borderw=0
+# Высота границы (целое)
+#mosaic-borderh=0
+# Метод позиционирования (целое)
+#mosaic-position=0
+# Количество строк (целое)
+#mosaic-rows=2
+# Количество столбцов (целое)
+#mosaic-cols=2
+# Сохранять соотношение сторон (boolean)
+#mosaic-keep-aspect-ratio=0
+# Cохранять оригинальный размер (boolean)
+#mosaic-keep-picture=0
+# Порядок элементов (строка)
+#mosaic-order=
+# Смещения по порядку (строка)
+#mosaic-offsets=
+# Задержка (целое)
+#mosaic-delay=0
+[mono] # Преобразование стерео в моно
+# Вкл. алгоритм пониж. микширования (boolean)
+#sout-mono-downmix=1
+# Оставить канал (целое)
+#sout-mono-channel=-1
+[mod] # Демультиплексор MOD (libmodplug)
+# Уменьшение шума (boolean)
+#mod-noisereduction=1
+# Эхо (boolean)
+#mod-reverb=0
+# Уровень эхо (целое)
+#mod-reverb-level=0
+# Задержка эхо (целое)
+#mod-reverb-delay=40
+# Мега бас (boolean)
+#mod-megabass=0
+# Уровень мега баса (целое)
+#mod-megabass-level=0
+# Частота мега баса (целое)
+#mod-megabass-range=10
+# Surround (boolean)
+#mod-surround=0
+# Уровень surround (целое)
+#mod-surround-level=0
+# Задержка surround (мс) (целое)
+#mod-surround-delay=5
+[mkv] # Демультиплексор Matroska
+# Упорядоченные главы (boolean)
+#mkv-use-ordered-chapters=1
+# Кодеки главы (boolean)
+#mkv-use-chapter-codec=1
+# Загрузка каталога (boolean)
+#mkv-preload-local-dir=0
+# Перемотка, основанная на процентах (boolean)
+#mkv-seek-percent=0
+# Фиктивные элементы (boolean)
+#mkv-use-dummy=0
+[mjpeg] # Демультиплексор M-JPEG
+# Кадры в секунду (дробное)
+#mjpeg-fps=0.000000
+[marq] # Фильтр "Маркиза"
+# Текст (строка)
+#marq-marquee=VLC
+# Смещение по X (целое)
+#marq-x=0
+# Смещение по Y (целое)
+#marq-y=0
+# Расположение маркизы (целое)
+#marq-position=-1
+# Непрозрачность (целое)
+#marq-opacity=255
+# Цвет (целое)
+#marq-color=16777215
+# Размер шрифта в пикселах (целое)
+#marq-size=-1
+# Задержка (целое)
+#marq-timeout=0
+# Период обновления в мс (целое)
+#marq-refresh=1000
+[m4v] # Видео-демультиплексор MPEG-4
+# Кадры в секунду (дробное)
+#m4v-fps=25.000000
+[lua] # Скачивать обложки с помощью сценариев Lua
+# Интерфейс Lua (строка)
+#lua-intf=dummy
+# Конфигурация интерфейса Lua (строка)
+#lua-config=
+[logo] # Логотип
+# Имя файла логотипа (строка)
+#logo-file=
+# Координата X (целое)
+#logo-x=0
+# Координата Y (целое)
+#logo-y=0
+# Длительность показа отдельного изображения (целое)
+#logo-delay=1000
+# Количество повторов анимации логотипа (целое)
+#logo-repeat=-1
+# Прозрачность логотипа (целое)
+#logo-transparency=255
+# Расположение логотипа (целое)
+#logo-position=-1
+[logger] # Журналирование в файл
+# Имя файла (строка)
+#logfile=
+# Формат журнала (строка)
+#logmode=text
+[live555] # Демультиплексор RTP/RTSP/SDP (используя Live555.com)
+# Использовать RTP поверх RTSP (TCP) (boolean)
+#rtsp-tcp=0
+# Порт клиента (целое)
+#rtp-client-port=-1
+# Использовать RTSP при групповой передаче RTP (boolean)
+#rtsp-mcast=0
+# Туннелировать RTSP и RTP по HTTP (boolean)
+#rtsp-http=0
+# Порт туннеля HTTP (целое)
+#rtsp-http-port=80
+# Размер кэша (мс) (целое)
+#rtsp-caching=1200
+# Kasenna-вариант RTSP (boolean)
+#rtsp-kasenna=0
+# Имя пользователя для RTSP (строка)
+#rtsp-user=
+# Пароль для RTSP (строка)
+#rtsp-pwd=
+[kate] # Декодировщик Kate для наложенных слоёв
+# Форматированные субтитры (boolean)
+#kate-formatted=1
+[invmem] # Видео-декодировщик для данных в памяти
+# Ширина (целое)
+#invmem-width=0
+# Высота (целое)
+#invmem-height=0
+# Блокирующая функция (строка)
+#invmem-lock=0
+# Деблокирующая функция (строка)
+#invmem-unlock=0
+# Данные для обратного вызова (строка)
+#invmem-data=0
+[http] # Интерфейс управления HTTP
+# Адрес сервера (строка)
+#http-host=
+# Исходный каталог (строка)
+#http-src=
+# Обработчики (строка)
+#http-handlers=
+# Экспорт обложки альбома в /art. (boolean)
+#http-album-art=0
+# Файл сертификатов (строка)
+#http-intf-cert=
+# Файл приватного ключа (строка)
+#http-intf-key=
+# Файл корневого сертификата (Root CA) (строка)
+#http-intf-ca=
+# CRL-файл (строка)
+#http-intf-crl=
+[hotkeys] # Интерфейс управления горячими клавишами
+# Контроль колёсика мыши для оси X (целое)
+#hotkeys-mousewheel-mode=0
+[headphone_channel_mixer] # Эффект виртуального разделения наушников
+# Характеристики динамиков (целое)
+#headphone-dim=10
+# Компенсирующая задержка (boolean)
+#headphone-compensate=0
+# Не декодировать Dolby Surround (boolean)
+#headphone-dolby=0
+[h264] # Демультиплексор H264
+# Кадры в секунду (дробное)
+#h264-fps=25.000000
+[gradient] # Градиент
+# Режим искажения (строка)
+#gradient-mode=gradient
+# Тип градиента (целое)
+#gradient-type=0
+# Применить эффект мультфильма (boolean)
+#gradient-cartoon=1
+[goom] # Эффект Goom
+# Ширина дисплея Goom (целое)
+#goom-width=320
+# Высота дисплея Goom (целое)
+#goom-height=240
+# Скорость анимации Goom (целое)
+#goom-speed=6
+[gnutls] # Протокол GNU Transport Layer Security
+# Время жизни восстановленных сессий TLS (целое)
+#gnutls-cache-timeout=3600
+# Количество восстановленных сессий TLS (целое)
+#gnutls-cache-size=64
+[gestures] # Интерфейс управления жестами мыши
+# Порог движения (10-100) (целое)
+#gestures-threshold=30
+# Кнопка переключения (строка)
+#gestures-button=right
+[gaussianblur] # Гауссово размывание
+# Гауссово стандартное отклонение (дробное)
+#gaussianblur-sigma=2.000000
+[freetype] # Визуализатор шрифтов Freetype2
+# Шрифт (строка)
+#freetype-font=
+# Размер шрифта в пикселях (целое)
+#freetype-fontsize=0
+# Непрозрачность (целое)
+#freetype-opacity=255
+# Цвет теста (целое)
+#freetype-color=16777215
+# Относительный размер шрифта (целое)
+#freetype-rel-fontsize=16
+# Эффект шрифта (целое)
+#freetype-effect=2
+# Использовать визуализатор YUVP (boolean)
+#freetype-yuvp=0
+[fake] # Фиктивный видео-декодировщик
+# Файл изображения (строка)
+#fake-file=
+# Перезагружать файл изображения (целое)
+#fake-file-reload=0
+# Ширина видео (целое)
+#fake-width=0
+# Высота видео (целое)
+#fake-height=0
+# Сохранять соотношение сторон (boolean)
+#fake-keep-ar=0
+# Соотношение сторон фона (строка)
+#fake-aspect-ratio=
+# Устранение чересстрочности видео (boolean)
+#fake-deinterlace=0
+# Модуль устранения чересстрочности (строка)
+#fake-deinterlace-module=deinterlace
+# Используемая цветность (строка)
+#fake-chroma=I420
+[extract] # Извлечение RGB-компонента
+# Извлекаемый RGB-компонент (целое)
+#extract-component=16711680
+[erase] # Стирание
+# Маска изображения (строка)
+#erase-mask=
+# Координата X (целое)
+#erase-x=0
+# Координата Y (целое)
+#erase-y=0
+[equalizer] # 10-полосный эквалайзер
+# Предустановка эквалайзера: (строка)
+#equalizer-preset=flat
+# Усиление частот (строка)
+#equalizer-bands=
+# Два прохода (boolean)
+#equalizer-2pass=0
+# Общее усиление (дробное)
+#equalizer-preamp=12.000000
+[dvdread] # Ввод DVDRead (без поддержки меню)
+# Угол DVD (целое)
+#dvdread-angle=1
+# Размер кэша в мс. (целое)
+#dvdread-caching=300
+# Метод, используемый libdvdcss для декодирования (строка)
+#dvdread-css-method=
+[dvdnav] # Ввод DVDnav
+# Угол DVD (целое)
+#dvdnav-angle=1
+# Размер кэша в мс. (целое)
+#dvdnav-caching=300
+# Запуск напрямую в меню (boolean)
+#dvdnav-menu=1
+[dvbsub] # Декодировщик субтитров DVB
+# Позиция слоя (целое)
+#dvbsub-position=8
+# Координата X при декодировании (целое)
+#dvbsub-x=-1
+# Координата Y при декодировании (целое)
+#dvbsub-y=-1
+# Координата X при кодировании (целое)
+#sout-dvbsub-x=-1
+# Координата Y при кодировании (целое)
+#sout-dvbsub-y=-1
+[dummy] # Фиктивный интерфейс
+# Не открывать интерфейс ввода команд DOS (boolean)
+#dummy-quiet=0
+# Сохранить необработанные данные кодека (boolean)
+#dummy-save-es=0
+# Фиктивный формат цветности (строка)
+#dummy-chroma=
+[dtstofloat32] # Аудио-декодировщик DTS Coherent Acoustics
+# Сжатие динамического диапазона DTS (boolean)
+#dts-dynrng=1
+[dshow] # Источник DirectShow
+# Размер кэша в мс. (целое)
+#dshow-caching=200
+# Название видео-устройства (строка)
+#dshow-vdev=
+# Название аудио-устройства (строка)
+#dshow-adev=
+# Размер видео (строка)
+#dshow-size=
+# Формат цветности (строка)
+#dshow-chroma=
+# Частота смены кадров (дробное)
+#dshow-fps=0.000000
+# Настройки устройства (boolean)
+#dshow-config=0
+# Настройки тюнера (boolean)
+#dshow-tuner=0
+# Канал тюнера (целое)
+#dshow-tuner-channel=0
+# Код страны тюнера (целое)
+#dshow-tuner-country=0
+# Тип входа тюнера (целое)
+#dshow-tuner-input=0
+# Штекер ввода видео (целое)
+#dshow-video-input=-1
+# Метод вывода видео (целое)
+#dshow-video-output=-1
+# Источник аудио (целое)
+#dshow-audio-input=-1
+# Метод вывода аудио (целое)
+#dshow-audio-output=-1
+# Режим AM-приёмника (целое)
+#dshow-amtuner-mode=1
+# Количество аудио-каналов (целое)
+#dshow-audio-channels=0
+# Частота дискретизации аудио (целое)
+#dshow-audio-samplerate=0
+# Аудио бит/сэмпл (целое)
+#dshow-audio-bitspersample=0
+[drawable] # Встроенное видео для X-окна
+[dirac] # Dirac video encoder using dirac-research library
+# Неизменный уровень качества (дробное)
+#sout-dirac-quality=5.500000
+# Постоянный битрейт (кб/с) (целое)
+#sout-dirac-bitrate=-1
+# Применять кодирование без потерь (boolean)
+#sout-dirac-lossless=0
+# Предварительный фильтр (строка)
+#sout-dirac-prefilter=diaglp
+# Amount of prefiltering (целое)
+#sout-dirac-prefilter-strength=1
+# Формат цветности (строка)
+#sout-dirac-chroma-fmt=420
+# Расстояние между P-кадрами. (целое)
+#sout-dirac-l1-sep=-1
+# Количество P-кадров на группу изображений (целое)
+#sout-dirac-num-l1=-1
+# Режим кодирования изображения (строка)
+#sout-dirac-coding-mode=auto
+# Точность вектора движения (строка)
+#sout-dirac-mv-prec=1/2
+# Width of motion compensation blocks (целое)
+#sout-dirac-mc-blk-width=-1
+# mc-blk-height (целое)
+#sout-dirac-mc-blk-height=-1
+# Block overlap (%) (целое)
+#sout-dirac-mc-blk-overlap=-1
+# xblen (целое)
+#sout-dirac-mc-blk-xblen=-1
+# yblen (целое)
+#sout-dirac-mc-blk-yblen=-1
+# Simple ME search area x:y (строка)
+#sout-dirac-me-simple-search=
+# Трёхкомпонентная оценка движения (boolean)
+#sout-dirac-me-combined=1
+# Использовать фильтр ДВП внутри изображений (целое)
+#sout-dirac-dwt-intra=-1
+# Использовать фильтр ДВП между изображениями (целое)
+#sout-dirac-dwt-inter=-1
+# Количество повторений ДВП (целое)
+#sout-dirac-dwt-depth=-1
+# Использовать множественное квантование (целое)
+#sout-dirac-multi-quant=-1
+# Использовать пространственное разделение (целое)
+#sout-dirac-spartition=-1
+# Disable arithmetic coding (boolean)
+#sout-dirac-noac=0
+# циклов в градусе (дробное)
+#sout-dirac-cpd=-1.000000
+[demuxdump] # Сброс в файл
+# Имя файла (строка)
+#demuxdump-file=stream-demux.dump
+# Добавить к существующему файлу (boolean)
+#demuxdump-append=0
+[deinterlace] # Фильтр устранения чересстрочности видео
+# Режим устранения чересстрочности (строка)
+#deinterlace-mode=discard
+# Режим устранения чересстрочности для потока (строка)
+#sout-deinterlace-mode=blend
+[crop] # Кадрирование
+# Размеры для кадрирования (пикселы) (строка)
+#crop-geometry=
+# Автоматическое кадрирование (boolean)
+#autocrop=0
+# Максимальное соотношение (х1000) (целое)
+#autocrop-ratio-max=2405
+# Соотношение сторон (целое)
+#crop-ratio=0
+# Количество изображений для смены (целое)
+#autocrop-time=25
+# Количество строк для смены (целое)
+#autocrop-diff=16
+# Количество нечёрных пикселов (целое)
+#autocrop-non-black-pixels=3
+# Процент пропуска (%) (целое)
+#autocrop-skip-percent=17
+# Порог яркости (целое)
+#autocrop-luminance-threshold=40
+[croppadd] # Масштабирование видео
+# Кадрировать верхних пикселов (целое)
+#croppadd-croptop=0
+# Кадрировать нижних пикселов (целое)
+#croppadd-cropbottom=0
+# Кадрировать левых пикселов (целое)
+#croppadd-cropleft=0
+# Кадрировать правых пикселов (целое)
+#croppadd-cropright=0
+# Заполнить верхних пикселов (целое)
+#croppadd-paddtop=0
+# Заполнить нижних пикселов (целое)
+#croppadd-paddbottom=0
+# Заполнить левых пикселов (целое)
+#croppadd-paddleft=0
+# Заполнить правых пикселов (целое)
+#croppadd-paddright=0
+[colorthres] # Цветовой порог
+# Цвет (целое)
+#colorthres-color=16711680
+# Порог насыщенности (целое)
+#colorthres-saturationthres=20
+# Порог схожести (целое)
+#colorthres-similaritythres=15
+[clone] # Клонирование
+# Количество клонов (целое)
+#clone-count=2
+# Модули вывода видео (строка)
+#clone-vout-list=
+[cdda] # Ввод с аудио-CD
+# Размер кэша в мс. (целое)
+#cdda-caching=300
+# ? (целое)
+#cdda-track=0
+# ? (целое)
+#cdda-first-sector=-1
+# ? (целое)
+#cdda-last-sector=-1
+# Сервер CDDB (строка)
+#cddb-server=freedb.freedb.org
+# Порт CDDB (целое)
+#cddb-port=8880
+[canvas] # Автоматическое изменение размеров и выравнивание видео
+# Ширина вывода (целое)
+#canvas-width=0
+# Высота вывода (целое)
+#canvas-height=0
+# Соотношение сторон изображения для вывода (строка)
+#canvas-aspect=
+# Выравнивание видео (boolean)
+#canvas-padd=1
+[bluescreen] # Синий фон
+# Значение U синего фона (целое)
+#bluescreen-u=120
+# Значение V синего фона (целое)
+#bluescreen-v=90
+# Допустимое отклонение U синего фона (целое)
+#bluescreen-ut=17
+# Допустимое отклонение V синего фона (целое)
+#bluescreen-vt=17
+[blendbench] # Тест для наложений
+# Количество наложений (целое)
+#blendbench-loops=1000
+# Альфа у накладываемого изображения (целое)
+#blendbench-alpha=128
+# Основное изображение (строка)
+#blendbench-base-image=
+# Цветность у осн. изображения (строка)
+#blendbench-base-chroma=I420
+# Накладываемое изображение (строка)
+#blendbench-blend-image=
+# Цветность у наклад. изображения (строка)
+#blendbench-blend-chroma=YUVA
+[bda] # Ввод с DVB DirectShow
+# Размер кэша в мс. (целое)
+#dvb-caching=300
+# Частота транспондера/мультиплексирования (целое)
+#dvb-frequency=0
+# Название сети  (строка)
+#dvb-network-name=
+# Название новой сети (строка)
+#dvb-create-name=
+# Карта адаптера для настройки (целое)
+#dvb-adapter=-1
+# Режим инверсии (целое)
+#dvb-inversion=2
+# Поляризация спутника (строка)
+#dvb-polarisation=
+# Идентификатор сети (целое)
+#dvb-network-id=0
+# Азимут спутника (целое)
+#dvb-azimuth=0
+# Угол возвышения спутника (целое)
+#dvb-elevation=0
+# Долгота спутника (целое)
+#dvb-longitude=0
+# Satellite Range Code (строка)
+#dvb-range=
+# lnb_lof1 (кГц) частота нижнего гетеродина. (целое)
+#dvb-lnb-lof1=0
+# lnb_lof2 (кГц) частота верхнего гетеродина. (целое)
+#dvb-lnb-lof2=0
+# lnb_slof (кГц) частота переключения гетеродинов. (целое)
+#dvb-lnb-slof=0
+# Символьная частота транспондера в кГц (целое)
+#dvb-srate=27500
+# Тип модуляции (целое)
+#dvb-modulation=-1
+# Главный канал ATSC (целое)
+#dvb-major-channel=0
+# Вспомогательный канал ATSC (целое)
+#dvb-minor-channel=0
+# Физический канал ATSC (целое)
+#dvb-physical-channel=0
+# Отношение FEC (целое)
+#dvb-code-rate-hp=-1
+# Наземная скорость кодирования (FEC), низкий приоритет (целое)
+#dvb-code-rate-lp=-1
+# Наземная пропускная способность (целое)
+#dvb-bandwidth=0
+# Интервал защитный интервал (целое)
+#dvb-guard=-1
+# Наземный режим передачи (целое)
+#dvb-transmission=-1
+# Наземный режим иерархии (целое)
+#dvb-hierarchy=-1
+[avi] # Демультиплексор AVI
+# Принудительно включить "слоеный" режим (boolean)
+#avi-interleaved=0
+# Принудительно пересоздать индексы (целое)
+avi-index=2
+[avformat] # Демультиплексор FFmpeg
+# Мультиплексор FFmpeg (строка)
+#ffmpeg-mux=
+[avcodec] # Аудио/видео-декодировщик FFmpeg
+# Прямой рендеринг (boolean)
+#ffmpeg-dr=1
+# Устойчивость к ошибкам (целое)
+#ffmpeg-error-resilience=1
+# Обход ошибок (целое)
+#ffmpeg-workaround-bugs=1
+# Ускорить (boolean)
+#ffmpeg-hurry-up=1
+# Пропускать кадры (по умолчанию 0) (целое)
+#ffmpeg-skip-frame=0
+# Пропустить ИДКП (по умолчанию=0) (целое)
+#ffmpeg-skip-idct=0
+# Показывать векторы движения (целое)
+#ffmpeg-vismv=0
+# Декодирование с низким разрешением (целое)
+#ffmpeg-lowres=0
+# Расшир. возможности по управлению скоростью (boolean)
+#ffmpeg-fast=0
+# Не устранять блочность при декодировании с H.264 (целое)
+#ffmpeg-skiploopfilter=0
+# Маска для отладки (целое)
+#ffmpeg-debug=0
+# Уровень качества (строка)
+#sout-ffmpeg-hq=simple
+# Частота ключевых кадров (целое)
+#sout-ffmpeg-keyint=0
+# Частота B-кадров (целое)
+#sout-ffmpeg-bframes=0
+# Ускорить (boolean)
+#sout-ffmpeg-hurry-up=0
+# Чересстрочное кодирование (boolean)
+#sout-ffmpeg-interlace=0
+# Чересстрочная оценка движения (boolean)
+#sout-ffmpeg-interlace-me=1
+# Допустимое отклонение битрейта видео (целое)
+#sout-ffmpeg-vt=0
+# Оценка пре-движения (boolean)
+#sout-ffmpeg-pre-me=0
+# Размер буфера контроля частоты (целое)
+#sout-ffmpeg-rc-buffer-size=1835008
+# Эффективность буфера контроля частоты (дробное)
+#sout-ffmpeg-rc-buffer-aggressivity=1.000000
+# Фактор квантования I-кадров (дробное)
+#sout-ffmpeg-i-quant-factor=0.000000
+# Уменьшение шума (целое)
+#sout-ffmpeg-noise-reduction=0
+# Матрица квантования MPEG4 (boolean)
+#sout-ffmpeg-mpeg4-matrix=0
+# Минимальный коэффициент квантования (целое)
+#sout-ffmpeg-qmin=0
+# Максимальный коэффициент квантования (целое)
+#sout-ffmpeg-qmax=0
+# Квантование trellis (boolean)
+#sout-ffmpeg-trellis=0
+# Фиксированный коэффициент квантования (дробное)
+#sout-ffmpeg-qscale=0.000000
+# Строгое следование стандартам (целое)
+#sout-ffmpeg-strict=0
+# Коррекция ярких участков (дробное)
+#sout-ffmpeg-lumi-masking=0.000000
+# Коррекция темных участков (дробное)
+#sout-ffmpeg-dark-masking=0.000000
+# Коррекция движения (дробное)
+#sout-ffmpeg-p-masking=0.000000
+# Коррекция краев (дробное)
+#sout-ffmpeg-border-masking=0.000000
+# Коррекция яркости (целое)
+#sout-ffmpeg-luma-elim-threshold=0
+# Коррекция цветности (целое)
+#sout-ffmpeg-chroma-elim-threshold=0
+# Используемый аудио-профиль ACC (строка)
+#sout-ffmpeg-aac-profile=low
+[audioscrobbler] # Передача информации о прослушанных песнях на last.fm
+# Имя пользователя (строка)
+#lastfm-username=
+# Пароль (строка)
+#lastfm-password=
+# Scrobbler URL (строка)
+#scrobbler-url=post.audioscrobbler.com
+[atmo] # Фильтр AtmoLight
+# Использование встроенного AtmoLight (boolean)
+#atmo-usebuildin=1
+# Последовательный порт/устройство (строка)
+#atmo-serialdev=COM1
+# Название файла AtmoWinA.exe (строка)
+#atmo-atmowinexe=
+# Цвет во время паузы (boolean)
+#atmo-usepausecolor=0
+# Пауза-Красный (целое)
+#atmo-pcolor-red=0
+# Пауза-Зелёный (целое)
+#atmo-pcolor-green=0
+# Пауза-Синий (целое)
+#atmo-pcolor-blue=192
+# Переходов в цвет паузы (целое)
+#atmo-fadesteps=50
+# Конец-Красный (целое)
+#atmo-ecolor-red=192
+# Конец-Зелёный (целое)
+#atmo-ecolor-green=192
+# Конец-Синий (целое)
+#atmo-ecolor-blue=192
+# Переходов в цвет отключения (целое)
+#atmo-efadesteps=50
+# Усиление краёв (целое)
+#atmo-EdgeWeightning=8
+# Яркость (целое)
+#atmo-Brightness=100
+# Лимит для темноты (целое)
+#atmo-DarknessLimit=5
+# Отсечение оттенка (целое)
+#atmo-HueWinSize=3
+# Отсечение насыщенности (целое)
+#atmo-SatWinSize=3
+# Режим фильтра (целое)
+#atmo-filtermode=1
+# Продолжительность фильтра (мс) (целое)
+#atmo-MeanLength=300
+# Порог фильтра (целое)
+#atmo-MeanThreshold=40
+# Плавность фильтра (в %) (целое)
+#atmo-PercentNew=50
+# Задержка кадров (целое)
+#atmo-FrameDelay=18
+# Сводка канала (целое)
+#atmo-channel_0=0
+# слева (целое)
+#atmo-channel_1=1
+# справа (целое)
+#atmo-channel_2=2
+# сверху (целое)
+#atmo-channel_3=3
+# снизу (целое)
+#atmo-channel_4=4
+# Программная корректировка белого (boolean)
+#atmo-whiteadj=1
+# Белый-Красный (целое)
+#atmo-white-red=255
+# Белый-Зелёный (целое)
+#atmo-white-green=255
+# Белый-Синий (целое)
+#atmo-white-blue=255
+# Градиент сводки (строка)
+#atmo-gradient_zone_0=
+# Левый градиент (строка)
+#atmo-gradient_zone_1=
+# Правый градиент (строка)
+#atmo-gradient_zone_2=
+# Верхний градиент (строка)
+#atmo-gradient_zone_3=
+# Нижний градиент (строка)
+#atmo-gradient_zone_4=
+# Ширина извлечённого изображения (целое)
+#atmo-width=64
+# Высота извлечённого изображения (целое)
+#atmo-height=48
+[aout_file] # Вывод аудио в файл
+# Формат вывода (строка)
+#audiofile-format=s16
+# Количество выходных каналов (целое)
+#audiofile-channels=0
+# Выходной файл (строка)
+#audiofile-file=audiofile.wav
+# Добавлять заголовок WAVE (boolean)
+#audiofile-wav=1
+[aout_directx] # Вывод аудио через DirectX
+# Устройство вывода (целое)
+#directx-audio-device=0
+# Использовать 32-битный вывод с плавающей точкой (boolean)
+#directx-audio-float32=0
+# Конфигурация аудио-каналов (строка)
+#directx-audio-speaker=Windows default
+[alphamask] # Альфа-маска
+# Маска прозрачности (строка)
+#alphamask-mask=
+[adjust] # Свойства изображения
+# Контрастность (0-2) (дробное)
+#contrast=1.000000
+# Яркость (0-2) (дробное)
+#brightness=1.000000
+# Оттенок (0-360) (целое)
+#hue=0
+# Насыщенность (0-3) (дробное)
+#saturation=1.000000
+# Гамма (0-10) (дробное)
+#gamma=1.000000
+# Порог яркости (boolean)
+#brightness-threshold=0
+[access_udp] # Ввод с UDP
+# Размер кэша в мс. (целое)
+#udp-caching=300
+[access_tcp] # Ввод с TCP
+# Размер кэша в мс. (целое)
+#tcp-caching=300
+[access_smb] # Ввод с SMB
+# Размер кэша в мс. (целое)
+#smb-caching=600
+# Имя пользователя (строка)
+#smb-user=
+# Пароль (строка)
+#smb-pwd=
+# Домен (строка)
+#smb-domain=
+[access_rtmp] # Ввод с RTMP
+# Размер кэша в мс. (целое)
+#rtmp-caching=300
+[access_realrtsp] # Real RTSP
+# Размер кэша (мс) (целое)
+#realrtsp-caching=3000
+[access_output_udp] # Вывод потока UDP
+# Размер кэша (мс) (целое)
+#sout-udp-caching=300
+# Пакеты в группах (целое)
+#sout-udp-group=1
+[access_output_shout] # Вывод в IceCAST
+# Имя потока (строка)
+#sout-shout-name=VLC media player - Live stream
+# Описание потока (строка)
+#sout-shout-description=Live stream from VLC media player
+# Вещать в MP3 (boolean)
+#sout-shout-mp3=0
+# Название жанра (строка)
+#sout-shout-genre=Alternative
+# Характеристика URL (строка)
+#sout-shout-url=http://www.videolan.org/vlc
+# Битрейт (строка)
+#sout-shout-bitrate=
+# Частота дискретизации (строка)
+#sout-shout-samplerate=
+# Количество каналов (строка)
+#sout-shout-channels=
+# Качество Ogg Vorbis (строка)
+#sout-shout-quality=
+# Публичный поток (boolean)
+#sout-shout-public=0
+[access_output_rtmp] # Вывод RTMP-потока
+# Активное TCP-соединение (boolean)
+#rtmp-connect=0
+[access_output_http] # Вывод потока HTTP
+# Имя пользователя (строка)
+#sout-http-user=
+# Пароль (строка)
+#sout-http-pwd=
+# MIME (строка)
+#sout-http-mime=
+# Файл сертификатов (строка)
+#sout-http-cert=vlc.pem
+# Файл приватного ключа (строка)
+#sout-http-key=
+# Файл корневого сертификата (Root CA) (строка)
+#sout-http-ca=
+# CRL-файл (строка)
+#sout-http-crl=
+[access_output_file] # Вывод потока в файл
+# Добавлять к файлу (boolean)
+#sout-file-append=0
+[access_mms] # Ввод с Microsoft Media Server (MMS)
+# Размер кэша в мс. (целое)
+#mms-caching=5700
+# Время ожидания для TCP/UDP (мс) (целое)
+#mms-timeout=5000
+# Принудительно выбрать все потоки (boolean)
+#mms-all=0
+# Максимальный битрейт (целое)
+#mms-maxbitrate=0
+# HTTP-прокси (строка)
+#mmsh-proxy=
+[access_http] # Ввод с HTTP
+# HTTP-прокси (строка)
+#http-proxy=
+# Пароль HTTP-прокси (строка)
+#http-proxy-pwd=
+# Размер кэша в мс. (целое)
+#http-caching=1200
+# HTTP User-Agent (строка)
+#http-user-agent=VLC media player - version 1.0.5 Goldeneye - (c) 1996-2010 the VideoLAN team
+# Автоматически восстанавливать соединение (boolean)
+#http-reconnect=0
+# Непрерывный поток (boolean)
+#http-continuous=0
+# Передавать cookie-файлы (boolean)
+#http-forward-cookies=1
+[access_ftp] # Ввод с FTP
+# Размер кэша в мс. (целое)
+#ftp-caching=600
+# Имя пользователя (строка)
+#ftp-user=anonymous
+# Пароль (строка)
+#ftp-pwd=anonymous@example.com
+# Аккаунт (строка)
+#ftp-account=anonymous
+[access_file] # Ввод из файла
+# Размер кэша в мс. (целое)
+#file-caching=300
+[access_fake] # Фиктивный ввод
+# Размер кэша в мс. (целое)
+#fake-caching=300
+# Частота кадров (дробное)
+#fake-fps=25.000000
+# № (целое)
+#fake-id=0
+# Длительность в мс (целое)
+#fake-duration=-1
+[access_directory] # Стандартный ввод из директории файловой системы
+# Поведение поддиректорий (строка)
+#recursive=expand
+# Пропускать расширения (строка)
+#ignore-filetypes=m3u,db,nfo,ini,jpg,jpeg,ljpg,gif,png,pgm,pgmyuv,pbm,pam,tga,bmp,pnm,xpm,xcf,pcx,tif,tiff,lbm,sfv,txt,sub,idx,srt,cue,ssa
+[access_bd] # Ввод с диска Blu-ray
+# Размер кэша в мс. (целое)
+#bd-caching=300
+[a52tofloat32] # Аудио-декодировщик ATSC A/52 (AC-3)
+# Сжатие динамического диапазона A/52 (boolean)
+#a52-dynrng=1
+# Вкл. внутр. повыш. микширование (boolean)
+#a52-upmix=0

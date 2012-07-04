@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes"?>
+<FlylinkDC>
+<URL>http://www.flylinkdc.ru/setup/SetupFlylinkDC-r300.exe</URL>
+<Version>(r300)</Version>
+<BuildID>300</BuildID>
+<DCVersion>0.699</DCVersion>
+<Title>New version</Title>
+<Message>
+--------------------------------------------------
+ Нажмите "Скачать" для получения новой версии 
+    (траф по Липецкой области - бесплатный)
+--------------------------------------------------
+ "Жизнь" проекта:
+      http://svn.flylinkdc.ru/trac/timeline
+
+  "Исходники" (subversion) 
+  Ствол разработки:
+       http://svn.flylinkdc.ru/svnroot/trunk/
+  Срезы релизов
+       http://svn.flylinkdc.ru/svnroot/tags/
+--------------------------------------------------
+Ревизия (300) 12.09.2007
+   http://www.flylinkdc.ru/setup/SetupFlylinkDC-r300.exe
+   [!] исправления в работе IP фильтра
+   [+] STLPort r3191
+
+Ревизия (299) 7.09.2007
+   http://www.flylinkdc.ru/setup/SetupFlylinkDC-r299.exe
+   [+] к IP фильтру добавлена поддержка блокировки по IP. 
+       (перед забаненым адресом выставляется знак "-") [(c) greylink]
+   [+] STLPort r3171
+   [+] исправлено запрещенное расширение *.DFM -> *.DMF
+
+Ревизия (298) 3.09.2007
+   http://www.flylinkdc.ru/setup/SetupFlylinkDC-r298.exe
+
+   [+] к запрещённым для расшаривания файлам добавлены *.jc!, *.DMF, *.!ut, *.bc! [(с) greylink]
+   [+] исправлено падения в QueueManager::UserQueue::remove
+   [+] буфер хеширования с 256К до 16М [StrongDC++ 2.05 mod5]
+
+Ревизия (297) 30.08.2007
+   http://www.flylinkdc.ru/setup/SetupFlylinkDC-r297.exe
+   [+] восстанавливается приоритет при поднятии из трея
+   [+] полосатый фон в окне закачек можно отключить "меню-настройки-внешний вид"
+  
+Ревизия (296) 22.08.2007
+   http://www.flylinkdc.ru/setup/SetupFlylinkDC-r296.exe
+
+   [+] в пресет поиска CD-DVD Image добавлено рарсширение .isz  [(с)mopger]
+   [+] myWTL r81
+   [+] исправлена проблема со сверткой в трей под Linux (wine)
+   [+] оптимизация по памяти в классе Identity (флажки упаковал в битики) [(с) greylink]
+
+
+Полный лог изменений:
+http://www.flylinkdc.ru/evolution.htm
+
+</Message>
+</FlylinkDC>

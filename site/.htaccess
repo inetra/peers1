@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteRule version.xml index.php?action=version.xml [L,QSA]
+RewriteRule banner.htm banner.php                    [L]

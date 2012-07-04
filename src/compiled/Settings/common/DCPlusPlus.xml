@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DCPlusPlus>
+	<Settings>                      
+		<BeepFile type="string">.\Settings\Sounds\PrivateMessage.wav</BeepFile>
+		<BeginFile type="string">.\Settings\Sounds\DownloadBegins.wav</BeginFile>
+		<FinishedFile type="string">.\Settings\Sounds\DownloadFinished.wav</FinishedFile>
+		<SourceFile type="string">.\Settings\Sounds\AltSourceAdded.wav</SourceFile>
+		<UploadFile type="string">.\Settings\Sounds\UploadFinished.wav</UploadFile>
+		<FakerFile type="string">.\Settings\Sounds\FakerFound.wav</FakerFile>
+		<ChatNameFile type="string">.\Settings\Sounds\MyNickInMainChat.wav</ChatNameFile>
+		<SoundTTH type="string">.\Settings\Sounds\FileCorrupted.wav</SoundTTH>
+		<SoundException type="string">.\Settings\Sounds\UnhandledException.wav</SoundException>
+		<SoundHubConnected type="string">.\Settings\Sounds\ConnectHUB.wav</SoundHubConnected>
+		<SoundHubDisconnected type="string">.\Settings\Sounds\DisconnectHUB.wav</SoundHubDisconnected>
+		<SoundFavUserOnline type="string">.\Settings\Sounds\FavUser.wav</SoundFavUserOnline>
+		<SoundFavUserOffline type="string">.\Settings\Sounds\FavUserDisconnected.wav</SoundFavUserOffline>
+	</Settings>
+	<PreviewApps>
+		<Application Name="VLC" Application=".\VLC\VLCPortable.exe" Arguments="%[file]" Extension="avi;divx;mpg;mpeg"/>
+	</PreviewApps>
+</DCPlusPlus>

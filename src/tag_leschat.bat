@@ -1,0 +1,1 @@
+svn copy http://svn.flylinkdc.ru/svnroot/trunk http://svn.flylinkdc.ru/svnroot/tags/FlylinkDC-r300 -m"create tag FlylinkDC-r300"

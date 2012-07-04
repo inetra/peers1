@@ -1,0 +1,126 @@
+<project name="Peers">
+
+  <property environment="env"/>
+
+  <import file="build-versioninfo.xml"/>
+
+  <property file="${basedir}/build.properties"/>
+
+  <property name="versioninfo.dir" value="${basedir}/src"/>
+  <property name="versioninfo.template" value="Version.template.rc"/>
+  <property name="versioninfo.data" value="release.ini"/>
+  <property name="versioninfo.rc" value="Version.rc"/>
+  <property name="versioninfo.h" value="peers/PeersVersion.h"/>
+  <property name="versioninfo.template.h" value="peers/PeersVersion.template.h"/>
+
+  <property name="versioned.script.prefix" value="Build-"/>
+
+  <property name="src.dir" value="${basedir}/src"/>
+
+  <property name="SolutionName" value="StrongDC.sln"/>
+  <property name="SolutionConfigurationDebug" value="Debug"/>
+  <property name="SolutionConfigurationRelease" value="Release"/>
+  <property name="VisualStudioDevEnv" value="${env.ProgramFiles}/Microsoft Visual Studio 8/Common7/IDE/devenv.exe"/>
+
+  <property name="vs_build_log" value="peers-build.log"/>
+
+  <property environment="env"/>
+
+  <target name="vcs-update">
+
+    <exec executable="svn" failonerror="true">
+      <arg value="-q"/>
+      <arg value="update"/>
+    </exec>
+
+  </target>
+
+  <target name="compile" depends="versioninfo">
+
+    <delete file="${vs_build_log}"/>
+
+    <property name="SolutionConfiguration" value="${SolutionConfigurationRelease}"/>
+
+    <exec executable="${VisualStudioDevEnv}" dir="${src.dir}" failonerror="true">
+      <arg value="${SolutionName}"/>
+      <arg value="/build"/>
+      <arg value="&quot;${SolutionConfiguration}&quot;"/>
+      <arg value="/out"/>
+      <arg file="${vs_build_log}"/>
+    </exec>
+
+  </target>
+
+  <target name="dist" depends="vcs-update, versioninfo, compile, installer">
+  </target>
+
+  <target name="installer" depends="vcs-update, versioninfo">
+    <property name="InnoSetupCompiler" value="${env.ProgramFiles}/Inno Setup 5/ISCC.exe"/>
+
+    <mkdir dir="setup"/>
+
+    <copy file="src/compiled/FlylinkDC.exe" tofile="setup/Peers.exe" overwrite="true" preservelastmodified="true"/>
+    <copy file="src/compiled/FlylinkDC.pdb" tofile="setup/Peers.pdb" overwrite="true" preservelastmodified="true"/>
+
+    <mkdir dir="${basedir}/Output/${build.number}"/>
+
+    <copy file="Peers.iss" tofile="${versioned.script.prefix}${build.number}.iss">
+      <filterset refid="versioninfo.tokens"/>
+    </copy>
+    <delete>
+      <fileset dir="${basedir}" casesensitive="false">
+        <include name="**/${versioned.script.prefix}*.iss"/>
+        <exclude name="**/${versioned.script.prefix}${build.number}.iss"/>
+      </fileset>
+    </delete>
+
+    <exec executable="${InnoSetupCompiler}">
+      <arg line="${versioned.script.prefix}${build.number}.iss"/>
+    </exec>
+
+    <property name="PeersUpdateZip" value="${basedir}/Output/${build.number}/PeersUpdate${build.number}.zip"/>
+    <zip zipfile="${PeersUpdateZip}">
+      <fileset file="setup/Peers.exe"/>
+      <fileset file="src/compiled/release/PeersUpdater.exe" />
+      <fileset file="src/compiled/Russian.xml"/>
+      <fileset dir="src/compiled" includes="EmoPacks/*.xml" casesensitive="false"/>
+      <zipfileset dir="src/compiled/VLC" prefix="VLC"/>
+    </zip>
+    
+    <script language="javascript">
+      if (project.getProperty("inc.build.number")) {
+        var svnTag = project.createTask("exec");
+        svnTag.executable = 'svn';
+var buildNumber = project.getProperty("build.number");
+        svnTag.createArg().line = "-m release" + buildNumber + " cp http://svn.olmisoft.com/peers/branches/PEERS-STD http://svn.olmisoft.com/peers/tags/" + project.getName().toUpperCase() + "-" + buildNumber;
+        svnTag.output = new java.io.File(project.getProperty("vs_build_log"));
+        svnTag.append = true;
+        svnTag.perform();
+      }
+    </script>
+
+    <script language="javascript">
+      filename = self.getProject().getProperty("PeersUpdateZip");
+      file = new java.io.File(filename);
+      self.getProject().setNewProperty("PeersUpdateZipSize", file.length());
+    </script>
+    <checksum file="${PeersUpdateZip}" property="PeersUpdateZipMD5"/>
+    <echo file="${basedir}/Output/${build.number}/PeersVersion${build.number}.txt"
+>&lt;--Peers--&gt;
+&lt;URL&gt;http://soft.cn.ru/peers/PeersUpdate${build.number}.zip&lt;/URL&gt;
+&lt;MD5&gt;${PeersUpdateZipMD5}&lt;/MD5&gt;
+&lt;Size&gt;${PeersUpdateZipSize}&lt;/Size&gt;
+&lt;Build&gt;${build.number}&lt;/Build&gt;
+&lt;--/Peers--&gt;
+</echo>
+  </target>
+
+  <target name="changelog" >
+    <property name="changelog.branch" value="TRUNK"/>
+    <exec executable="perl" >
+      <arg line="-x -S cvs2cl.pl -g -q -w --no-times --tags --utc --window 604800 --prune -F ${changelog.branch}"/>
+    </exec>
+    <delete file="ChangeLog.bak" quiet="true"/>
+  </target>
+
+</project>

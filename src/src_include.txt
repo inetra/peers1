@@ -1,0 +1,17 @@
+client
+WTL
+STLPort
+res
+windows
+server
+src_exclude.txt
+src_include.txt
+runDoxygen.bat
+src_backup.bat
+StrongDC.rc
+StrongDC.sln
+bzip2.vcproj
+client.vcproj
+regex.vcproj
+strongdc.vcproj
+zlib.vcproj

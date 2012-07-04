@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="windows-1252" standalone="yes"?>
+<DCPlusPlus>
+	<Settings>
+		<Font type="string">Tahoma,-11,400,0</Font>
+		<BackgroundColor type="int">12632256</BackgroundColor>
+		<TextColor type="int">0</TextColor>
+		<TimeStamps type="int">1</TimeStamps>
+		<ShowProgressBars type="int">1</ShowProgressBars>
+		<DownloadBarColor type="int">5614135</DownloadBarColor>
+		<UploadBarColor type="int">3620045</UploadBarColor>
+		<TextGeneralBackColor type="int">12632256</TextGeneralBackColor>
+		<TextGeneralForeColor type="int">0</TextGeneralForeColor>
+		<TextGeneralBold type="int">0</TextGeneralBold>
+		<TextGeneralItalic type="int">0</TextGeneralItalic>
+		<TextMyOwnBackColor type="int">12632256</TextMyOwnBackColor>
+		<TextMyOwnForeColor type="int">0</TextMyOwnForeColor>
+		<TextMyOwnBold type="int">1</TextMyOwnBold>
+		<TextMyOwnItalic type="int">0</TextMyOwnItalic>
+		<TextPrivateBackColor type="int">12632256</TextPrivateBackColor>
+		<TextPrivateForeColor type="int">4868682</TextPrivateForeColor>
+		<TextPrivateBold type="int">0</TextPrivateBold>
+		<TextPrivateItalic type="int">0</TextPrivateItalic>
+		<TextSystemBackColor type="int">12632256</TextSystemBackColor>
+		<TextSystemForeColor type="int">4227072</TextSystemForeColor>
+		<TextSystemBold type="int">1</TextSystemBold>
+		<TextSystemItalic type="int">0</TextSystemItalic>
+		<TextServerBackColor type="int">12632256</TextServerBackColor>
+		<TextServerForeColor type="int">4210816</TextServerForeColor>
+		<TextServerBold type="int">1</TextServerBold>
+		<TextServerItalic type="int">0</TextServerItalic>
+		<TextTimestampBackColor type="int">12632256</TextTimestampBackColor>
+		<TextTimestampForeColor type="int">9671482</TextTimestampForeColor>
+		<TextTimestampBold type="int">0</TextTimestampBold>
+		<TextTimestampItalic type="int">0</TextTimestampItalic>
+		<TextMyNickBackColor type="int">12632256</TextMyNickBackColor>
+		<TextMyNickForeColor type="int">9671482</TextMyNickForeColor>
+		<TextMyNickBold type="int">1</TextMyNickBold>
+		<TextMyNickItalic type="int">0</TextMyNickItalic>
+		<TextFavBackColor type="int">12632256</TextFavBackColor>
+		<TextFavForeColor type="int">5131932</TextFavForeColor>
+		<TextFavBold type="int">0</TextFavBold>
+		<TextFavItalic type="int">0</TextFavItalic>
+		<TextOPBackColor type="int">12632256</TextOPBackColor>
+		<TextOPForeColor type="int">16512</TextOPForeColor>
+		<TextOPBold type="int">1</TextOPBold>
+		<TextOPItalic type="int">0</TextOPItalic>
+		<TextURLBackColor type="int">12632256</TextURLBackColor>
+		<TextURLForeColor type="int">16711680</TextURLForeColor>
+		<TextURLBold type="int">0</TextURLBold>
+		<TextURLItalic type="int">0</TextURLItalic>
+		<TextSearchColor type="int">24158</TextSearchColor>
+		<TextSearchBackColor type="int">12632256</TextSearchBackColor>
+		<TextSearchBold type="int">0</TextSearchBold>
+		<TextSearchItalic type="int">0</TextSearchItalic>
+		<BoldAuthorsMess type="int">1</BoldAuthorsMess>
+		<ProgressTextDown type="int">16777215</ProgressTextDown>
+		<ProgressTextUp type="int">16777215</ProgressTextUp>
+		<ErrorColor type="int">255</ErrorColor>
+		<ProgressOverrideColors type="int">0</ProgressOverrideColors>
+		<ProgressBumped type="int">0</ProgressBumped>
+		<ProgressOverrideColors2 type="int">0</ProgressOverrideColors2>
+		<MenubarTwoColors type="int">1</MenubarTwoColors>
+		<MenubarLeftColor type="int">9671482</MenubarLeftColor>
+		<MenubarRightColor type="int">5131932</MenubarRightColor>
+		<MenubarBumped type="int">1</MenubarBumped>
+	</Settings>
+</DCPlusPlus>

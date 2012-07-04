@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes"?>
+<Peers>
+  <URL>http://p2p.olmisoft.com/files/PeersUpdate300.zip</URL>
+  <MD5>XXXX</MD5>
+  <Size>1234567</Size>
+  <Build>300</Build>
+  <Title>New build</Title>
+  <Message>Build 300 is available</Message>
+</Peers>

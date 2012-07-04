@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Favorites>
+  <Hubs>
+    <Hub Name="Пирс" Description="Файлообменная сеть Электронного города" Connect="1" Server="peers.cn.ru"/>
+    <Hub Name="Академ.Орг" Description="Файлообменная сеть Академ-городка" Connect="1" Server="p2p.academ.org" Mode="2"/>
+  </Hubs>
+</Favorites>

@@ -1,0 +1,13 @@
+# -*- makefile -*- Time-stamp: <03/09/28 17:34:35 ptr>
+# $Id: vc-common.mak,v 1.1.1.1 2007/09/27 13:21:27 alexey Exp $
+
+!ifndef LDLIBS
+LDLIBS =
+!endif
+
+#LDSEARCH = $(LDSEARCH) /LIBPATH:"$(MSVC_LIB_DIR)"
+
+LDFLAGS_REL = $(LDFLAGS_REL) $(LDSEARCH)
+LDFLAGS_A_REL = $(LDFLAGS_A_REL) $(LDSEARCH)
+LDFLAGS_DBG = $(LDFLAGS_DBG) $(LDSEARCH)
+LDFLAGS_STLDBG = $(LDFLAGS_STLDBG) $(LDSEARCH)
