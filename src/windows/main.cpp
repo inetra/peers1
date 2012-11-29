@@ -397,12 +397,6 @@ static int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
                 e->setConnect(false);
               }
             }
-			if (version < 422) {
-              FavoriteHubEntry* e = findHub(favoriteHubs, "p2p.academ.org");
-              if (e != NULL) {
-                e->setConnect(false);
-              }
-            }
             if (version < BUILDID) {
               version = BUILDID;
             }
@@ -440,6 +434,7 @@ static int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 		File::ensureDirectory(path);
 		Shortcut::createDesktopShortcut(Text::toT(path), _T("Загрузки Peers"));
 	}
+/*
 	if (Util::readRegistryBoolean(_T("SiteShortcut"), true)) {
 		TCHAR path[MAX_PATH];
 		GetModuleFileName(NULL, path, MAX_PATH);
@@ -449,8 +444,9 @@ static int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 				++iconIndex;
 			}
 		}
-		Shortcut::createInternetShortcut(_T("http://www.cn.ru/"), _T("Электронный Город"), path, iconIndex);
+		Shortcut::createInternetShortcut(_T("http://www.cn.ru/"), _T("Портал cn.ru"), path, iconIndex);
 	}
+*/
         ChatBot::newInstance(); // !SMT!-CB
 
 	if(ResourceManager::getInstance()->isRTL()) {
