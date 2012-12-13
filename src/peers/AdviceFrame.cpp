@@ -22,7 +22,7 @@ BOOL AdviceBrowser::OnBeforeNavigate2(IDispatch* /*pDisp*/, const String& szURL,
 		return TRUE;
 	}
 	const string url = Text::wideToAcp(urlT);
-	if (url == m_currentURL) {
+	if (url == m_currentURL || url.substr(0, 4) != "http") {
 		return FALSE;
 	}
 	ShellExecute(m_hWnd, _T("open"), szURL, NULL, NULL, SW_SHOWMAXIMIZED);
