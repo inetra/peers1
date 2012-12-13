@@ -22,7 +22,7 @@ BOOL AdviceBrowser::OnBeforeNavigate2(IDispatch* /*pDisp*/, const String& szURL,
 		return TRUE;
 	}
 	const string url = Text::wideToAcp(urlT);
-	if (url == m_currentURL) {
+	if (url == m_currentURL || url.substr(0, 4) != "http") {
 		return FALSE;
 	}
 	ShellExecute(m_hWnd, _T("open"), szURL, NULL, NULL, SW_SHOWMAXIMIZED);
@@ -44,9 +44,7 @@ AdviceFrame::~AdviceFrame()
 LRESULT AdviceFrame::onCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled) {
 	if (i_banner.Create(m_hWnd, rcDefault, NULL, WS_CHILD | WS_VISIBLE | WS_CLIPCHILDREN | WS_CLIPSIBLINGS | BS_OWNERDRAW | SS_ICON | SS_NOTIFY)) {
 		USES_CONVERSION;
-		i_banner.Load(MAKEINTRESOURCE(IDR_EMPTY_BANNER), A2W(LPCSTR("GIF")));
-		i_banner.Draw();
-		i_banner.LoadAdRiverXMLBanner("170878", "peers", "16", "54", "0");
+		i_banner.LoadAdRiverXMLBanner(BANNER1_SID, BANNER1_SZ, BANNER1_BN, BANNER1_BT, BANNER1_PZ);
 	}
 
 	if (m_browser.Create(m_hWnd, rcDefault, NULL, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN)) {

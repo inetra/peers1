@@ -9,7 +9,7 @@ char NETWORK_SETUP_SERVICE_URL[] = "http://127.0.0.1/peers/network.xml";
 #endif
 char NETWORK_SETUP_SERVICE_URL[] = "http://peersdata.cn.ru/network/";
 #else
-char VERSIONFILE[] = "http://soft.cn.ru/peers/version.xml";
+char VERSIONFILE[] = "http://firmware.cn.ru/firmware/peers1/version.xml";
 char NETWORK_SETUP_SERVICE_URL[] = "http://peersdata.cn.ru/network/";
 #endif
 TCHAR HELP_REDIRECT_URL[] = _T("http://www.cn.ru/peers?link=");
