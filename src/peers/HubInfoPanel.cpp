@@ -141,8 +141,6 @@ void HubInfoPanel::createBannerNow() {
 	if (!showBanner) {
 		showBanner = true;
 		USES_CONVERSION;
-		i_banner.Load(MAKEINTRESOURCE(IDR_EMPTY_BANNER), A2W(LPCSTR("GIF")));
-		i_banner.Draw();
 		i_banner.LoadAdRiverXMLBanner("170878", "peers", "17", "54", "0");
 	}
 }

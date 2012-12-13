@@ -1136,6 +1136,11 @@ LRESULT CPictureExWnd::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bH
 	HDC hDC = BeginPaint(&paint);
 	if (!hDC) return E_FAIL;
 
+	if (!m_pPicture) 
+	{
+		FillRect(hDC, &rcUpdate, GetSysColorBrush(COLOR_3DFACE));
+	}
+
 	LONG nPaintWidth = m_PaintRect.right-m_PaintRect.left;
 
 	if (nPaintWidth > 0)

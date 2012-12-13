@@ -44,8 +44,6 @@ AdviceFrame::~AdviceFrame()
 LRESULT AdviceFrame::onCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled) {
 	if (i_banner.Create(m_hWnd, rcDefault, NULL, WS_CHILD | WS_VISIBLE | WS_CLIPCHILDREN | WS_CLIPSIBLINGS | BS_OWNERDRAW | SS_ICON | SS_NOTIFY)) {
 		USES_CONVERSION;
-		i_banner.Load(MAKEINTRESOURCE(IDR_EMPTY_BANNER), A2W(LPCSTR("GIF")));
-		i_banner.Draw();
 		i_banner.LoadAdRiverXMLBanner("170878", "peers", "16", "54", "0");
 	}
 
