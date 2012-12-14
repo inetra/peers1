@@ -61,12 +61,16 @@ void AdviceFrame::UpdateLayout(BOOL bResizeBars /* = TRUE */) {
 	GetClientRect(&rect);
 	// position bars and offset their dimensions
 	UpdateBarsPosition(rect, bResizeBars);
-	i_banner.MoveWindow(
-		rect.left + (rect.right - rect.left)/2 - BANNER_WIDTH/2, 
-		rect.top, 
-		BANNER_WIDTH, 
-		BANNER_HEIGHT);
-	rect.top += BANNER_HEIGHT;
+	if (i_banner.BannerLoaded()) {
+		i_banner.MoveWindow(
+			rect.left + (rect.right - rect.left)/2 - BANNER_WIDTH/2, 
+			rect.top, 
+			BANNER_WIDTH, 
+			BANNER_HEIGHT);
+		rect.top += BANNER_HEIGHT;
+	} else {
+		i_banner.MoveWindow(0, 0, 0, 0);
+	}
 	if (m_browser.IsWindow()) {
 		m_browser.MoveWindow(&rect);
 	}
