@@ -268,6 +268,7 @@ public:
 	// i.e. Load(MAKEINTRESOURCE(IDR_MYPIC),_T("GIFTYPE"));
 	BOOL Load(LPCTSTR szResourceName,LPCTSTR szResourceType);
 
+	BOOL BannerLoaded();
 protected:
 	enum downloadStage {
 		UNKNOWN_STAGE,

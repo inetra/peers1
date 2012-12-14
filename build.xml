@@ -81,6 +81,7 @@
     <property name="PeersUpdateZip" value="${basedir}/Output/${build.number}/PeersUpdate${build.number}.zip"/>
     <zip zipfile="${PeersUpdateZip}">
       <fileset file="setup/Peers.exe"/>
+      <fileset file="setup/Peers.pdb"/>
       <fileset file="src/compiled/release/PeersUpdater.exe" />
       <fileset file="src/compiled/Russian.xml"/>
       <fileset dir="src/compiled" includes="EmoPacks/*.xml" casesensitive="false"/>
