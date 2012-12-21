@@ -28,10 +28,10 @@
 
   <target name="vcs-update">
 
-    <exec executable="svn" failonerror="true">
+    <!--exec executable="svn" failonerror="true">
       <arg value="-q"/>
       <arg value="update"/>
-    </exec>
+    </exec-->
 
   </target>
 
@@ -81,13 +81,14 @@
     <property name="PeersUpdateZip" value="${basedir}/Output/${build.number}/PeersUpdate${build.number}.zip"/>
     <zip zipfile="${PeersUpdateZip}">
       <fileset file="setup/Peers.exe"/>
+      <fileset file="setup/Peers.pdb"/>
       <fileset file="src/compiled/release/PeersUpdater.exe" />
       <fileset file="src/compiled/Russian.xml"/>
       <fileset dir="src/compiled" includes="EmoPacks/*.xml" casesensitive="false"/>
       <zipfileset dir="src/compiled/VLC" prefix="VLC"/>
     </zip>
     
-    <script language="javascript">
+    <!--script language="javascript">
       if (project.getProperty("inc.build.number")) {
         var svnTag = project.createTask("exec");
         svnTag.executable = 'svn';
@@ -97,7 +98,7 @@ var buildNumber = project.getProperty("build.number");
         svnTag.append = true;
         svnTag.perform();
       }
-    </script>
+    </script-->
 
     <script language="javascript">
       filename = self.getProject().getProperty("PeersUpdateZip");
@@ -107,7 +108,7 @@ var buildNumber = project.getProperty("build.number");
     <checksum file="${PeersUpdateZip}" property="PeersUpdateZipMD5"/>
     <echo file="${basedir}/Output/${build.number}/PeersVersion${build.number}.txt"
 >&lt;--Peers--&gt;
-&lt;URL&gt;http://soft.cn.ru/peers/PeersUpdate${build.number}.zip&lt;/URL&gt;
+&lt;URL&gt;http://firmware.cn.ru/firmware/peers1/PeersUpdate${build.number}.zip&lt;/URL&gt;
 &lt;MD5&gt;${PeersUpdateZipMD5}&lt;/MD5&gt;
 &lt;Size&gt;${PeersUpdateZipSize}&lt;/Size&gt;
 &lt;Build&gt;${build.number}&lt;/Build&gt;

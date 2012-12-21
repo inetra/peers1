@@ -1136,6 +1136,11 @@ LRESULT CPictureExWnd::OnPaint(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bH
 	HDC hDC = BeginPaint(&paint);
 	if (!hDC) return E_FAIL;
 
+	if (!m_pPicture) 
+	{
+		FillRect(hDC, &rcUpdate, GetSysColorBrush(COLOR_3DFACE));
+	}
+
 	LONG nPaintWidth = m_PaintRect.right-m_PaintRect.left;
 
 	if (nPaintWidth > 0)
@@ -1465,16 +1470,21 @@ void CPictureExWnd::on(HttpConnectionListener::Complete, HttpConnection* /*aConn
 			Load(bannerData, bannerDataLength);
 			Draw();
 			m_downloadStage = CLICK_STAGE;
+			SendMessage((HWND)this->GetParent(), WM_SIZE, 0, 0);
 			break;
 		case CLICK_STAGE:
 			break;
 	}
 }
 
+BOOL CPictureExWnd::BannerLoaded() {
+	return m_downloadStage == CLICK_STAGE;
+}
+
 void CPictureExWnd::on(HttpConnectionListener::Redirected, HttpConnection* /*aConn*/, const string& location) throw()
 {
 	Lock l(cs);
-	if (m_downloadStage == CLICK_STAGE) {
+	if (BannerLoaded()) {
 		::ShellExecuteA(0, LPCSTR("open"), LPCSTR(location.c_str()), 0, 0, SW_SHOWNORMAL);
 	}
 }
