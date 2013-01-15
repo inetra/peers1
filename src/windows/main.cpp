@@ -511,7 +511,7 @@ void __cdecl AbortSignalHandler(int)
 }
 
 CrashHandler g_crashHandler(
-    "df64a532-0801-4224-b2f0-749d6cda96c6", // GUID assigned to this application.
+    CRASH_HANDLER_GUID, // GUID assigned to this application.
     "peers1",                // Prefix that will be used with the dump name: YourPrefix_v1.v2.v3.v4_YYYYMMDD_HHMMSS.mini.dmp.
     L"Peers", // Application name that will be used in message box.
     L"Inetra"     // Company name that will be used in message box.
