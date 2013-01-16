@@ -46,6 +46,7 @@ Source: "setup\Peers.pdb"; DestDir: "{app}"; Flags: ignoreversion
 Source: "setup\kpd.ico"; DestDir: "{app}"; Flags: ignoreversion
 Source: "setup\dcppboot.xml"; DestDir: "{app}"; Flags: onlyifdoesntexist ignoreversion
 Source: "src\compiled\dbghelp.dll"; DestDir: "{app}"
+Source: "setup\crshhndl.dll"; DestDir: "{app}"
 
 Source: "src\compiled\Russian.xml"; DestDir: "{app}";  Flags: ignoreversion
 ;Source: "src\compiled\Settings\lang_eng\Russian.xml"; DestDir: "{app}";  Components: Lang\en; Flags: ignoreversion
