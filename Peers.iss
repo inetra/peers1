@@ -27,8 +27,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}";
 Name: "startupicon"; Description: "Создать значок в группе Автозагрузка"; GroupDescription: "{cm:AdditionalIcons}";
 Name: "downloadsicon"; Description: "Добавить ярлык для папки загрузок на рабочий стол"; GroupDescription: "{cm:AdditionalIcons}";
-Name: "siteIcon"; Description: "Добавить ярлык для сайта Электронного Города на рабочий стол"; GroupDescription: "{cm:AdditionalIcons}";
-Name: "supportIcon"; Description: "Добавить ярлык для вызова Компьютерной помощи на дому (КПД)"; GroupDescription: "{cm:AdditionalIcons}";
+Name: "siteIcon"; Description: "Добавить ярлык для сайта CN.RU на рабочий стол"; GroupDescription: "{cm:AdditionalIcons}";
 
 ;[Components]
 ;Name: "program"; Description: "Program Files"; Types: full compact custom; Flags: fixed
@@ -43,7 +42,6 @@ Name: "{userdocs}\Загрузки Peers"; Tasks: downloadsicon; OnlyBelowVersion: "0, 6
 [Files]
 Source: "setup\Peers.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "setup\Peers.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "setup\kpd.ico"; DestDir: "{app}"; Flags: ignoreversion
 Source: "setup\dcppboot.xml"; DestDir: "{app}"; Flags: onlyifdoesntexist ignoreversion
 Source: "src\compiled\dbghelp.dll"; DestDir: "{app}"
 Source: "setup\crshhndl.dll"; DestDir: "{app}"
@@ -79,8 +77,7 @@ Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\Peers"; Filename: 
 Name: "{commonstartup}\Peers"; Filename: "{app}\Peers.exe"; Parameters: "/startup"; Tasks: startupicon
 Name: "{userdesktop}\Загрузки Peers"; Filename: "{%USERPROFILE}\Загрузки Peers"; Tasks: downloadsicon; MinVersion: "0, 6.0"
 Name: "{userdesktop}\Загрузки Peers"; Filename: "{userdocs}\Загрузки Peers"; Tasks: downloadsicon; OnlyBelowVersion: "0, 6.0"
-Name: "{userdesktop}\Электронный город"; Filename: "http://www.cn.ru/"; Tasks: siteIcon; IconFilename: "{app}\Peers.exe"; IconIndex: 52
-Name: "{userdesktop}\Компьютерная помощь на дому (КПД)"; Filename: "http://www.cn.ru/kpd/"; Tasks: supportIcon; IconFilename: "{app}\kpd.ico";
+Name: "{userdesktop}\CN.ru"; Filename: "http://www.cn.ru/"; Tasks: siteIcon; IconFilename: "{app}\Peers.exe"; IconIndex: 52
 
 [Run]
 Filename: "netsh.exe"; Description: "{cm:LaunchProgram,Peers}"; Parameters: "firewall add allowedprogram ""{app}\Peers.exe"" ""Peers"" ENABLE ALL"; StatusMsg: "Configuring firewall..."; Flags: skipifsilent runhidden
