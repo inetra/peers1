@@ -661,6 +661,7 @@ LRESULT HubFrame::onSpeaker(UINT /*uMsg*/, WPARAM /* wParam */, LPARAM /* lParam
 		  if (!ClientManager::getInstance()->isActive(client->getHubUrl())) {
 			  addStatusMessage(TSTRING(PASSIVE_NOTICE));
 		  }
+		  /* ignoring open chat setting
 		  if (BOOLSETTING(OPEN_HUB_CHAT_ON_CONNECT) && !m_chatWasClosed) {
 			  activateChat(false);
 			  if (!(m_autoConnect && ++m_connectedCount == 1)) {
@@ -669,6 +670,7 @@ LRESULT HubFrame::onSpeaker(UINT /*uMsg*/, WPARAM /* wParam */, LPARAM /* lParam
 				  }
 			  }
 		  }
+		  */
 	  } 
 	  else if (i->first == DISCONNECTED) {
 		  clearUserList();
