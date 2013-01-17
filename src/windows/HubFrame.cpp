@@ -42,6 +42,8 @@
 #include "../peers/SubscriptionFrame.h"
 #include "../peers/Sounds.h"
 
+#define VPADDING 8
+
 HubFrame::FrameMap HubFrame::frames;
 
 HubFrame::HubFrame(const tstring& aServer,
@@ -102,11 +104,14 @@ LRESULT HubFrame::OnCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, 
         m_nProportionalPos = 5000;
 	SetSplitterExtendedStyle(SPLIT_PROPORTIONAL);
 
+
 	if(hubchatusersplit)
 		m_nProportionalPos = hubchatusersplit;
 #endif
 
         m_userListControl.initColumns(server);
+
+		::ShowWindow(m_userListControl.m_hWnd, SW_HIDE);
 
 	copyHubMenu.CreatePopupMenu();
 	copyHubMenu.AppendMenu(MF_STRING, IDC_COPY_HUBNAME, CTSTRING(HUB_NAME));
@@ -490,11 +495,7 @@ bool HubFrame::updateUser(const UserTask& u) {
   if (i == userMap.end()) {
     UserInfo* ui = new UserInfo(u);
     userMap.insert(make_pair(u.user, ui));
-#ifndef _DEBUG
-    for (vector<UserListControl*>::iterator i = m_userLists.begin(); i != m_userLists.end(); ++i) {
-      (*i)->addItem(ui);
-    }
-#endif
+
     client->availableBytes += ui->getIdentity().getBytesShared();
     return true;
   } 
@@ -503,11 +504,6 @@ bool HubFrame::updateUser(const UserTask& u) {
     client->availableBytes -= ui->getIdentity().getBytesShared();
     client->availableBytes += u.identity.getBytesShared();
 	ui->update(u.identity);
-#ifndef _DEBUG
-    for (vector<UserListControl*>::iterator i = m_userLists.begin(); i != m_userLists.end(); ++i) {
-      (*i)->updateItem(ui);
-    }
-#endif
     return false;
   }
 }
@@ -524,11 +520,7 @@ void HubFrame::removeUser(const UserPtr& aUser) {
     return;
   }
   UserInfo* ui = i->second;
-  if (!ui->isHidden()) {
-    for (vector<UserListControl*>::iterator i = m_userLists.begin(); i != m_userLists.end(); ++i) {
-      (*i)->deleteItem(ui);
-    }
-  }
+  
   client->availableBytes -= ui->getIdentity().getBytesShared();
   userMap.erase(i);
   delete ui;
@@ -870,8 +862,8 @@ void HubFrame::UpdateLayout(BOOL bResizeBars /* = TRUE */) {
   m_infoPanel.MoveWindow(rect.left, rect.top, leftWidth, height);
   const int userListLeft = rect.left + leftWidth + 2 * GetSystemMetrics(SM_CXEDGE);
   const int numberHeight = m_numberPanel.doLayout(rect.right - userListLeft);
-  m_numberPanel.MoveWindow(userListLeft, rect.top + height - numberHeight, rect.right - userListLeft, numberHeight);
-  m_userListControl.MoveWindow(userListLeft, rect.top, rect.right - userListLeft, height - numberHeight);
+  m_numberPanel.MoveWindow(userListLeft, rect.top + VPADDING , rect.right - userListLeft, numberHeight);
+  //m_userListControl.MoveWindow(userListLeft, rect.top, rect.right - userListLeft, height - numberHeight);
 #endif
 }
 
