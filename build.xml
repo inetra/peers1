@@ -103,7 +103,6 @@
       <fileset file="setup/Peers.pdb"/>
       <fileset file="src/compiled/release/PeersUpdater.exe" />
       <fileset file="src/compiled/Russian.xml"/>
-      <fileset dir="src/compiled" includes="EmoPacks/*.xml" casesensitive="false"/>
       <fileset file="setup/crshhndl.dll"/>
     </zip>
     
