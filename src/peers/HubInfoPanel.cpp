@@ -83,9 +83,7 @@ LRESULT HubInfoPanel::onCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
   m_btnAddFiles.setHintText(TSTRING(HUB_INFO_ADD_FILES_HINT));
   m_btnOpenFileList.Create(IDI_HUB_FILELIST, m_hWnd, _T("Мой список"), IDC_OPEN_MY_LIST);
   m_btnOpenFileList.setHintText(TSTRING(HUB_INFO_OPEN_FILE_LIST_HINT));
-  m_btnRefreshFileList.Create(IDI_HUB_REFRESH_FILELIST, m_hWnd, _T("Обновить список"), IDC_REFRESH_FILE_LIST);
-  m_btnRefreshFileList.setHintText(TSTRING(HUB_INFO_REFRESH_FILE_LIST_HINT));
-  FlatIconButton* const buttons[] = { &m_btnReconnect, &m_btnConfigure, &m_btnAddFiles, &m_btnOpenFileList, &m_btnRefreshFileList };
+  FlatIconButton* const buttons[] = { &m_btnReconnect, &m_btnConfigure, &m_btnAddFiles, &m_btnOpenFileList};
   for (int i = 0; i < COUNTOF(buttons); ++i) {
     FlatIconButton* const button = buttons[i];
     button->setHighLightColor(HOVER_COLOR);
