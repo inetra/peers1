@@ -16,6 +16,8 @@
 #define BANNER2_BT  "@banner2.bt@"
 #define BANNER2_PZ  "@banner2.pz@"
 
+#define CRASH_HANDLER_GUID "@crash.guid@"
+
 
 extern TCHAR HOMEPAGE[];
 #define DISCUSS "http://iceberg.leschat.net/forum/index.php?showtopic=265"

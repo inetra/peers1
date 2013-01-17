@@ -46,6 +46,8 @@
 #include "../peers/Sounds.h"
 #include "resource.h"
 
+#include "CrashHandler.h"
+
 CAppModule _Module;
 
 CriticalSection cs;
@@ -390,7 +392,7 @@ static int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
             // Always set mode auto for PEERS_HUB
             FavoriteHubEntry *peers = findHub(favoriteHubs, PeersUtils::PEERS_HUB);
             peers->setMode(0);
-            checkHub(favoriteHubs, "p2p.academ.org", _T("Академ.Орг"), _T("Файлообменная сеть Академ-городка"), false, 2);
+            checkHub(favoriteHubs, "dc.vladlink.lan:4111", _T("VladLink.DC"), _T("VladLink.DC Hub"), false, 2);
             if (version < 409) {
               FavoriteHubEntry* e = findHub(favoriteHubs, "dc.mcduck.info");
               if (e != NULL) {
@@ -508,6 +510,13 @@ void __cdecl AbortSignalHandler(int)
     __asm int 3
 }
 
+CrashHandler g_crashHandler(
+    CRASH_HANDLER_GUID, // GUID assigned to this application.
+    "peers1",                // Prefix that will be used with the dump name: YourPrefix_v1.v2.v3.v4_YYYYMMDD_HHMMSS.mini.dmp.
+    L"Peers", // Application name that will be used in message box.
+    L"Inetra"     // Company name that will be used in message box.
+    );
+
 
 int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lpstrCmdLine, int nCmdShow)
 {
@@ -522,6 +531,7 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 		  }
 	  }
   }
+  
   //TODO else вывести сообщение если архив обновления еще есть.
 #endif
 #ifndef _DEBUG

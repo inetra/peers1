@@ -151,7 +151,7 @@
 				SuppressStartupBanner="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
-				CallingConvention="1"
+				CallingConvention="0"
 				DisableSpecificWarnings="4996"
 			/>
 			<Tool

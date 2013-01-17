@@ -757,7 +757,7 @@ void SettingsManager::setDefaults()
 
 	setDefault(SEARCH_EXPAND_TOOLBAR_ON_ACTIVATE, true);
 	setDefault(SEARCH_RESTORE_CONDITION_ON_ACTIVATE, true);
-	setDefault(OPEN_HUB_CHAT_ON_CONNECT, true);
+	setDefault(OPEN_HUB_CHAT_ON_CONNECT, false);
 	setDefault(NICK_ADD_UNIQUE_SUFFIX, true);
 	setDefault(DOWNLOAD_DIRECTORY_SHORTCUT, Util::readRegistryBoolean(settingTags[DOWNLOAD_DIRECTORY_SHORTCUT], false));
 	setDefault(MINIMIZE_ON_CLOSE, true);

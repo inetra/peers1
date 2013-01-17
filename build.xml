@@ -51,7 +51,25 @@
 
   </target>
 
-  <target name="dist" depends="vcs-update, versioninfo, compile, installer">
+  <target name="symupload" depends="installer">
+
+    <exec executable="src/compiled/SymUpload.exe" dir="${src.dir}" failonerror="true">
+      <arg value="${crash.guid}"/>
+      <arg value="${file.version}"/>
+      <arg value="0"/>
+      <arg file="setup/Peers.exe"/>
+    </exec>
+
+    <exec executable="src/compiled/SymUpload.exe" dir="${src.dir}" failonerror="true">
+      <arg value="${crash.guid}"/>
+      <arg value="${file.version}"/>
+      <arg value="0"/>
+      <arg file="setup/Peers.pdb"/>
+    </exec>
+
+  </target>
+
+  <target name="dist" depends="vcs-update, versioninfo, compile, installer, symupload">
   </target>
 
   <target name="installer" depends="vcs-update, versioninfo">
@@ -61,6 +79,7 @@
 
     <copy file="src/compiled/FlylinkDC.exe" tofile="setup/Peers.exe" overwrite="true" preservelastmodified="true"/>
     <copy file="src/compiled/FlylinkDC.pdb" tofile="setup/Peers.pdb" overwrite="true" preservelastmodified="true"/>
+    <copy file="src/compiled/crshhndl.dll" tofile="setup/crshhndl.dll" overwrite="true" preservelastmodified="true"/>
 
     <mkdir dir="${basedir}/Output/${build.number}"/>
 
@@ -84,8 +103,7 @@
       <fileset file="setup/Peers.pdb"/>
       <fileset file="src/compiled/release/PeersUpdater.exe" />
       <fileset file="src/compiled/Russian.xml"/>
-      <fileset dir="src/compiled" includes="EmoPacks/*.xml" casesensitive="false"/>
-      <zipfileset dir="src/compiled/VLC" prefix="VLC"/>
+      <fileset file="setup/crshhndl.dll"/>
     </zip>
     
     <!--script language="javascript">

@@ -62,7 +62,7 @@
 				RuntimeTypeInfo="false"
 				WarningLevel="0"
 				DebugInformationFormat="3"
-				CallingConvention="1"
+				CallingConvention="0"
 				CompileAs="0"
 				DisableSpecificWarnings="4996"
 			/>
