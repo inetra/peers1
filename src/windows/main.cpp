@@ -392,13 +392,6 @@ static int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
             // Always set mode auto for PEERS_HUB
             FavoriteHubEntry *peers = findHub(favoriteHubs, PeersUtils::PEERS_HUB);
             peers->setMode(0);
-            checkHub(favoriteHubs, "dc.vladlink.lan:4111", _T("VladLink.DC"), _T("VladLink.DC Hub"), false, 2);
-            if (version < 409) {
-              FavoriteHubEntry* e = findHub(favoriteHubs, "dc.mcduck.info");
-              if (e != NULL) {
-                e->setConnect(false);
-              }
-            }
             if (version < BUILDID) {
               version = BUILDID;
             }
