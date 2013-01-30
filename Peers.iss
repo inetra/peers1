@@ -41,7 +41,6 @@ Name: "{userdocs}\Загрузки Peers"; Tasks: downloadsicon; OnlyBelowVersion: "0, 6
 
 [Files]
 Source: "setup\Peers.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "setup\Peers.pdb"; DestDir: "{app}"; Flags: ignoreversion
 Source: "setup\dcppboot.xml"; DestDir: "{app}"; Flags: onlyifdoesntexist ignoreversion
 Source: "src\compiled\dbghelp.dll"; DestDir: "{app}"
 Source: "setup\crshhndl.dll"; DestDir: "{app}"
