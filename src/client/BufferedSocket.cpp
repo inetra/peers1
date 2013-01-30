@@ -32,6 +32,8 @@
 #include "UploadManager.h"
 #include "DownloadManager.h"
 
+#include <iostream>
+
 // Polling is used for tasks...should be fixed...
 #define POLL_TIMEOUT 250
 
@@ -153,26 +155,54 @@ void BufferedSocket::connect(const string& aAddress, uint16_t aPort, bool, bool 
 
 #define CONNECT_TIMEOUT 30000
 void BufferedSocket::threadConnect(const string& aAddr, uint16_t aPort, bool proxy) throw(SocketException) {
+	using namespace std;
 	dcdebug("threadConnect %s:%d\n", aAddr.c_str(), (int)aPort);
 	dcassert(sock);
 	if(!sock)
 		return;
 	fire(BufferedSocketListener::Connecting());
 
-	uint64_t startTime = GET_TICK();
-	if(proxy) {
-		sock->socksConnect(aAddr, aPort, CONNECT_TIMEOUT);
-	} else {
-		sock->connect(aAddr, aPort);
-	}
-
-	while(sock->wait(POLL_TIMEOUT, Socket::WAIT_CONNECT) != Socket::WAIT_CONNECT) {
-		if(disconnecting)
-			return;
-
-		if((startTime + 30000) < GET_TICK()) {
-			throw SocketException(STRING(CONNECTION_TIMEOUT));
+	vector<string> addresses;
+	sock->resolve(aAddr, addresses);
+	dcassert(!addresses.empty());
+	for (size_t i = 0; i < addresses.size(); i++)
+	{
+		bool retry = false;
+		uint64_t startTime = GET_TICK();
+	
+		if(proxy) {
+			sock->socksConnect(addresses[i], aPort, CONNECT_TIMEOUT);
+		} else {
+			sock->connect(addresses[i], aPort);
 		}
+
+		try
+		{
+			while(sock->wait(POLL_TIMEOUT, Socket::WAIT_CONNECT) != Socket::WAIT_CONNECT) {
+				if(disconnecting)
+					return;
+
+				if((startTime + CONNECT_TIMEOUT) < GET_TICK()) {
+					if ( i == addresses.size() - 1) {
+						throw SocketException(STRING(CONNECTION_TIMEOUT));
+					}
+					else {
+						retry = true;
+						break;
+					}
+				}
+			}
+		}
+		catch (SocketException& e)
+		{
+			if ( i == addresses.size() - 1) {
+				throw e;
+			}
+			else {
+				retry = true;
+			}
+		}
+		if (!retry) break;
 	}
 
 	fire(BufferedSocketListener::Connected());
