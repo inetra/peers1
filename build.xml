@@ -57,14 +57,14 @@
       <arg value="${crash.guid}"/>
       <arg value="${file.version}"/>
       <arg value="0"/>
-      <arg file="setup/Peers.exe"/>
+      <arg file="src/compiled/FlylinkDC.exe"/>
     </exec>
 
     <exec executable="src/compiled/SymUpload.exe" dir="${src.dir}" failonerror="true">
       <arg value="${crash.guid}"/>
       <arg value="${file.version}"/>
       <arg value="0"/>
-      <arg file="setup/Peers.pdb"/>
+      <arg file="src/compiled/FlylinkDC.pdb"/>
     </exec>
 
   </target>
