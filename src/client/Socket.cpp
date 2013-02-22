@@ -25,6 +25,9 @@
 #include "ResourceManager.h"
 #include "TimerManager.h"
 
+#include "LogManager.h"
+#include "QoSManager.h"
+
 string Socket::udpServer;
 uint16_t Socket::udpPort;
 
@@ -101,6 +104,8 @@ void Socket::accept(const Socket& listeningSocket) throw(SocketException) {
 	setIp(inet_ntoa(sock_addr.sin_addr));
 	connected = true;
 	setBlocking(true);
+
+	//QoSManager::getInstance()->markSocket(*this, (sockaddr*)&sock_addr, 5);
 }
 
 
@@ -150,6 +155,11 @@ void Socket::connect(const string& aAddr, uint16_t aPort) throw(SocketException)
 	connected = true;
 	setIp(addresses[0]);
 	setPort(aPort);
+
+	StringMap params;
+	params["message"] = "Connected to " + aAddr + ":" + Util::toString(aPort);
+	LOG(LogManager::SYSTEM, params);
+	QoSManager::getInstance()->markSocket(*this, (sockaddr*)&serv_addr, 5);
 }
 
 namespace {

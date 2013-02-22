@@ -474,6 +474,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\client\QoSManager.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\client\QueueManager.cpp"
 				>
 			</File>
@@ -784,6 +788,10 @@
 			</File>
 			<File
 				RelativePath=".\client\Pointer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\client\QoSManager.h"
 				>
 			</File>
 			<File

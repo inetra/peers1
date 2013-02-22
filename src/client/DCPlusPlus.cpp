@@ -44,6 +44,7 @@
 #include "PGLoader.h"
 #include "peers/ClientLifeCycle.h"
 #include "peers/ConfigurationPatcher.h"
+#include "QoSManager.h"
 
 /*
 #ifdef _STLP_DEBUG
@@ -84,6 +85,7 @@ void startup(ProgressCallback* callback, const StartupConfiguration* configurati
   ClientProfileManager::newInstance();	
   IgnoreManager::newInstance();
   HistoryManager::newInstance();
+  QoSManager::newInstance();
 
   callback->showMessage(_T("Русский язык"));
   ResourceManager::getInstance()->loadLanguage(Util::getDataPath() + "Russian.xml"); // SETTING(LANGUAGE_FILE)
@@ -143,6 +145,7 @@ void shutdown(bool exp /*= false*/) {
   FavoriteManager::deleteInstance();
   ClientManager::deleteInstance();
   HashManager::deleteInstance();
+  QoSManager::deleteInstance();
   LogManager::deleteInstance();
   SettingsManager::deleteInstance();
   TimerManager::deleteInstance();
