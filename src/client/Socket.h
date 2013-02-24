@@ -33,6 +33,9 @@
 typedef int socklen_t;
 typedef SOCKET socket_t;
 
+#include <windows.h>
+#include "peers/qos2.h"
+
 #else
 
 #include <sys/ioctl.h>
@@ -82,9 +85,9 @@ public:
 		TYPE_UDP
 	};
 
-	Socket() throw(SocketException) : sock(INVALID_SOCKET), connected(false), blocking(true) { }
-	Socket(const string& aIp, uint16_t aPort) throw(SocketException) : sock(INVALID_SOCKET), connected(false), blocking(true) { connect(aIp, aPort); }
-	virtual ~Socket() throw() { Socket::disconnect(); }
+	Socket() throw(SocketException) : sock(INVALID_SOCKET), connected(false), blocking(true) { initQoS(); }
+	Socket(const string& aIp, uint16_t aPort) throw(SocketException) : sock(INVALID_SOCKET), connected(false), blocking(true) { initQoS(); connect(aIp, aPort); }
+	virtual ~Socket() throw() { Socket::disconnect(); finishQoS(); }
 
 	/**
 	 * Connects a socket to an address/ip, closing any other connections made with
@@ -227,6 +230,7 @@ public:
 	GETSET(string, ip, Ip);
 	static const string getRemoteHost(const string& aIp);
 	GETSET(uint16_t, port, Port);
+	void setDSCP(char newValue);
 	socket_t sock;
 protected:
 	uint8_t type;
@@ -289,6 +293,35 @@ private:
 		return ret;
 	}
 #endif
+
+#ifdef _WIN32
+	HMODULE qWAVEhandle;
+	HANDLE hQoS;
+	QOS_VERSION QOSversion;
+
+	// QOS2 external functions
+	typedef BOOL (WINAPI *pfnQOSCreateHandle)(PQOS_VERSION Version, PHANDLE QOSHandle);
+	typedef BOOL (WINAPI *pfnQOSCloseHandle)(HANDLE QOSHandle);
+	typedef BOOL (WINAPI *pfnQOSAddSocketToFlow)(HANDLE QOSHandle, SOCKET Socket, PSOCKADDR DestAddr, QOS_TRAFFIC_TYPE TrafficType, DWORD Flags, PQOS_FLOWID FlowId);
+	typedef BOOL (WINAPI *pfnQOSRemoveSocketFromFlow)(HANDLE QOSHandle, SOCKET Socket, QOS_FLOWID FlowId, DWORD Flags);
+	typedef BOOL (WINAPI *pfnQOSSetFlow)(HANDLE QOSHandle, QOS_FLOWID FlowId, QOS_SET_FLOW Operation, ULONG Size, PVOID Buffer, DWORD Flags, LPOVERLAPPED Overlapped);
+
+	pfnQOSCreateHandle mQOSCreateHandle;
+	pfnQOSCloseHandle mQOSCloseHandle;
+	pfnQOSAddSocketToFlow mQOSAddSocketToFlow;
+	pfnQOSRemoveSocketFromFlow mQOSRemoveSocketFromFlow;
+	pfnQOSSetFlow mQOSSetFlow;
+
+	QOS_FLOWID QoSFlowId;
+#endif
+
+	void initQoS();
+	void finishQoS();
+	void markSocket();
+	void unmarkSocket();
+
+	char DSCP;
+	bool marked;
 	
 };
 

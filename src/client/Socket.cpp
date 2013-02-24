@@ -25,8 +25,12 @@
 #include "ResourceManager.h"
 #include "TimerManager.h"
 
+#include "LogManager.h"
+
 string Socket::udpServer;
 uint16_t Socket::udpPort;
+
+#include "peers/qos2.h"
 
 #define checkconnected() if(!isConnected()) throw SocketException(ENOTCONN))
 
@@ -91,6 +95,8 @@ void Socket::accept(const Socket& listeningSocket) throw(SocketException) {
 	} while (l_res_accept < 0 && getLastError() == FLY_EINTR);
 	check(sock);
 
+	markSocket();
+
 #ifdef _WIN32
 	// Make sure we disable any inherited windows message things for this socket.
 	::WSAAsyncSelect(sock, NULL, 0, 0);
@@ -150,6 +156,12 @@ void Socket::connect(const string& aAddr, uint16_t aPort) throw(SocketException)
 	connected = true;
 	setIp(addresses[0]);
 	setPort(aPort);
+
+	StringMap params;
+	params["message"] = "Connected to " + aAddr + ":" + Util::toString(aPort);
+	LOG(LogManager::SYSTEM, params);
+
+	markSocket();
 }
 
 namespace {
@@ -296,6 +308,7 @@ void Socket::setSocketOpt(int option, int val) throw(SocketException) {
 }
 
 int Socket::read(void* aBuffer, int aBufLen) throw(SocketException) {
+	markSocket();
 	int len = 0;
 
 	dcassert(type == TYPE_TCP || type == TYPE_UDP);
@@ -318,6 +331,8 @@ int Socket::read(void* aBuffer, int aBufLen) throw(SocketException) {
 int Socket::read(void* aBuffer, int aBufLen, string &aIP) throw(SocketException) {
 	dcassert(type == TYPE_UDP);
 
+	markSocket();
+
 	sockaddr_in remote_addr = { 0 };
 	socklen_t addr_length = sizeof(remote_addr);
 
@@ -337,6 +352,7 @@ int Socket::read(void* aBuffer, int aBufLen, string &aIP) throw(SocketException)
 }
 
 int Socket::readAll(void* aBuffer, int aBufLen, uint64_t timeout) throw(SocketException) {
+	markSocket();
 	uint8_t* buf = (uint8_t*)aBuffer;
 	int i = 0;
 	while(i < aBufLen) {
@@ -356,6 +372,8 @@ int Socket::readAll(void* aBuffer, int aBufLen, uint64_t timeout) throw(SocketEx
 }
 
 void Socket::writeAll(const void* aBuffer, int aLen, uint64_t timeout) throw(SocketException) {
+	markSocket();
+
 	const uint8_t* buf = (const uint8_t*)aBuffer;
 	int pos = 0;
 	// No use sending more than this at a time...
@@ -373,6 +391,8 @@ void Socket::writeAll(const void* aBuffer, int aLen, uint64_t timeout) throw(Soc
 }
 
 int Socket::write(const void* aBuffer, int aLen) throw(SocketException) {
+	markSocket();
+
 	int sent;
 	do {
 		sent = ::send(sock, (const char*)aBuffer, aLen, 0);
@@ -392,6 +412,8 @@ int Socket::write(const void* aBuffer, int aLen) throw(SocketException) {
 * @throw SocketExcpetion Send failed.
 */
 void Socket::writeTo(const string& aAddr, uint16_t aPort, const void* aBuffer, int aLen, bool proxy) throw(SocketException) {
+	markSocket();
+
 	if(aLen <= 0) 
 		return;
 
@@ -650,6 +672,7 @@ void Socket::shutdown() throw() {
 void Socket::close() throw() {
 	if(sock != INVALID_SOCKET) {
 #ifdef _WIN32
+		unmarkSocket();
 		::closesocket(sock);
 #else
 		::close(sock);
@@ -742,6 +765,108 @@ int Socket::DNSCache::run()
 }
 // end !SMT!-IP
 #endif
+
+void Socket::initQoS()
+{
+#ifdef _WIN32
+	mQOSCreateHandle = NULL;
+	mQOSCloseHandle = NULL;
+	mQOSAddSocketToFlow = NULL;
+	mQOSRemoveSocketFromFlow = NULL;
+	mQOSSetFlow = NULL;
+
+	// detect qWAVE available
+	qWAVEhandle = LoadLibraryA("qwave.dll");
+	if (qWAVEhandle != NULL) {
+		// Windows >= Vista
+		mQOSCreateHandle = (pfnQOSCreateHandle) GetProcAddress(qWAVEhandle, "QOSCreateHandle");
+		mQOSCloseHandle = (pfnQOSCloseHandle) GetProcAddress(qWAVEhandle, "QOSCloseHandle");
+		mQOSAddSocketToFlow = (pfnQOSAddSocketToFlow) GetProcAddress(qWAVEhandle, "QOSAddSocketToFlow");
+		mQOSRemoveSocketFromFlow = (pfnQOSRemoveSocketFromFlow) GetProcAddress(qWAVEhandle, "QOSRemoveSocketFromFlow");
+		mQOSSetFlow = (pfnQOSSetFlow) GetProcAddress(qWAVEhandle, "QOSSetFlow");
+
+		if (mQOSCreateHandle == NULL || mQOSCloseHandle == NULL || mQOSAddSocketToFlow == NULL || mQOSRemoveSocketFromFlow == NULL || mQOSSetFlow == NULL) {
+			// bad qWAVE?
+			FreeLibrary(qWAVEhandle);
+			qWAVEhandle = NULL;
+		} else {
+			QOSversion.MajorVersion = 1;
+			QOSversion.MinorVersion = 0;
+			if (!mQOSCreateHandle(&QOSversion, &hQoS)) {
+				FreeLibrary(qWAVEhandle);
+				qWAVEhandle = NULL;
+			}
+		}
+		
+		QoSFlowId = 0;
+	}
+#endif
+	marked = false;
+	DSCP = SETTING(DEFAULT_DSCP_MARK);
+}
+
+void Socket::finishQoS()
+{
+#ifdef _WIN32
+	if (qWAVEhandle != NULL) {
+		mQOSCloseHandle(hQoS);
+		hQoS = NULL;
+		FreeLibrary(qWAVEhandle);
+		qWAVEhandle = NULL;
+	}
+#endif
+}
+
+void Socket::setDSCP(char newValue)
+{
+	unmarkSocket();
+	DSCP = newValue;
+	markSocket();
+}
+
+
+void Socket::markSocket()
+{
+	if (marked) return;
+
+	unmarkSocket();
+#ifdef _WIN32
+	if (qWAVEhandle != NULL) {
+		if (mQOSAddSocketToFlow(hQoS, sock, 0, QOSTrafficTypeBestEffort, QOS_NON_ADAPTIVE_FLOW, &QoSFlowId)) {
+			DWORD dscp = DSCP;
+			mQOSSetFlow(hQoS, QoSFlowId, QOSSetOutgoingDSCPValue, sizeof(dscp), &dscp, 0, NULL);
+			marked = true;
+		} else {
+			marked = false;
+		}
+	} else {
+#endif
+		// This works on Windows < Vista with 
+		// DisableUserTOSSetting set to 0 in registry
+		// see http://support.microsoft.com/kb/248611
+		const char ipTOS = DSCP << 2;
+		setsockopt(sock, IPPROTO_IP, IP_TOS, &ipTOS, sizeof(ipTOS));
+		marked = true;
+#ifdef _WIN32
+	}
+#endif
+}
+
+void Socket::unmarkSocket()
+{
+	if (!marked) return;
+
+	marked = false;
+#ifdef _WIN32
+	if (qWAVEhandle != NULL && QoSFlowId != 0) {
+		mQOSRemoveSocketFromFlow(hQoS, sock, QoSFlowId, 0);
+		QoSFlowId = 0;
+	} else {
+		const char ipTOS = 0;
+		setsockopt(sock, IPPROTO_IP, IP_TOS, &ipTOS, sizeof(ipTOS));
+	}
+#endif
+}
 
 /**
  * @file

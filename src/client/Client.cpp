@@ -155,6 +155,7 @@ void Client::connect() {
 
 	try {
 		socket = BufferedSocket::getSocket(separator);
+		socket->setDSCP(SETTING(HUB_DSCP_MARK));
 		socket->addListener(this);
 		string file;
 		Util::decodeUrl(hubUrl, address, port, file);

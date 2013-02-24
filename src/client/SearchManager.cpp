@@ -686,6 +686,7 @@ void SearchManager::sendPSR(const string& ip, uint16_t port, bool wantResponse, 
 		cmd.addParam("PI", getPartsString(partialInfo));
 
 		Socket s;
+		s.setDSCP(SETTING(PEER_DSCP_MARK));
 		s.writeTo(Socket::resolve(ip), port, cmd.toString(ClientManager::getInstance()->getMyCID()));
 	} catch(...) {
 		dcdebug("Partial search caught error\n");		

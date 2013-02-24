@@ -84,6 +84,8 @@ public:
 			Thread::sleep(100);
 	}
 
+	void setDSCP(char newValue);
+
 	void accept(const Socket& srv, bool secure, bool allowUntrusted) throw(SocketException, ThreadException);
 	void connect(const string& aAddress, uint16_t aPort, bool secure, bool allowUntrusted, bool proxy) throw(SocketException, ThreadException);
 
@@ -172,6 +174,7 @@ private:
 
 	Socket* sock;
 	bool disconnecting;
+	char DSCP;
 
 	int run();
 

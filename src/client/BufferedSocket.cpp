@@ -99,6 +99,7 @@ void BufferedSocket::accept(const Socket& srv, bool , bool ) throw(SocketExcepti
 #endif
 
 		sock->accept(srv);
+		sock->setDSCP(DSCP);
 		if(SETTING(SOCKET_IN_BUFFER) > 1023)
 			sock->setSocketOpt(SO_RCVBUF, SETTING(SOCKET_IN_BUFFER));
     	if(SETTING(SOCKET_OUT_BUFFER) > 1023)
@@ -134,6 +135,7 @@ void BufferedSocket::connect(const string& aAddress, uint16_t aPort, bool, bool 
 #endif
 
 		sock->create();
+		sock->setDSCP(DSCP);
 		if(SETTING(SOCKET_IN_BUFFER) >= 1024)
 			sock->setSocketOpt(SO_RCVBUF, SETTING(SOCKET_IN_BUFFER));
 		if(SETTING(SOCKET_OUT_BUFFER) >= 1024)
@@ -639,6 +641,13 @@ void BufferedSocket::shutdown() {
 	} else {
 		// Socket thread not running yet, disconnect...
 		delete this;
+	}
+}
+
+void BufferedSocket::setDSCP(char newValue) {
+	DSCP = newValue;
+	if (sock) {
+		sock->setDSCP(DSCP);
 	}
 }
 
