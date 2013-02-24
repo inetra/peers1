@@ -230,7 +230,7 @@ public:
 	GETSET(string, ip, Ip);
 	static const string getRemoteHost(const string& aIp);
 	GETSET(uint16_t, port, Port);
-	void setDSCPfield(char newValue);
+	void setDSCP(char newValue);
 	socket_t sock;
 protected:
 	uint8_t type;

@@ -802,6 +802,7 @@ void Socket::initQoS()
 	}
 #endif
 	marked = false;
+	DSCP = SETTING(DEFAULT_DSCP_MARK);
 }
 
 void Socket::finishQoS()
@@ -816,7 +817,7 @@ void Socket::finishQoS()
 #endif
 }
 
-void Socket::setDSCPfield(char newValue)
+void Socket::setDSCP(char newValue)
 {
 	unmarkSocket();
 	DSCP = newValue;

@@ -210,6 +210,7 @@ void UserConnection::connect(const string& aServer, uint16_t aPort) throw(Socket
 	dcassert(!socket);
 
 	socket = BufferedSocket::getSocket(0);
+	socket->setDSCP(SETTING(PEER_DSCP_MARK));
 	socket->addListener(this);
 	socket->connect(aServer, aPort, 
 #ifdef PPA_INCLUDE_SSL
@@ -225,6 +226,7 @@ void UserConnection::connect(const string& aServer, uint16_t aPort) throw(Socket
 void UserConnection::accept(const Socket& aServer) throw(SocketException, ThreadException) {
 	dcassert(!socket);
 	socket = BufferedSocket::getSocket(0);
+	socket->setDSCP(SETTING(PEER_DSCP_MARK));
 	socket->addListener(this);
 	socket->accept(aServer, 
 #ifdef PPA_INCLUDE_SSL
