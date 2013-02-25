@@ -127,7 +127,7 @@ public:
 
 	Identity& getHubIdentity() { return hubIdentity; }
 
-	const string& getHubUrl() const { return hubUrl; }
+	const string& getHubUrl() const { return originalHubUrl; }
 
 	GETSET(Identity, myIdentity, MyIdentity);
 	GETSET(Identity, hubIdentity, HubIdentity);
@@ -189,6 +189,7 @@ protected:
 	virtual void on(Line, const string& aLine) throw();
 	virtual void on(Failed, const string&) throw();
 
+	virtual void redirectToURL(const std::string& redirectUrl) throw();
 private:
 
 	enum CountType {
@@ -203,6 +204,7 @@ private:
 
 	CountType countType;
 	string hubUrl;
+	string originalHubUrl;
 	string address;
 	string ip;
         string m_clientId;

@@ -94,9 +94,10 @@ lastUp(0), lastDown(0), stopperThread(NULL), m_OLDPriorityClass(0),
 exitToUpdate(false),
 splitterResizeActive(false),
 #ifdef PPA_INCLUDE_CHECK_UPDATE
-c(new HttpConnection(PeersUtils::getUserAgent())), 
+updatesChecker(new HttpConnection(PeersUtils::getUserAgent())),
 downloader(NULL),
 #endif
+pinger(new HttpConnection(PeersUtils::getUserAgent())),
 closeEnabled(false),
 closing(false), awaybyminimize(false), missedAutoConnect(false), lastTTHdir(Util::emptyStringT), 
 bTrayIcon(false), bAppMinimized(false), bIsPM(false),
@@ -207,6 +208,7 @@ LRESULT MainFrame::OnCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 		}
 	}
 	WinUtil::init(m_hWnd);
+	WinUtil::allowUserTOSSetting();
 
 	trayMessage = RegisterWindowMessage(_T("TaskbarCreated"));
 
@@ -378,17 +380,24 @@ LRESULT MainFrame::OnCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 	} 
 
 #ifdef PPA_INCLUDE_CHECK_UPDATE
-	c->addListener(this);
+	updatesChecker->addListener(this);
 	if (AutoUpdate::allowOnStart()) {
           StringMap params;
           params["message"] = "Checking updates on startup";
           LOG(LogManager::SYSTEM, params);
-	  c->downloadFile(string(VERSIONFILE) + "?V=" + Util::toString(BUILDID) + "&M=S&NICK=" + SETTING(NICK) + "&CID=" + SETTING(PRIVATE_ID));
+		  updatesChecker->downloadFile(string(VERSIONFILE) + "?V=" + Util::toString(BUILDID) + "&M=S&NICK=" + SETTING(NICK) + "&CID=" + SETTING(PRIVATE_ID));
 	}
 	if (AutoUpdate::allowPeriodic()) {
 	  SetTimer(TIMER_CHECK_UPDATE, AutoUpdate::getUpdateCheckInterval() * 1000);
 	}
 #endif
+
+	if (!SETTING(HTTP_PING_ADDRESS).empty()) {
+		pinger->downloadFile(SETTING(HTTP_PING_ADDRESS));
+		if (SETTING(HTTP_PING_INTERVAL) > 60*1000) {
+			SetTimer(PINGER_TIMER, SETTING(HTTP_PING_INTERVAL));
+		}
+	}
 
 	if(BOOLSETTING(OPEN_ADVICE)) PostMessage(WM_COMMAND, IDC_ADVICE_WINDOW);
 	if(BOOLSETTING(OPEN_FAVORITE_HUBS)) PostMessage(WM_COMMAND, IDC_FAVORITES);
@@ -444,7 +453,9 @@ LRESULT MainFrame::OnCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 
 #ifndef BETA
 	if(SETTING(NICK).empty()) {
-		PostMessage(WM_COMMAND, ID_FILE_SETTINGS);
+		// GENERATE NICK! Fix #PEERS1-58 && #PEERS1-43
+		string nick = CID::generate().toBase32();
+		SettingsManager::getInstance()->set(SettingsManager::NICK, nick);
 	}
 #endif
 
@@ -1058,6 +1069,15 @@ void MainFrame::onDownloadComplete(HttpUpdateDownloader* downloader) throw() {
 #endif
 	case UPDATE_MODE_CONFIGURATION:
 		ConfigurationPatcher::load();
+		KillTimer(PINGER_TIMER);
+
+		if (!SETTING(HTTP_PING_ADDRESS).empty()) {
+			pinger->downloadFile(SETTING(HTTP_PING_ADDRESS));
+			if (SETTING(HTTP_PING_INTERVAL) > 60*1000) {
+				SetTimer(PINGER_TIMER, SETTING(HTTP_PING_INTERVAL));
+			}
+		}
+
 		break;
 	}
 }
@@ -1068,7 +1088,11 @@ LRESULT MainFrame::onTimer(UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam*/, BOOL
     params["message"] = "Periodic updates check";
     LOG(LogManager::SYSTEM, params);
     versionInfo = Util::emptyString;
-    c->downloadFile(string(VERSIONFILE) + "?V=" + Util::toString(BUILDID) + "&M=P&NICK=" + SETTING(NICK) + "&CID=" + SETTING(PRIVATE_ID));
+    updatesChecker->downloadFile(string(VERSIONFILE) + "?V=" + Util::toString(BUILDID) + "&M=P&NICK=" + SETTING(NICK) + "&CID=" + SETTING(PRIVATE_ID));
+  } else if (wParam == PINGER_TIMER) {
+	  if (!SETTING(HTTP_PING_ADDRESS).empty()) {
+		pinger->downloadFile(SETTING(HTTP_PING_ADDRESS));
+	  }
   }
   return 0;
 }
@@ -1270,13 +1294,19 @@ LRESULT MainFrame::onSize(UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam*/, BOOL&
 LRESULT MainFrame::onEndSession(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/) {
 #ifdef PPA_INCLUDE_CHECK_UPDATE
 	KillTimer(TIMER_CHECK_UPDATE);
-	if(c != NULL) {
-		c->removeListener(this);
-		delete c;
-		c = NULL;
+	if(updatesChecker != NULL) {
+		updatesChecker->removeListener(this);
+		delete updatesChecker;
+		updatesChecker = NULL;
 	}
 	downloader.reset();
 #endif
+	KillTimer(PINGER_TIMER);
+	if (pinger != NULL) {
+		delete pinger;
+		pinger = NULL;
+	}
+
 	saveWindowPlacement();
 
 	QueueManager::getInstance()->saveQueue();
@@ -1340,13 +1370,18 @@ LRESULT MainFrame::OnClose(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, 
 			exitToUpdate = false;
 #ifdef PPA_INCLUDE_CHECK_UPDATE
 			KillTimer(TIMER_CHECK_UPDATE);
-			if (c != NULL) {
-				c->removeListener(this);
-				delete c;
-				c = NULL;
+			if (updatesChecker != NULL) {
+				updatesChecker->removeListener(this);
+				delete updatesChecker;
+				updatesChecker = NULL;
 			}
 			downloader.reset();
 #endif
+			KillTimer(PINGER_TIMER);
+			if (pinger != NULL) {
+				delete pinger;
+				pinger = NULL;
+			}
 #ifndef _DEBUG
 			shutdownSplash = new SplashWindow(IDB_SPLASH);
 			shutdownSplash->init();

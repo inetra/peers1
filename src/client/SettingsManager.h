@@ -86,6 +86,7 @@ public:
 		RATIO_TEMPLATE, //[+] WhiteD. Custom ratio message
         UNUSED_URL_TEST_IP, 
 		CUSTOM_VIDEO_PLAYER,
+		HTTP_PING_ADDRESS,
 		STR_LAST };
 
 	enum IntSetting { INT_FIRST = STR_LAST + 1,
@@ -198,6 +199,10 @@ public:
 				DOWNLOAD_DIRECTORY_SHORTCUT,
 				MINIMIZE_ON_CLOSE,
 				USE_CUSTOM_VIDEO_PLAYER,
+				DEFAULT_DSCP_MARK,
+				HUB_DSCP_MARK,
+				PEER_DSCP_MARK,
+				HTTP_PING_INTERVAL,
                 INT_LAST };
 
 	enum Int64Setting { INT64_FIRST = INT_LAST + 1,

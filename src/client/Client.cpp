@@ -35,12 +35,9 @@ Client::Client(const string& clientId, const string& hubURL, char separator_, bo
         m_clientId(clientId),
 	myIdentity(ClientManager::getInstance()->getMe(), 0),
 	reconnDelay(120), lastActivity(GET_TICK()), registered(false), autoReconnect(false), state(STATE_DISCONNECTED), socket(0), 
-	hubUrl(hubURL), port(0), separator(separator_),
+	originalHubUrl(hubURL), hubUrl(hubURL), port(0), separator(separator_),
 	secure(secure_), countType(COUNT_UNCOUNTED), availableBytes(0)
 {
-	string file;
-	Util::decodeUrl(hubURL, address, port, file);
-
 	TimerManager::getInstance()->addListener(this);
 }
 
@@ -49,6 +46,13 @@ Client::~Client() throw() {
 	TimerManager::getInstance()->removeListener(this);
 	updateCounts(true);
 }
+
+void Client::redirectToURL(const std::string& redirectUrl) throw() {
+	disconnect(false);
+	hubUrl = redirectUrl;
+	connect();
+}
+
 
 void Client::reconnect() {
 	disconnect(true);
@@ -151,7 +155,11 @@ void Client::connect() {
 
 	try {
 		socket = BufferedSocket::getSocket(separator);
+		socket->setDSCP(SETTING(HUB_DSCP_MARK));
 		socket->addListener(this);
+		string file;
+		Util::decodeUrl(hubUrl, address, port, file);
+
 		socket->connect(address, port, secure, BOOLSETTING(ALLOW_UNTRUSTED_HUBS), true);
 	} catch(const Exception& e) {
 		if(socket) {
@@ -244,6 +252,7 @@ void Client::on(Line, const string& aLine) throw() {
 void Client::on(Second, uint32_t aTick) throw() {
 	if(state == STATE_DISCONNECTED && getAutoReconnect() && (aTick > (getLastActivity() + getReconnDelay() * 1000)) ) {
 		// Try to reconnect...
+		hubUrl = originalHubUrl;
 		connect();
 	}
 }

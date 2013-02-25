@@ -219,6 +219,7 @@ public:
 	static void registerDchubHandler();
 	static void registerADChubHandler();
 	static void registerMagnetHandler();
+	static void allowUserTOSSetting();
 	static void unRegisterDchubHandler();
 	static void unRegisterADChubHandler();
 	static void unRegisterMagnetHandler();

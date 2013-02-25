@@ -80,6 +80,7 @@ const string SettingsManager::settingTags[] =
 	"RatioTemplate",//[+] WhiteD. Custom ratio message
     "UrlTestIp", //[+]PPA
 	"CustomVideoPlayer",
+	"HTTPPingAddress",
     SENTRY, 
 
 	
@@ -182,6 +183,10 @@ const string SettingsManager::settingTags[] =
 	"DownloadDirectoryShortcut",
 	"UseCustomVideoPlayer",
 	"MinimizeOnClose",
+	"DefaultDSCPmark",
+	"HubDSCPmark",
+	"PeerDSCPmark",
+	"HTTPPingInterval",
 	SENTRY,
 	
 	
@@ -761,6 +766,10 @@ void SettingsManager::setDefaults()
 	setDefault(NICK_ADD_UNIQUE_SUFFIX, true);
 	setDefault(DOWNLOAD_DIRECTORY_SHORTCUT, Util::readRegistryBoolean(settingTags[DOWNLOAD_DIRECTORY_SHORTCUT], false));
 	setDefault(MINIMIZE_ON_CLOSE, true);
+	setDefault(DEFAULT_DSCP_MARK, 0);
+	setDefault(HUB_DSCP_MARK, 0);
+	setDefault(PEER_DSCP_MARK, 0);
+	setDefault(HTTP_PING_INTERVAL, 0);
 
     //make sure the total of the following and PROGRESS_BACK_COLOR are under 255,255,255, since they are added together
 	setDefault(COLOR_AVOIDING, RGB(100, 0, 0));

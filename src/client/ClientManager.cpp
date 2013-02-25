@@ -338,6 +338,7 @@ void ClientManager::send(AdcCommand& cmd, const CID& cid) {
 		} else {
 			try {
 				Socket udp;
+				udp.setDSCP(SETTING(PEER_DSCP_MARK));
 				udp.writeTo(u.getIdentity().getIp(), static_cast<uint16_t>(Util::toInt(u.getIdentity().getUdpPort())), cmd.toString(getMe()->getCID()));
 			} catch(const SocketException&) {
 				dcdebug("Socket exception sending ADC UDP command\n");
@@ -394,6 +395,7 @@ void ClientManager::on(NmdcSearch, Client* aClient, const string& aSeeker, int a
 		} else {
 			try {
 				Socket udp;
+				udp.setDSCP(SETTING(PEER_DSCP_MARK));
 				string ip, file;
 				uint16_t port = 0;
 				Util::decodeUrl(aSeeker, ip, port, file);

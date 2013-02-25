@@ -692,8 +692,9 @@ void NmdcHub::onLine(const string& aLine) throw() {
 			fire(ClientListener::UserUpdated(), this, u.getUser()); // !SMT!-fix
 		}
 	} else if(cmd == "$ForceMove") {
-		socket->disconnect(false);
-		fire(ClientListener::Redirect(), this, param);
+		redirectToURL(param);
+		//socket->disconnect(false);
+		//fire(ClientListener::Redirect(), this, param);
 	} else if(cmd == "$HubIsFull") {
 		fire(ClientListener::HubFull(), this);
 	} else if(cmd == "$ValidateDenide") {		// Mind the spelling...

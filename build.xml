@@ -57,14 +57,14 @@
       <arg value="${crash.guid}"/>
       <arg value="${file.version}"/>
       <arg value="0"/>
-      <arg file="setup/Peers.exe"/>
+      <arg file="src/compiled/FlylinkDC.exe"/>
     </exec>
 
     <exec executable="src/compiled/SymUpload.exe" dir="${src.dir}" failonerror="true">
       <arg value="${crash.guid}"/>
       <arg value="${file.version}"/>
       <arg value="0"/>
-      <arg file="setup/Peers.pdb"/>
+      <arg file="src/compiled/FlylinkDC.pdb"/>
     </exec>
 
   </target>
@@ -100,7 +100,6 @@
     <property name="PeersUpdateZip" value="${basedir}/Output/${build.number}/PeersUpdate${build.number}.zip"/>
     <zip zipfile="${PeersUpdateZip}">
       <fileset file="setup/Peers.exe"/>
-      <fileset file="setup/Peers.pdb"/>
       <fileset file="src/compiled/release/PeersUpdater.exe" />
       <fileset file="src/compiled/Russian.xml"/>
       <fileset file="setup/crshhndl.dll"/>

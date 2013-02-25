@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <DCPlusPlus>
-	<Settings>                      
+	<Settings>
 		<BeepFile type="string">.\Settings\Sounds\PrivateMessage.wav</BeepFile>
 		<BeginFile type="string">.\Settings\Sounds\DownloadBegins.wav</BeginFile>
 		<FinishedFile type="string">.\Settings\Sounds\DownloadFinished.wav</FinishedFile>

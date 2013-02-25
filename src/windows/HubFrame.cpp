@@ -42,6 +42,8 @@
 #include "../peers/SubscriptionFrame.h"
 #include "../peers/Sounds.h"
 
+#include "../client/CID.h"
+
 #define VPADDING 8
 
 HubFrame::FrameMap HubFrame::frames;
@@ -683,19 +685,12 @@ LRESULT HubFrame::onSpeaker(UINT /*uMsg*/, WPARAM /* wParam */, LPARAM /* lParam
 			  WinUtil::ShowBalloonTip(Text::toT(client->getAddress()).c_str(), CTSTRING(DISCONNECTED));
 		  }
 		  if (BOOLSETTING(NICK_ADD_UNIQUE_SUFFIX) && isWrongNick()) {
-			  string nick = SETTING(NICK);
-			  int pos = nick.length();
-			  if (pos != 0) {
-				  while (pos > 0 && isdigit(nick[pos-1])) {
-					  --pos;
-				  }
-				  do {
-					  nick = nick.substr(0, pos) + Util::toString(rand() % 1000);
-				  } while (nick == SETTING(NICK));
-				  SettingsManager::getInstance()->set(SettingsManager::NICK, nick);
-				  m_infoPanel.updateData();
-				  client->reconnect();
-			  }
+			  // generate a chaos randomly nick as CID!
+			  // Fix #PEERS1-58
+			  string nick = CID::generate().toBase32();
+			  SettingsManager::getInstance()->set(SettingsManager::NICK, nick);
+			  m_infoPanel.updateData();
+			  client->reconnect();
 		  }
 	  } 
 	  else if(i->first == ADD_CHAT_LINE) {
@@ -836,7 +831,9 @@ bool HubFrame::isWrongNick() {
 		_T("Никнейм занят другим пользователем"),
 		_T("You are already in the hub"),
 		_T("You have already logged into"),
-		_T("Пользователь с таким ником уже зарегистрировался на хабе. Выберите другой ник.")
+		_T("Пользователь с таким ником уже зарегистрировался на хабе. Выберите другой ник."),
+		_T("Ваш ник уже занят, пожалуйста измените на какой-нибудь другой!"),
+		_T("Пользователь с таким ником уже подключён к хабу")
 	};
 	for (vector<tstring>::iterator i = lastMessages.begin(); i != lastMessages.end(); ++i) {
 		tstring msg = *i;
