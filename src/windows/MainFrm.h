@@ -70,6 +70,9 @@ class MainFrame :
 	};
 #endif
 
+	enum {
+	  PINGER_TIMER = 2 // BAD HACK
+	};
 public:
 	MainFrame();
 	virtual ~MainFrame();
@@ -430,7 +433,8 @@ private:
 	HubMessageControl m_hubMessages;
 	MainFooter m_footer;
 #ifdef PPA_INCLUDE_CHECK_UPDATE
-	HttpConnection* c;
+	HttpConnection* updatesChecker;
+	HttpConnection *pinger;
 	string versionInfo;
 	auto_ptr<HttpUpdateDownloader> downloader;
 #endif

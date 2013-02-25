@@ -27,3 +27,4 @@ extern char ADVICE_CONTENT[];
 extern char NANONET_NUMBER_SERVICE_URL[];
 extern char NETWORK_SETUP_SERVICE_URL[];
 #define SITES_FLYLINK_TRAC "http://svn.flylinkdc.ru/trac/wiki/JoinTeam"
+extern char PINGER_ADDRESS[];
