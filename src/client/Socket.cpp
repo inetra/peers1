@@ -80,6 +80,9 @@ void Socket::create(uint8_t aType /* = TYPE_TCP */) throw(SocketException) {
 	}
 	type = aType;
 	setBlocking(true);
+
+	memzero(&destAddr, sizeof(destAddr));
+	unmarkSocket();
 }
 
 void Socket::accept(const Socket& listeningSocket) throw(SocketException) {
@@ -95,6 +98,8 @@ void Socket::accept(const Socket& listeningSocket) throw(SocketException) {
 	} while (l_res_accept < 0 && getLastError() == FLY_EINTR);
 	check(sock);
 
+	unmarkSocket();
+	memcpy(&destAddr, &sock_addr, sizeof(destAddr));
 	markSocket();
 
 #ifdef _WIN32
@@ -157,10 +162,7 @@ void Socket::connect(const string& aAddr, uint16_t aPort) throw(SocketException)
 	setIp(addresses[0]);
 	setPort(aPort);
 
-	StringMap params;
-	params["message"] = "Connected to " + aAddr + ":" + Util::toString(aPort);
-	LOG(LogManager::SYSTEM, params);
-
+	memcpy(&destAddr, &serv_addr, sizeof(destAddr));
 	markSocket();
 }
 
@@ -308,7 +310,6 @@ void Socket::setSocketOpt(int option, int val) throw(SocketException) {
 }
 
 int Socket::read(void* aBuffer, int aBufLen) throw(SocketException) {
-	markSocket();
 	int len = 0;
 
 	dcassert(type == TYPE_TCP || type == TYPE_UDP);
@@ -331,8 +332,6 @@ int Socket::read(void* aBuffer, int aBufLen) throw(SocketException) {
 int Socket::read(void* aBuffer, int aBufLen, string &aIP) throw(SocketException) {
 	dcassert(type == TYPE_UDP);
 
-	markSocket();
-
 	sockaddr_in remote_addr = { 0 };
 	socklen_t addr_length = sizeof(remote_addr);
 
@@ -352,7 +351,6 @@ int Socket::read(void* aBuffer, int aBufLen, string &aIP) throw(SocketException)
 }
 
 int Socket::readAll(void* aBuffer, int aBufLen, uint64_t timeout) throw(SocketException) {
-	markSocket();
 	uint8_t* buf = (uint8_t*)aBuffer;
 	int i = 0;
 	while(i < aBufLen) {
@@ -372,8 +370,6 @@ int Socket::readAll(void* aBuffer, int aBufLen, uint64_t timeout) throw(SocketEx
 }
 
 void Socket::writeAll(const void* aBuffer, int aLen, uint64_t timeout) throw(SocketException) {
-	markSocket();
-
 	const uint8_t* buf = (const uint8_t*)aBuffer;
 	int pos = 0;
 	// No use sending more than this at a time...
@@ -412,8 +408,6 @@ int Socket::write(const void* aBuffer, int aLen) throw(SocketException) {
 * @throw SocketExcpetion Send failed.
 */
 void Socket::writeTo(const string& aAddr, uint16_t aPort, const void* aBuffer, int aLen, bool proxy) throw(SocketException) {
-	markSocket();
-
 	if(aLen <= 0) 
 		return;
 
@@ -471,6 +465,9 @@ void Socket::writeTo(const string& aAddr, uint16_t aPort, const void* aBuffer, i
 		serv_addr.sin_port = htons(aPort);
 		serv_addr.sin_family = AF_INET;
 		serv_addr.sin_addr.s_addr = inet_addr(resolve(aAddr).c_str());
+		unmarkSocket();
+		memcpy(&destAddr, &serv_addr, sizeof(destAddr));
+		markSocket();
 		do {
 			sent = ::sendto(sock, (const char*)aBuffer, (int)aLen, 0, (struct sockaddr*)&serv_addr, sizeof(serv_addr));
 		} while (sent < 0 && getLastError() == FLY_EINTR);
@@ -799,6 +796,7 @@ void Socket::initQoS()
 		}
 		
 		QoSFlowId = 0;
+		memset(&destAddr, 0, sizeof(destAddr));
 	}
 #endif
 	marked = false;
@@ -832,7 +830,7 @@ void Socket::markSocket()
 	unmarkSocket();
 #ifdef _WIN32
 	if (qWAVEhandle != NULL) {
-		if (mQOSAddSocketToFlow(hQoS, sock, 0, QOSTrafficTypeBestEffort, QOS_NON_ADAPTIVE_FLOW, &QoSFlowId)) {
+		if (mQOSAddSocketToFlow(hQoS, sock, &destAddr, QOSTrafficTypeBestEffort, QOS_NON_ADAPTIVE_FLOW, &QoSFlowId)) {
 			DWORD dscp = DSCP;
 			mQOSSetFlow(hQoS, QoSFlowId, QOSSetOutgoingDSCPValue, sizeof(dscp), &dscp, 0, NULL);
 			marked = true;

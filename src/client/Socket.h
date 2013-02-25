@@ -313,6 +313,7 @@ private:
 	pfnQOSSetFlow mQOSSetFlow;
 
 	QOS_FLOWID QoSFlowId;
+	SOCKADDR destAddr;
 #endif
 
 	void initQoS();
