@@ -202,6 +202,7 @@ public:
 				DEFAULT_DSCP_MARK,
 				HUB_DSCP_MARK,
 				PEER_DSCP_MARK,
+				HTTP_PING_INTERVAL,
                 INT_LAST };
 
 	enum Int64Setting { INT64_FIRST = INT_LAST + 1,

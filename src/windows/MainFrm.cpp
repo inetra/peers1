@@ -394,8 +394,10 @@ LRESULT MainFrame::OnCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 
 	if (!SETTING(HTTP_PING_ADDRESS).empty()) {
 		pinger->downloadFile(SETTING(HTTP_PING_ADDRESS));
+		if (SETTING(HTTP_PING_INTERVAL) > 60*1000) {
+			SetTimer(PINGER_TIMER, SETTING(HTTP_PING_INTERVAL));
+		}
 	}
-	SetTimer(PINGER_TIMER, 299993); // Prime number less than 5 minutes
 
 	if(BOOLSETTING(OPEN_ADVICE)) PostMessage(WM_COMMAND, IDC_ADVICE_WINDOW);
 	if(BOOLSETTING(OPEN_FAVORITE_HUBS)) PostMessage(WM_COMMAND, IDC_FAVORITES);
@@ -1065,6 +1067,15 @@ void MainFrame::onDownloadComplete(HttpUpdateDownloader* downloader) throw() {
 #endif
 	case UPDATE_MODE_CONFIGURATION:
 		ConfigurationPatcher::load();
+		KillTimer(PINGER_TIMER);
+
+		if (!SETTING(HTTP_PING_ADDRESS).empty()) {
+			pinger->downloadFile(SETTING(HTTP_PING_ADDRESS));
+			if (SETTING(HTTP_PING_INTERVAL) > 60*1000) {
+				SetTimer(PINGER_TIMER, SETTING(HTTP_PING_INTERVAL));
+			}
+		}
+
 		break;
 	}
 }

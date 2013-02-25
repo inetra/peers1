@@ -186,6 +186,7 @@ const string SettingsManager::settingTags[] =
 	"DefaultDSCPmark",
 	"HubDSCPmark",
 	"PeerDSCPmark",
+	"HTTPPingInterval",
 	SENTRY,
 	
 	
@@ -768,6 +769,7 @@ void SettingsManager::setDefaults()
 	setDefault(DEFAULT_DSCP_MARK, 0);
 	setDefault(HUB_DSCP_MARK, 0);
 	setDefault(PEER_DSCP_MARK, 0);
+	setDefault(HTTP_PING_INTERVAL, 0);
 
     //make sure the total of the following and PROGRESS_BACK_COLOR are under 255,255,255, since they are added together
 	setDefault(COLOR_AVOIDING, RGB(100, 0, 0));
