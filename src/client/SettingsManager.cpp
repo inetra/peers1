@@ -80,6 +80,7 @@ const string SettingsManager::settingTags[] =
 	"RatioTemplate",//[+] WhiteD. Custom ratio message
     "UrlTestIp", //[+]PPA
 	"CustomVideoPlayer",
+	"HTTPPingAddress",
     SENTRY, 
 
 	

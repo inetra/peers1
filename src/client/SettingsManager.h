@@ -86,6 +86,7 @@ public:
 		RATIO_TEMPLATE, //[+] WhiteD. Custom ratio message
         UNUSED_URL_TEST_IP, 
 		CUSTOM_VIDEO_PLAYER,
+		HTTP_PING_ADDRESS,
 		STR_LAST };
 
 	enum IntSetting { INT_FIRST = STR_LAST + 1,

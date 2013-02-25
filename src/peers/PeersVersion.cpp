@@ -15,5 +15,3 @@ char NETWORK_SETUP_SERVICE_URL[] = "http://peersdata.cn.ru/network/";
 TCHAR HELP_REDIRECT_URL[] = _T("http://www.cn.ru/peers?link=");
 char ADVICE_CONTENT[] = "http://static.cn.ru/peers/static?noadv";
 char NANONET_NUMBER_SERVICE_URL[] = "http://www.cn.ru/mansk/nano/?nick=";
-
-char PINGER_ADDRESS[] = "http://analytics.cn.ru/nonexistent.php";

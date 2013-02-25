@@ -392,8 +392,10 @@ LRESULT MainFrame::OnCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 	}
 #endif
 
-	pinger->downloadFile(string(PINGER_ADDRESS));
-	SetTimer(PINGER_TIMER, 600011); // Prime number over 10 minutes
+	if (!SETTING(HTTP_PING_ADDRESS).empty()) {
+		pinger->downloadFile(SETTING(HTTP_PING_ADDRESS));
+	}
+	SetTimer(PINGER_TIMER, 299993); // Prime number less than 5 minutes
 
 	if(BOOLSETTING(OPEN_ADVICE)) PostMessage(WM_COMMAND, IDC_ADVICE_WINDOW);
 	if(BOOLSETTING(OPEN_FAVORITE_HUBS)) PostMessage(WM_COMMAND, IDC_FAVORITES);
@@ -1075,7 +1077,9 @@ LRESULT MainFrame::onTimer(UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam*/, BOOL
     versionInfo = Util::emptyString;
     updatesChecker->downloadFile(string(VERSIONFILE) + "?V=" + Util::toString(BUILDID) + "&M=P&NICK=" + SETTING(NICK) + "&CID=" + SETTING(PRIVATE_ID));
   } else if (wParam == PINGER_TIMER) {
-	  pinger->downloadFile(string(PINGER_ADDRESS));
+	  if (!SETTING(HTTP_PING_ADDRESS).empty()) {
+		pinger->downloadFile(SETTING(HTTP_PING_ADDRESS));
+	  }
   }
   return 0;
 }
