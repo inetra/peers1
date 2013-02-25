@@ -207,6 +207,7 @@ LRESULT MainFrame::OnCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 		}
 	}
 	WinUtil::init(m_hWnd);
+	WinUtil::allowUserTOSSetting();
 
 	trayMessage = RegisterWindowMessage(_T("TaskbarCreated"));
 

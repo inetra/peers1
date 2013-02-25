@@ -1364,6 +1364,17 @@ void WinUtil::unRegisterMagnetHandler() {
 	SHDeleteKey(HKEY_LOCAL_MACHINE, _T("magnet"));
 }
 
+void WinUtil::allowUserTOSSetting() {
+	HKEY hk;
+	DWORD value = 0;
+	// Allow setting TOS in Windows <= XP
+	// see http://support.microsoft.com/kb/248611
+	if (::RegCreateKeyEx(HKEY_LOCAL_MACHINE, _T("SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters"), 0, NULL, REG_OPTION_NON_VOLATILE, KEY_WRITE, NULL, &hk, NULL) == ERROR_SUCCESS) {
+		::RegSetValueEx(hk, _T("DisableUserTOSSetting"), NULL, REG_DWORD, (LPBYTE)&value, sizeof(value));
+		::RegCloseKey(hk);
+	}
+}
+
 bool WinUtil::handleLink(const tstring& url) {
 	if (_tcsnicmp(url.c_str(), _T("magnet:?"), 8) == 0) {
 		WinUtil::parseMagnetUri(url);
