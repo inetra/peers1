@@ -453,7 +453,9 @@ LRESULT MainFrame::OnCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 
 #ifndef BETA
 	if(SETTING(NICK).empty()) {
-		PostMessage(WM_COMMAND, ID_FILE_SETTINGS);
+		// GENERATE NICK! Fix #PEERS1-58 && #PEERS1-43
+		string nick = CID::generate().toBase32();
+		SettingsManager::getInstance()->set(SettingsManager::NICK, nick);
 	}
 #endif
 
