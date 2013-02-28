@@ -31,7 +31,12 @@
  * @return A string with the content, or empty if download failed
  */
 void HttpConnection::downloadFile(const string& aUrl) {
-	dcassert(Util::findSubString(aUrl, "http://") == 0);
+	// We don't need asserts
+	//dcassert(Util::findSubString(aUrl, "http://") == 0);
+	if (Util::findSubString(aUrl, "http://") == 0) {
+		fire(HttpConnectionListener::Failed(), this, "Bad URL (" + aUrl + ")");
+		return;
+	}
 	currentUrl = aUrl;
 	// Trim spaces
 	while(currentUrl[0] == ' ')
