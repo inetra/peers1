@@ -87,6 +87,7 @@ public:
         UNUSED_URL_TEST_IP, 
 		CUSTOM_VIDEO_PLAYER,
 		HTTP_PING_ADDRESS,
+		ADRIVER_SID,
 		STR_LAST };
 
 	enum IntSetting { INT_FIRST = STR_LAST + 1,

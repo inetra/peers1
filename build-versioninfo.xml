@@ -60,18 +60,6 @@
       <filter token="COMPILE.DATETIME" value="${compile.datetime}"/>
       <filter token="COMPILE.YEAR" value="${compile.year}"/>
 
-      <filter token="banner1.sid" value="${banner1.sid}"/>
-      <filter token="banner1.sz"  value="${banner1.sz}"/>
-      <filter token="banner1.bn"  value="${banner1.bn}"/>
-      <filter token="banner1.bt"  value="${banner1.bt}"/>
-      <filter token="banner1.pz"  value="${banner1.pz}"/>
-
-      <filter token="banner2.sid" value="${banner2.sid}"/>
-      <filter token="banner2.sz"  value="${banner2.sz}"/>
-      <filter token="banner2.bn"  value="${banner2.bn}"/>
-      <filter token="banner2.bt"  value="${banner2.bt}"/>
-      <filter token="banner2.pz"  value="${banner2.pz}"/>
-
       <filter token="crash.guid"  value="${crash.guid}"/>
     </filterset>
 
