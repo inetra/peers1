@@ -44,6 +44,7 @@
 #include "PGLoader.h"
 #include "peers/ClientLifeCycle.h"
 #include "peers/ConfigurationPatcher.h"
+#include "peers/PiwikTracker.h"
 
 /*
 #ifdef _STLP_DEBUG
@@ -104,6 +105,7 @@ void startup(ProgressCallback* callback, const StartupConfiguration* configurati
     callback->showMessage(TSTRING(PG_PLUGIN));
   }
 #endif
+  PiwikTracker::newInstance("http://peers-lab.ntk.novotelecom.ru/piwik/piwik.php?idsite=1");
   PGLoader::newInstance();
   callback->showMessage(TSTRING(HASH_DATABASE));
   HashManager::getInstance()->startup();
