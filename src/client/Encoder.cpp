@@ -113,6 +113,21 @@ bool Encoder::isBase32(const char* src)
 	return true;
 }
 
+string Encoder::toHex(const uint8_t* src, size_t len)
+{
+	string result;
+	uint8_t next;
+
+	for (size_t i=0; i < len; ++i) {
+		next = src[i]/16;
+		result += (next >= 10) ? 'A' + (next - 10) : '0' + next;
+		next = src[i]%16;
+		result += (next >= 10) ? 'A' + (next - 10) : '0' + next;
+	}
+
+	return result;
+}
+
 /**
  * @file
  * $Id: Encoder.cpp,v 1.1.1.1 2007/09/27 13:21:19 alexey Exp $

@@ -26,6 +26,7 @@
 #include "../client/PGLoader.h"
 #include "../client/ShareManager.h"
 #include "../peers/PeersSearchBar.h"
+#include "../client/peers/PiwikTracker.h"
 
 #define FILTER_LENGTH 20
 #define FILTER_RIGHT_MARGIN 8
@@ -834,6 +835,12 @@ LRESULT SearchFrame::onSpeaker(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL
 
 			ctrlResults.deleteAllItems();
 			resultsCount = 0;
+
+			//2piwik
+			PiwikTracker::varsMap p;
+			p["search"] = aSearch->getTarget();
+			p["search_cat"] = Util::toString(aSearch->getTypeMode());
+			PiwikTracker::getInstance()->trackAction("search", "/search", &p, 0);
 
 			{
 				Lock l(cs);

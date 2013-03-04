@@ -33,7 +33,7 @@
 void HttpConnection::downloadFile(const string& aUrl) {
 	// We don't need asserts
 	//dcassert(Util::findSubString(aUrl, "http://") == 0);
-	if (Util::findSubString(aUrl, "http://") == 0) {
+	if (Util::findSubString(aUrl, "http://") != 0) {
 		fire(HttpConnectionListener::Failed(), this, "Bad URL (" + aUrl + ")");
 		return;
 	}
