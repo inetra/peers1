@@ -35,6 +35,7 @@
 #include "DebugManager.h"
 #include "QueueManager.h"
 //[-]PPA [Doxygen 1.5.1] #include "ZUtils.h"
+#include "peers/PiwikTracker.h"
 
 NmdcHub::NmdcHub(const string& clientId, const string& aHubURL) : 
 Client(clientId, aHubURL, '|', false), 
@@ -269,6 +270,11 @@ void NmdcHub::onLine(const string& aLine) throw() {
 	if (m_protocolState == PS_WAITING_USER_LIST && (cmd != "$MyINFO" && cmd != "$HubName" && cmd != "$ZOn" || m_waitUserListStarted!=0 && GET_TICK() > m_waitUserListStarted + (tick_t) 90 * 1000)) {
 		m_protocolState = PS_DONE;
 		fire(ClientListener::UserListReceived(), this);
+		//2piwik
+		PiwikTracker::varsMap p;
+		p["url"] = getHubUrl();
+		p["mode"] = isActive() ? "active" : "passive";
+		PiwikTracker::getInstance()->trackAction("logined", "/logined", 0, &p);
 	}
 
 	if(cmd == "$Search") {
