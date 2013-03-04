@@ -274,7 +274,7 @@ void NmdcHub::onLine(const string& aLine) throw() {
 		PiwikTracker::varsMap p;
 		p["url"] = getHubUrl();
 		p["mode"] = isActive() ? "active" : "passive";
-		PiwikTracker::getInstance()->trackAction("logined", "/logined", 0, &p);
+		PiwikTracker::getInstance()->trackAction("logined", "/logined/" + p["url"], 0, &p);
 	}
 
 	if(cmd == "$Search") {

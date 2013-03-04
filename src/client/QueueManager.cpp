@@ -1346,7 +1346,7 @@ void QueueManager::remove(const string& aTarget) throw() {
 		p["size"] = Util::toString(q->getSize());	
 		p["src"] = Util::toString(q->getSources().size());
 		p["time"] = Util::toString(GET_TIME() - q->getAdded());
-		p["percent"] = Util::toString(q->getDownloadedBytes()*100.0/q->getSize());
+		p["bytes"] = Util::toString(q->getDownloadedBytes());
 		PiwikTracker::getInstance()->trackAction("download/remove", "/download/remove/" + p["TTH"], 0, &p);
 
 		userQueue.remove(q);

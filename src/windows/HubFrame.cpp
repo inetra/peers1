@@ -43,6 +43,7 @@
 #include "../peers/Sounds.h"
 
 #include "../client/CID.h"
+#include "../client/peers/PiwikTracker.h"
 
 #define VPADDING 8
 
@@ -379,6 +380,7 @@ void HubFrame::commandMe(ChatCommandContext* context) {
 
 void HubFrame::activateChat(bool activateIfAlreadyCreated) {
   if (m_chatFrame == NULL) {
+	  PiwikTracker::getInstance()->trackAction("chat_activated", "/chat/" + client->getHubUrl());
     m_chatFrame = new HubChatFrame(this, this, this);
     m_chatFrame->addWindowListener(this);
     m_chatFrame->CreateEx(WinUtil::mdiClient, rcDefault);
