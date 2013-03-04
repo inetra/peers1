@@ -105,7 +105,7 @@ void startup(ProgressCallback* callback, const StartupConfiguration* configurati
     callback->showMessage(TSTRING(PG_PLUGIN));
   }
 #endif
-  PiwikTracker::newInstance(PiwikTrackerInfo("http://analytics.cn.ru/piwik.php", 1, "peers.cn.ru"));
+  PiwikTracker::newInstance(PiwikTrackerInfo("http://analytics.cn.ru/piwik.php", 2, "peers.cn.ru"));
   PGLoader::newInstance();
   callback->showMessage(TSTRING(HASH_DATABASE));
   HashManager::getInstance()->startup();
