@@ -69,6 +69,9 @@
     <copy file="${versioninfo.dir}/${versioninfo.template.h}" tofile="${versioninfo.dir}/${versioninfo.h}">
       <filterset refid="versioninfo.tokens"/>
     </copy>
+    <copy file="${setup.version.template.txt}" tofile="${setup.version.txt}">
+      <filterset refid="versioninfo.tokens"/>
+    </copy>
   </target>
 
   <target name="versioninfo" depends="versioninfo.prepare, versioninfo.copy">
