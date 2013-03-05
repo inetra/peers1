@@ -13,6 +13,9 @@
   <property name="versioninfo.h" value="peers/PeersVersion.h"/>
   <property name="versioninfo.template.h" value="peers/PeersVersion.template.h"/>
 
+  <property name="setup.version.txt" value="version.txt"/>
+  <property name="setup.version.template.txt" value="version.template.txt"/>
+
   <property name="versioned.script.prefix" value="Build-"/>
 
   <property name="src.dir" value="${basedir}/src"/>
@@ -83,19 +86,9 @@
 
     <mkdir dir="${basedir}/Output/${build.number}"/>
 
-    <copy file="Peers.iss" tofile="${versioned.script.prefix}${build.number}.iss">
-      <filterset refid="versioninfo.tokens"/>
-    </copy>
-    <delete>
-      <fileset dir="${basedir}" casesensitive="false">
-        <include name="**/${versioned.script.prefix}*.iss"/>
-        <exclude name="**/${versioned.script.prefix}${build.number}.iss"/>
-      </fileset>
-    </delete>
-
-    <exec executable="${InnoSetupCompiler}">
-      <arg line="${versioned.script.prefix}${build.number}.iss"/>
-    </exec>
+    <apply executable="${InnoSetupCompiler}" parallel="false">
+      <fileset dir="${basedir}" includes="*.iss" />
+    </apply>
 
     <property name="PeersUpdateZip" value="${basedir}/Output/${build.number}/PeersUpdate${build.number}.zip"/>
     <zip zipfile="${PeersUpdateZip}">

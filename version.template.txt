@@ -1,0 +1,10 @@
+[Setup]
+VersionInfoVersion=@VERSION@
+AppVersion= @VERSION@
+OutputDir=Output\@BUILD.NUMBER@
+
+[code]
+function LoadVerName(Separator: String): String;
+begin
+	Result := 'Peers r@BUILD.NUMBER@';
+end;

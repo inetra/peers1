@@ -4,17 +4,13 @@
 #define VERSIONSTRING "(r@BUILD.NUMBER@)"
 #define BUILDID @BUILD.NUMBER@
 
-#define BANNER1_SID "@banner1.sid@"
-#define BANNER1_SZ  "@banner1.sz@"
-#define BANNER1_BN  "@banner1.bn@"
-#define BANNER1_BT  "@banner1.bt@"
-#define BANNER1_PZ  "@banner1.pz@"
+#define BANNER_SID "170878"
+#define BANNER_SZ  "peers"
+#define BANNER_BT  "54"
+#define BANNER_PZ  "0"
 
-#define BANNER2_SID "@banner2.sid@"
-#define BANNER2_SZ  "@banner2.sz@"
-#define BANNER2_BN  "@banner2.bn@"
-#define BANNER2_BT  "@banner2.bt@"
-#define BANNER2_PZ  "@banner2.pz@"
+#define BANNER1_BN  "16"
+#define BANNER2_BN  "17"
 
 #define CRASH_HANDLER_GUID "@crash.guid@"
 

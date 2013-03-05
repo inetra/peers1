@@ -29,6 +29,8 @@ public:
 	}
 	static void fromBase32(const char* src, uint8_t* dst, size_t len);
 	static bool isBase32(const char* src);
+
+	static string toHex(const uint8_t* src, size_t len);
 private:
 	static const int8_t base32Table[];
 	static const char base32Alphabet[];

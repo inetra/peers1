@@ -73,6 +73,8 @@
 #include "../peers/AdviceFrame.h"
 #include "../peers/AutodetectNetwork.h"
 
+#include "../client/peers/PiwikTracker.h"
+
 #ifdef PPA_INCLUDE_CHECK_UPDATE
 enum {
 	UPDATE_MODE_APP,
@@ -619,8 +621,14 @@ void MainFrame::startUPnP() {
 	UPnP_TCPConnection = new UPnP( Util::getLocalIp(), "TCP", APPNAME " Download Port (" + Util::toString(ConnectionManager::getInstance()->getPort()) + " TCP)", ConnectionManager::getInstance()->getPort() );
 	UPnP_UDPConnection = new UPnP( Util::getLocalIp(), "UDP", APPNAME " Search Port (" + Util::toString(SearchManager::getInstance()->getPort()) + " UDP)", SearchManager::getInstance()->getPort() );
 		
-	UPnP_UDPConnection->OpenPorts();
-	UPnP_TCPConnection->OpenPorts();
+	HRESULT udp = UPnP_UDPConnection->OpenPorts();
+	HRESULT tcp = UPnP_TCPConnection->OpenPorts();
+
+	PiwikTracker::varsMap p;
+	p["found"] = UPnP_TCPConnection->success() && UPnP_UDPConnection->success() ? "true" : "false";
+	p["udp"] = udp == S_OK ? "pass" : "fail";
+	p["tcp"] = tcp == S_OK ? "pass" : "fail";
+	PiwikTracker::getInstance()->trackAction("upnp", "/upnp", 0, &p);
 }
 
 void MainFrame::stopUPnP() {

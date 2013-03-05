@@ -36,6 +36,7 @@
 #include "FinishedManager.h"
 #include "SharedFileStream.h"
 #include "PGLoader.h"
+#include "peers/PiwikTracker.h"
 
 static const string UPLOAD_AREA = "Uploads";
 
@@ -611,6 +612,14 @@ void UploadManager::on(UserConnectionListener::Failed, UserConnection* aSource, 
 
 	if(u) {
 		fire(UploadManagerListener::Failed(), u, aError);
+		//2piwik
+		PiwikTracker::varsMap p;
+		p["TTH"] = u->getTTH().toBase32();
+		p["size"] = Util::toString(u->getSize());
+		p["time"] = Util::toString((GET_TICK() - u->getStart()) / 1000);
+		p["bytes"] = Util::toString(u->getActual());
+		PiwikTracker::getInstance()->trackAction("upload/failed", "/upload/failed/" + p["TTH"], 0, &p);
+
 
 		dcdebug("UM::onFailed: Removing upload from %s\n", aSource->getUser()->getFirstNick().c_str());
 		removeUpload(u);
@@ -641,8 +650,14 @@ void UploadManager::logUpload(Upload* u) {
 		u->getParams(u->getUserConnection(), params);
 		LOG(LogManager::UPLOAD, params);
 	}
-
 	fire(UploadManagerListener::Complete(), u);
+	//2piwik
+	PiwikTracker::varsMap p;
+	p["TTH"] = u->getTTH().toBase32();
+	p["size"] = Util::toString(u->getSize());
+	p["time"] = Util::toString((GET_TICK() - u->getStart()) / 1000);
+	p["bytes"] = Util::toString(u->getActual());
+	PiwikTracker::getInstance()->trackAction("upload/complete", "/upload/complete/" + p["TTH"], 0, &p);
 }
 
 void UploadManager::addFailedUpload(const UserPtr& User, const string& file, int64_t pos, int64_t size) {
