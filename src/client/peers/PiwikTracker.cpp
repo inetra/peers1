@@ -15,7 +15,7 @@
 
 class URL {
 public:
-	URL(const string &initURL) {
+	URL(string initURL) {
 		url = initURL;
 	};
 
@@ -87,6 +87,7 @@ PiwikTracker::~PiwikTracker(void) {
 
 
 void PiwikTracker::trackAction(const string& action, const string &URI, const varsMap* vars, const varsMap* cvars) {
+	Lock l(cs);
 	URL url = URL(baseUrl);
 	url.addParam("url", siteUrl + URI);
 	url.addParam("action_name", action);
