@@ -63,13 +63,17 @@
       <filter token="crash.guid"  value="${crash.guid}"/>
     </filterset>
 
+    <delete file="${versioninfo.dir}/${versioninfo.rc}" />
+    <delete file="${versioninfo.dir}/${versioninfo.h}" />
+    <delete file="${basedir}/${setup.version.txt}" />
+
     <copy file="${versioninfo.dir}/${versioninfo.template}" tofile="${versioninfo.dir}/${versioninfo.rc}">
       <filterset refid="versioninfo.tokens"/>
     </copy>
     <copy file="${versioninfo.dir}/${versioninfo.template.h}" tofile="${versioninfo.dir}/${versioninfo.h}">
       <filterset refid="versioninfo.tokens"/>
     </copy>
-    <copy file="${setup.version.template.txt}" tofile="${setup.version.txt}">
+    <copy file="${basedir}/${setup.version.template.txt}" tofile="${basedir}/${setup.version.txt}">
       <filterset refid="versioninfo.tokens"/>
     </copy>
   </target>
