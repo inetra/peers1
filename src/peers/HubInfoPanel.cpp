@@ -139,7 +139,7 @@ void HubInfoPanel::createBannerNow() {
 	if (!showBanner) {
 		showBanner = true;
 		USES_CONVERSION;
-		i_banner.LoadAdRiverXMLBanner(BANNER2_SID, BANNER2_SZ, BANNER2_BN, BANNER2_BT, BANNER2_PZ);
+		i_banner.LoadAdRiverXMLBanner(SETTING(ADRIVER_SID), BANNER_SZ, BANNER2_BN, BANNER_BT, BANNER_PZ);
 	}
 }
 

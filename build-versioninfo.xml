@@ -21,7 +21,7 @@
     <exec executable="svn" dir="${versioninfo.dir}">
       <arg line="-q commit -m &quot;version = ${build.number}&quot; ${versioninfo.data}"/>
     </exec>
-    <property name="file.version" value="${major.version}.${minor.version}.${micro.version}.${build.number}"/>
+    <property name="file.version" value="${major.version}.${minor.version}.${build.number}.${micro.version}"/>
     <property name="product.version" value="${major.version}.${minor.version}"/>
     <echo message="Time=${compile.datetime}, Version=${file.version}"/>
     <delete file="${versioninfo.dir}/${versioninfo.rc}"/>
@@ -45,7 +45,7 @@
 
   <target name="versioninfo.current.load" unless="file.version">
     <property file="${versioninfo.dir}/${versioninfo.data}"/>
-    <property name="file.version" value="${major.version}.${minor.version}.${micro.version}.${build.number}"/>
+    <property name="file.version" value="${major.version}.${minor.version}.${build.number}.${micro.version}"/>
     <property name="product.version" value="${major.version}.${minor.version}"/>
     <echo message="Time=${compile.datetime}, Version=${file.version}"/>
   </target>
@@ -56,29 +56,24 @@
       <filter token="VERSION" value="${file.version}"/>
       <filter token="FILE.VERSION" value="${file.version}"/>
       <filter token="PRODUCT.VERSION" value="${product.version}"/>
-      <filter token="COMMA.VERSION" value="${major.version},${minor.version},${micro.version},${build.number}"/>
+      <filter token="COMMA.VERSION" value="${major.version},${minor.version},${build.number},${micro.version}"/>
       <filter token="COMPILE.DATETIME" value="${compile.datetime}"/>
       <filter token="COMPILE.YEAR" value="${compile.year}"/>
 
-      <filter token="banner1.sid" value="${banner1.sid}"/>
-      <filter token="banner1.sz"  value="${banner1.sz}"/>
-      <filter token="banner1.bn"  value="${banner1.bn}"/>
-      <filter token="banner1.bt"  value="${banner1.bt}"/>
-      <filter token="banner1.pz"  value="${banner1.pz}"/>
-
-      <filter token="banner2.sid" value="${banner2.sid}"/>
-      <filter token="banner2.sz"  value="${banner2.sz}"/>
-      <filter token="banner2.bn"  value="${banner2.bn}"/>
-      <filter token="banner2.bt"  value="${banner2.bt}"/>
-      <filter token="banner2.pz"  value="${banner2.pz}"/>
-
       <filter token="crash.guid"  value="${crash.guid}"/>
     </filterset>
+
+    <delete file="${versioninfo.dir}/${versioninfo.rc}" />
+    <delete file="${versioninfo.dir}/${versioninfo.h}" />
+    <delete file="${basedir}/${setup.version.txt}" />
 
     <copy file="${versioninfo.dir}/${versioninfo.template}" tofile="${versioninfo.dir}/${versioninfo.rc}">
       <filterset refid="versioninfo.tokens"/>
     </copy>
     <copy file="${versioninfo.dir}/${versioninfo.template.h}" tofile="${versioninfo.dir}/${versioninfo.h}">
+      <filterset refid="versioninfo.tokens"/>
+    </copy>
+    <copy file="${basedir}/${setup.version.template.txt}" tofile="${basedir}/${setup.version.txt}">
       <filterset refid="versioninfo.tokens"/>
     </copy>
   </target>

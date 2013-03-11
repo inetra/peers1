@@ -44,6 +44,7 @@
 #include "PGLoader.h"
 #include "peers/ClientLifeCycle.h"
 #include "peers/ConfigurationPatcher.h"
+#include "peers/PiwikTracker.h"
 
 /*
 #ifdef _STLP_DEBUG
@@ -93,6 +94,7 @@ void startup(ProgressCallback* callback, const StartupConfiguration* configurati
   ConfigurationPatcher::load();
   // allow localized defaults in string settings
   SettingsManager::getInstance()->setDefaults();
+  PiwikTracker::newInstance(PiwikTrackerInfo("http://analytics.cn.ru/piwik.php", 2, "peers.cn.ru"));
 
   FavoriteManager::getInstance()->load(dynamic_cast<const FavoriteManagerInitializer*>(configuration));
   CryptoManager::getInstance()->loadCertificates();
@@ -118,6 +120,7 @@ void shutdown(bool exp /*= false*/) {
   TimerManager::getInstance()->shutdown();
   HashManager::getInstance()->shutdown();
   ConnectionManager::getInstance()->shutdown();
+  PiwikTracker::getInstance()->shutdown();
 
 #ifdef PPA_INCLUDE_DNS
   Socket::dnsCache.waitShutdown(); // !SMT!-IP
@@ -149,6 +152,7 @@ void shutdown(bool exp /*= false*/) {
   DebugManager::deleteInstance();
   ResourceManager::deleteInstance();
   PGLoader::deleteInstance();
+  PiwikTracker::deleteInstance();
 }
 
 /**

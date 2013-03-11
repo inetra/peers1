@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "AdviceFrame.h"
+#include "PeersVersion.h"
 
 #define BANNER_WIDTH  600
 #define BANNER_HEIGHT 90
@@ -44,7 +45,7 @@ AdviceFrame::~AdviceFrame()
 LRESULT AdviceFrame::onCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled) {
 	if (i_banner.Create(m_hWnd, rcDefault, NULL, WS_CHILD | WS_VISIBLE | WS_CLIPCHILDREN | WS_CLIPSIBLINGS | BS_OWNERDRAW | SS_ICON | SS_NOTIFY)) {
 		USES_CONVERSION;
-		i_banner.LoadAdRiverXMLBanner(BANNER1_SID, BANNER1_SZ, BANNER1_BN, BANNER1_BT, BANNER1_PZ);
+		i_banner.LoadAdRiverXMLBanner(SETTING(ADRIVER_SID), BANNER_SZ, BANNER1_BN, BANNER_BT, BANNER_PZ);
 	}
 
 	if (m_browser.Create(m_hWnd, rcDefault, NULL, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN)) {

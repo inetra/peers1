@@ -1,0 +1,14 @@
+*.vcproj.*
+Thumbs.db
+src/StrongDC.suo
+src/StrongDC.ncb
+src/compiled/FlylinkDC.*
+setup/Peers.*
+setup/*.dll
+src/compiled/Settings/
+Output
+src/Version.rc
+src/peers/PeersVersion.h
+src/compiled/release
+src/compiled/debug
+src/vc7

@@ -55,7 +55,8 @@ public:
           port(80), 
           size(-1), 
           moved302(false), 
-          socket(NULL) { }
+          socket(NULL),
+		  lastActivity(0) { }
 	~HttpConnection() throw() { 
 		if(socket) {
 			socket->removeListener(this); 
@@ -65,6 +66,7 @@ public:
 
 	bool followRedirection;
 	map<string, string> cookies;
+	GETSET(uint64_t, lastActivity, LastActivity); 
 private:
 
 	HttpConnection(const HttpConnection&);

@@ -998,6 +998,14 @@
 				RelativePath=".\client\peers\IpBlocksLoader.h"
 				>
 			</File>
+			<File
+				RelativePath=".\client\peers\PiwikTracker.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\client\peers\PiwikTracker.h"
+				>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>

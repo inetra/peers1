@@ -81,6 +81,7 @@ const string SettingsManager::settingTags[] =
     "UrlTestIp", //[+]PPA
 	"CustomVideoPlayer",
 	"HTTPPingAddress",
+	"AdriverSID",
     SENTRY, 
 
 	
@@ -250,6 +251,7 @@ static pair<string,string> getDownloadsPath() {
 void SettingsManager::setDefaults()
 {
 	pair<string,string> downloadPaths = getDownloadsPath();
+	setDefault(ADRIVER_SID, BANNER_SID);
 	setDefault(DOWNLOAD_DIRECTORY, downloadPaths.first);
 	setDefault(TEMP_DOWNLOAD_DIRECTORY, downloadPaths.second);
 	setDefault(DOWNLOAD_DIRECTORY_SHARED, Util::emptyString);

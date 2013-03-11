@@ -36,6 +36,7 @@ public:
 	HRESULT OpenPorts();
 	HRESULT ClosePorts();
 	string GetExternalIP();
+	bool success() { return (devlist != 0); }
 private:
 	struct UPNPDev* devlist;
 	struct UPNPUrls urls;
