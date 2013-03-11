@@ -94,6 +94,7 @@ void startup(ProgressCallback* callback, const StartupConfiguration* configurati
   ConfigurationPatcher::load();
   // allow localized defaults in string settings
   SettingsManager::getInstance()->setDefaults();
+  PiwikTracker::newInstance(PiwikTrackerInfo("http://analytics.cn.ru/piwik.php", 2, "peers.cn.ru"));
 
   FavoriteManager::getInstance()->load(dynamic_cast<const FavoriteManagerInitializer*>(configuration));
   CryptoManager::getInstance()->loadCertificates();
@@ -105,7 +106,6 @@ void startup(ProgressCallback* callback, const StartupConfiguration* configurati
     callback->showMessage(TSTRING(PG_PLUGIN));
   }
 #endif
-  PiwikTracker::newInstance(PiwikTrackerInfo("http://analytics.cn.ru/piwik.php", 2, "peers.cn.ru"));
   PGLoader::newInstance();
   callback->showMessage(TSTRING(HASH_DATABASE));
   HashManager::getInstance()->startup();
@@ -117,7 +117,6 @@ void startup(ProgressCallback* callback, const StartupConfiguration* configurati
 }
 
 void shutdown(bool exp /*= false*/) {
-  PiwikTracker::deleteInstance();
   TimerManager::getInstance()->shutdown();
   HashManager::getInstance()->shutdown();
   ConnectionManager::getInstance()->shutdown();
@@ -152,6 +151,7 @@ void shutdown(bool exp /*= false*/) {
   DebugManager::deleteInstance();
   ResourceManager::deleteInstance();
   PGLoader::deleteInstance();
+  PiwikTracker::deleteInstance();
 }
 
 /**
