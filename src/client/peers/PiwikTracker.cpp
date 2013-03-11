@@ -50,6 +50,7 @@ private:
 
 
 PiwikTracker::PiwikTracker(const PiwikTrackerInfo& trackerInfo) {
+	TimerManager::getInstance()->addListener(this);
 	string _id = string(Encoder::toHex(CID(SETTING(PRIVATE_ID)).data(), CID::SIZE), 0, 16);
 	URL url = URL(trackerInfo.url);
 	url.addParam("idsite", Util::toString(trackerInfo.siteId));
@@ -75,19 +76,19 @@ PiwikTracker::PiwikTracker(const PiwikTrackerInfo& trackerInfo) {
 
 	baseUrl = url.getEncodedUrl();
 
+	shuttingDown = false;
 	startTime = GET_TIME();
 	trackAction("start", "/");
 }
 
 PiwikTracker::~PiwikTracker(void) {
-	varsMap p;
-	p["time"] = Util::toString(GET_TIME() - startTime);
-	trackAction("exit", "/exit", 0, &p);
+
 }
 
 
 void PiwikTracker::trackAction(const string& action, const string &URI, const varsMap* vars, const varsMap* cvars) {
 	Lock l(cs);
+	if (shuttingDown) return;
 	URL url = URL(baseUrl);
 	url.addParam("url", siteUrl + URI);
 	url.addParam("action_name", action);
@@ -99,8 +100,12 @@ void PiwikTracker::trackAction(const string& action, const string &URI, const va
 	if (cvars) {
 		url.addParam("cvar", mapToJSON(*cvars));
 	}
-	HttpConnection *c = new HttpConnection(userAgent);;
-	c->downloadFile(url.getEncodedUrl());
+	HttpConnection *c = new HttpConnection(userAgent);
+	if (c) {
+		c->addListener(this);
+		connections.push_back(c);
+		c->downloadFile(url.getEncodedUrl());
+	}
 }
 
 string PiwikTracker::escapeJSON(const string& value)
@@ -133,4 +138,56 @@ string PiwikTracker::mapToJSON(const varsMap& input) {
 	}
 	result += "}";
 	return result;
+}
+
+void PiwikTracker::shutdown()
+{
+	TimerManager::getInstance()->removeListener(this);
+
+	varsMap p;
+	p["time"] = Util::toString(GET_TIME() - startTime);
+	trackAction("exit", "/exit", 0, &p);
+
+	{
+		Lock l(cs);
+		shuttingDown = true;
+
+		for(vector<HttpConnection*>::iterator j = connections.begin(); j != connections.end(); ++j) {
+			(*j)->cancelDownload();
+		}
+	}
+	// Wait until all connections have died out...
+	while(true) {
+		{
+			Lock l(cs);
+			if(connections.empty()) {
+				break;
+			}
+		}
+		Thread::sleep(50);
+	}
+
+}
+
+void PiwikTracker::putConnection(HttpConnection *c) {
+	Lock l(cs);
+	//c->removeListener(this);
+	connections.erase(remove(connections.begin(), connections.end(), c), connections.end());
+	dead.push_back(c);
+}
+
+void PiwikTracker::on(TimerManagerListener::Second, uint32_t aTick) throw() {	
+	Lock l(cs);
+
+	for(vector<HttpConnection*>::iterator j = connections.begin(); j != connections.end(); ++j) {
+		if(((*j)->getLastActivity() + 10*1000) < aTick) 
+		{
+			(*j)->cancelDownload();
+		}
+	}
+
+	for(vector<HttpConnection*>::iterator j = dead.begin(); j != dead.end(); ++j) {
+		delete *j;
+	}
+	dead.clear();
 }

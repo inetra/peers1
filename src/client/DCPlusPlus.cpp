@@ -120,6 +120,7 @@ void shutdown(bool exp /*= false*/) {
   TimerManager::getInstance()->shutdown();
   HashManager::getInstance()->shutdown();
   ConnectionManager::getInstance()->shutdown();
+  PiwikTracker::getInstance()->shutdown();
 
 #ifdef PPA_INCLUDE_DNS
   Socket::dnsCache.waitShutdown(); // !SMT!-IP

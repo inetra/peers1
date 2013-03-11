@@ -22,6 +22,7 @@
 #include "HttpConnection.h"
 
 #include "SettingsManager.h"
+#include "TimerManager.h"
 
 /**
  * Downloads a file and returns it as a string
@@ -31,6 +32,7 @@
  * @return A string with the content, or empty if download failed
  */
 void HttpConnection::downloadFile(const string& aUrl) {
+	lastActivity = GET_TICK();
 	// We don't need asserts
 	//dcassert(Util::findSubString(aUrl, "http://") == 0);
 	if (Util::findSubString(aUrl, "http://") != 0) {
@@ -89,6 +91,7 @@ void HttpConnection::cancelDownload() {
 
 void HttpConnection::on(BufferedSocketListener::Connected) throw() { 
 	dcassert(socket); 
+	lastActivity = GET_TICK();
 	vector<string> request;
 	request.push_back("GET " + file + " HTTP/1.0");
 	if (!m_userAgent.empty()) {
@@ -127,6 +130,7 @@ void HttpConnection::on(BufferedSocketListener::Connected) throw() {
 }
 
 void HttpConnection::on(BufferedSocketListener::Line, const string& aLine) throw() {
+	lastActivity = GET_TICK();
 	if(!ok) {
 		if(aLine.find("200") == string::npos) {
 			if(aLine.find("302") != string::npos || aLine.find("301") != string::npos){
@@ -189,6 +193,7 @@ void HttpConnection::on(BufferedSocketListener::Line, const string& aLine) throw
 }
 
 void HttpConnection::on(BufferedSocketListener::Failed, const string& aLine) throw() {
+	lastActivity = GET_TICK();
 	socket->removeListener(this);
 	BufferedSocket::putSocket(socket);
 	socket = NULL;
@@ -196,6 +201,7 @@ void HttpConnection::on(BufferedSocketListener::Failed, const string& aLine) thr
 }
 
 void HttpConnection::on(BufferedSocketListener::DataEnd, const string&) throw() {
+	lastActivity = GET_TICK();
 	socket->removeListener(this);
 	socket->disconnect();
 	BufferedSocket::putSocket(socket);
@@ -211,6 +217,7 @@ void HttpConnection::on(BufferedSocketListener::ModeChange) throw() {
 	fire(HttpConnectionListener::Complete(), this, currentUrl); 
 }
 void HttpConnection::on(BufferedSocketListener::Data, uint8_t* aBuf, size_t aLen) throw() {
+	lastActivity = GET_TICK();
 	fire(HttpConnectionListener::Data(), this, aBuf, aLen);
 }
 
