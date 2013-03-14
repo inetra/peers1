@@ -267,7 +267,7 @@ int _cdecl main(int argc, char *argv[]) {
 #ifdef _DEBUG
     DWORD timeout = 2000;
 #else
-    DWORD timeout = 60000;
+    DWORD timeout = 15000;
 #endif
     if (WaitForSingleObject(hParent, timeout) != WAIT_OBJECT_0) {
       debug_log("Error waiting parent");
