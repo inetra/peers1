@@ -142,8 +142,6 @@ string PiwikTracker::mapToJSON(const varsMap& input) {
 
 void PiwikTracker::shutdown()
 {
-	TimerManager::getInstance()->removeListener(this);
-
 	varsMap p;
 	p["time"] = Util::toString(GET_TIME() - startTime);
 	trackAction("exit", "/exit", 0, &p);
@@ -151,10 +149,6 @@ void PiwikTracker::shutdown()
 	{
 		Lock l(cs);
 		shuttingDown = true;
-
-		for(vector<HttpConnection*>::iterator j = connections.begin(); j != connections.end(); ++j) {
-			(*j)->cancelDownload();
-		}
 	}
 	// Wait until all connections have died out...
 	while(true) {
@@ -167,11 +161,11 @@ void PiwikTracker::shutdown()
 		Thread::sleep(50);
 	}
 
+	TimerManager::getInstance()->removeListener(this);
 }
 
 void PiwikTracker::putConnection(HttpConnection *c) {
 	Lock l(cs);
-	//c->removeListener(this);
 	connections.erase(remove(connections.begin(), connections.end(), c), connections.end());
 	dead.push_back(c);
 }
