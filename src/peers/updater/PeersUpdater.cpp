@@ -252,6 +252,103 @@ static bool isValidDirectory(const string& directory) {
 	//TODO: File::exists(Text::acpToUtf8(d));
 }
 
+BOOL KillProcess(
+    IN DWORD dwProcessId
+    )
+{
+    HANDLE hProcess;
+    DWORD dwError;
+
+    // сначала попробуем получить описатель процесса без 
+    // использования дополнительных привилегий
+    hProcess = OpenProcess(PROCESS_TERMINATE, FALSE, dwProcessId);
+    if (hProcess == NULL)
+    {
+        if (GetLastError() != ERROR_ACCESS_DENIED)
+            return FALSE;
+
+        OSVERSIONINFO osvi;
+
+        // определяем версию операционной системы
+        osvi.dwOSVersionInfoSize = sizeof(osvi);
+        GetVersionEx(&osvi);
+
+        // мы больше ничего не можем сделать, если это не Windows NT
+        if (osvi.dwPlatformId != VER_PLATFORM_WIN32_NT)
+            return SetLastError(ERROR_ACCESS_DENIED), FALSE;
+
+        // включим привилегию SE_DEBUG_NAME и попробуем еще раз
+
+        TOKEN_PRIVILEGES Priv, PrivOld;
+        DWORD cbPriv = sizeof(PrivOld);
+        HANDLE hToken;
+
+        // получаем токен текущего потока 
+        if (!OpenThreadToken(GetCurrentThread(), 
+                             TOKEN_QUERY|TOKEN_ADJUST_PRIVILEGES,
+                             FALSE, &hToken))
+        {
+            if (GetLastError() != ERROR_NO_TOKEN)
+                return FALSE;
+
+            // используем токен процесса, если потоку не назначено
+	    // никакого токена
+            if (!OpenProcessToken(GetCurrentProcess(),
+                                  TOKEN_QUERY|TOKEN_ADJUST_PRIVILEGES,
+                                  &hToken))
+                return FALSE;
+        }
+
+        _ASSERTE(ANYSIZE_ARRAY > 0);
+
+        Priv.PrivilegeCount = 1;
+        Priv.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
+        LookupPrivilegeValue(NULL, SE_DEBUG_NAME, &Priv.Privileges[0].Luid);
+
+        // попробуем включить привилегию
+        if (!AdjustTokenPrivileges(hToken, FALSE, &Priv, sizeof(Priv),
+                                   &PrivOld, &cbPriv))
+        {
+            dwError = GetLastError();
+            CloseHandle(hToken);
+            return SetLastError(dwError), FALSE;
+        }
+
+        if (GetLastError() == ERROR_NOT_ALL_ASSIGNED)
+        {
+            // привилегия SE_DEBUG_NAME отсутствует в токене
+            // вызывающего
+            CloseHandle(hToken);
+            return SetLastError(ERROR_ACCESS_DENIED), FALSE;
+        }
+
+        // попробуем открыть описатель процесса еще раз
+        hProcess = OpenProcess(PROCESS_TERMINATE, FALSE, dwProcessId);
+        dwError = GetLastError();
+        
+        // восстанавливаем исходное состояние привилегии
+        AdjustTokenPrivileges(hToken, FALSE, &PrivOld, sizeof(PrivOld),
+                              NULL, NULL);
+        CloseHandle(hToken);
+
+        if (hProcess == NULL)
+            return SetLastError(FALSE), NULL;
+    }
+
+    // пытаемся завершить процесс
+    if (!TerminateProcess(hProcess, (UINT)-1))
+    {
+        dwError = GetLastError();
+        CloseHandle(hProcess);
+        return SetLastError(dwError), FALSE;
+    }
+
+    CloseHandle(hProcess);
+
+    // успешное завершение
+    return TRUE;
+}
+
 //======================================================================
 // Главная точка входа
 //======================================================================
@@ -267,10 +364,16 @@ int _cdecl main(int argc, char *argv[]) {
 #ifdef _DEBUG
     DWORD timeout = 2000;
 #else
-    DWORD timeout = 15000;
+    DWORD timeout = 7000;
 #endif
     if (WaitForSingleObject(hParent, timeout) != WAIT_OBJECT_0) {
-      debug_log("Error waiting parent");
+      debug_log("Error waiting parent for terminate");
+
+	  if (KillProcess(findParentProcessID())) {
+		  debug_log("Parent was killed");
+	  } else {
+		  debug_log("Cannot kill parent, error %d", GetLastError());
+	  }
     }
   }
   else {
