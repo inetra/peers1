@@ -24,6 +24,7 @@
   <property name="SolutionConfigurationDebug" value="Debug"/>
   <property name="SolutionConfigurationRelease" value="Release"/>
   <property name="VisualStudioDevEnv" value="${env.ProgramFiles}/Microsoft Visual Studio 8/Common7/IDE/devenv.exe"/>
+  <property name="SignTool" value="${env.ProgramFiles}/Microsoft Visual Studio 8/SDK/v2.0/Bin/signtool.exe"/>
 
   <property name="vs_build_log" value="peers-build.log"/>
 
@@ -50,6 +51,18 @@
       <arg value="&quot;${SolutionConfiguration}&quot;"/>
       <arg value="/out"/>
       <arg file="${vs_build_log}"/>
+    </exec>
+
+    <exec executable="${SignTool}" dir="${src.dir}" failonerror="true">
+      <arg value="sign"/>
+      <arg value="/a"/>
+      <arg value="compiled/FlylinkDC.exe"/>
+    </exec>
+
+    <exec executable="${SignTool}" dir="${src.dir}" failonerror="true">
+      <arg value="sign"/>
+      <arg value="/a"/>
+      <arg value="compiled/release/PeersUpdater.exe"/>
     </exec>
 
   </target>
@@ -88,6 +101,12 @@
 
     <apply executable="${InnoSetupCompiler}" parallel="false">
       <fileset dir="${basedir}" includes="*.iss" />
+    </apply>
+
+    <apply executable="${SignTool}" parallel="false">
+      <arg value="sign"/>
+      <arg value="/a"/>
+      <fileset dir="${basedir}/Output/${build.number}" includes="*.exe" />
     </apply>
 
     <property name="PeersUpdateZip" value="${basedir}/Output/${build.number}/PeersUpdate${build.number}.zip"/>
