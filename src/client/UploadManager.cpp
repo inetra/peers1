@@ -618,7 +618,7 @@ void UploadManager::on(UserConnectionListener::Failed, UserConnection* aSource, 
 		p["size"] = Util::toString(u->getSize());
 		p["time"] = Util::toString((GET_TICK() - u->getStart()) / 1000);
 		p["bytes"] = Util::toString(u->getActual());
-		PiwikTracker::getInstance()->trackAction("upload/failed", "/upload/failed/" + p["TTH"], 0, &p);
+		PiwikTracker::getInstance()->trackAction("upload/failed", &p);
 
 
 		dcdebug("UM::onFailed: Removing upload from %s\n", aSource->getUser()->getFirstNick().c_str());
@@ -657,7 +657,7 @@ void UploadManager::logUpload(Upload* u) {
 	p["size"] = Util::toString(u->getSize());
 	p["time"] = Util::toString((GET_TICK() - u->getStart()) / 1000);
 	p["bytes"] = Util::toString(u->getActual());
-	PiwikTracker::getInstance()->trackAction("upload/complete", "/upload/complete/" + p["TTH"], 0, &p);
+	PiwikTracker::getInstance()->trackAction("upload/complete", &p);
 }
 
 void UploadManager::addFailedUpload(const UserPtr& User, const string& file, int64_t pos, int64_t size) {
