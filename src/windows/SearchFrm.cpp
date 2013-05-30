@@ -840,7 +840,7 @@ LRESULT SearchFrame::onSpeaker(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL
 			PiwikTracker::varsMap p;
 			p["search"] = aSearch->getTarget();
 			p["search_cat"] = Util::toString(aSearch->getTypeMode());
-			PiwikTracker::getInstance()->trackAction("search", "/search", &p, 0);
+			PiwikTracker::getInstance()->trackAction("search", &p);
 
 			{
 				Lock l(cs);

@@ -628,7 +628,7 @@ void MainFrame::startUPnP() {
 	p["found"] = UPnP_TCPConnection->success() && UPnP_UDPConnection->success() ? "true" : "false";
 	p["udp"] = udp == S_OK ? "pass" : "fail";
 	p["tcp"] = tcp == S_OK ? "pass" : "fail";
-	PiwikTracker::getInstance()->trackAction("upnp", "/upnp", 0, &p);
+	PiwikTracker::getInstance()->trackAction("upnp", &p);
 }
 
 void MainFrame::stopUPnP() {

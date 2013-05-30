@@ -52,21 +52,22 @@ private:
 PiwikTracker::PiwikTracker(const PiwikTrackerInfo& trackerInfo) {
 	TimerManager::getInstance()->addListener(this);
 	string _id = string(Encoder::toHex(CID(SETTING(PRIVATE_ID)).data(), CID::SIZE), 0, 16);
+	string _sid = string(Encoder::toHex(CID::generate().data(), CID::SIZE), 0, 16);
 	URL url = URL(trackerInfo.url);
-	url.addParam("idsite", Util::toString(trackerInfo.siteId));
-	url.addParam("rec", "1");
-	url.addParam("_id", _id);
-	url.addParam("apiv", "1");
-	siteUrl = "http://" + trackerInfo.siteName;
+	url.addParam("s", "2");
+	url.addParam("uid", _id);
+	url.addParam("sid", _sid);
+	url.addParam("v", "1");
 
-	userAgent = APPNAME "/" + Util::toString(BUILDID);
 #ifdef _WIN32
 	OSVERSIONINFO osvi;
     ZeroMemory(&osvi, sizeof(OSVERSIONINFO));
     osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
 
     GetVersionEx(&osvi);
-	userAgent += " (Windows NT " + Util::toString(osvi.dwMajorVersion) + "." + Util::toString(osvi.dwMinorVersion) + ")";
+	userAgent += "WindowsNT/" + Util::toString(osvi.dwMajorVersion) + "." + Util::toString(osvi.dwMinorVersion) + " ";
+
+	userAgent += APPNAME "/" + Util::toString(BUILDID);
 
 	int x = GetSystemMetrics(SM_CXVIRTUALSCREEN);
 	int y = GetSystemMetrics(SM_CYVIRTUALSCREEN);
@@ -78,7 +79,7 @@ PiwikTracker::PiwikTracker(const PiwikTrackerInfo& trackerInfo) {
 
 	shuttingDown = false;
 	startTime = GET_TIME();
-	trackAction("start", "/");
+	trackAction("start");
 }
 
 PiwikTracker::~PiwikTracker(void) {
@@ -86,20 +87,18 @@ PiwikTracker::~PiwikTracker(void) {
 }
 
 
-void PiwikTracker::trackAction(const string& action, const string &URI, const varsMap* vars, const varsMap* cvars) {
+void PiwikTracker::trackAction(const string& action, const varsMap* vars) {
 	Lock l(cs);
 	if (shuttingDown) return;
 	URL url = URL(baseUrl);
-	url.addParam("url", siteUrl + URI);
-	url.addParam("action_name", action);
+	url.addParam("t", action);
+	string down = "_";
 	if (vars) {
 		for (varsConstIterator i = vars->begin(); i != vars->end(); ++i) {
-			url.addParam(i->first, i->second);
+			url.addParam(down + i->first, i->second);
 		}
 	}
-	if (cvars) {
-		url.addParam("cvar", mapToJSON(*cvars));
-	}
+
 	HttpConnection *c = new HttpConnection(userAgent);
 	if (c) {
 		c->addListener(this);
@@ -144,7 +143,7 @@ void PiwikTracker::shutdown()
 {
 	varsMap p;
 	p["time"] = Util::toString(GET_TIME() - startTime);
-	trackAction("exit", "/exit", 0, &p);
+	trackAction("exit", &p);
 
 	{
 		Lock l(cs);

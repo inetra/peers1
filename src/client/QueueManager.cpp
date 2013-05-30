@@ -719,7 +719,7 @@ void QueueManager::add(const string& aTarget, int64_t aSize, const TTHValue& roo
 			PiwikTracker::varsMap p;
 			p["TTH"] = q->getTTH().toBase32();
 			p["size"] = Util::toString(q->getSize());
-			PiwikTracker::getInstance()->trackAction("download/add", "/download/add/" + p["TTH"], 0, &p);
+			PiwikTracker::getInstance()->trackAction("download/add", &p);
 
 			newItem = !q->isSet(QueueItem::FLAG_USER_LIST) && !q->isSet(QueueItem::FLAG_TESTSUR);
 		} else {
@@ -1188,7 +1188,7 @@ void QueueManager::putDownload(Download* aDownload, bool finished, bool /*connec
 						p["src"] = Util::toString(q->getSources().size());
 						p["time"] = Util::toString(GET_TIME() - q->getAdded());
 						p["speed"] = Util::toString(aDownload->getAverageSpeed());
-						PiwikTracker::getInstance()->trackAction("download/finish", "/download/finish/"+p["TTH"], 0, &p);
+						PiwikTracker::getInstance()->trackAction("download/finish", &p);
 
 						userQueue.remove(q);
 						fileQueue.remove(q);
@@ -1347,7 +1347,7 @@ void QueueManager::remove(const string& aTarget) throw() {
 		p["src"] = Util::toString(q->getSources().size());
 		p["time"] = Util::toString(GET_TIME() - q->getAdded());
 		p["bytes"] = Util::toString(q->getDownloadedBytes());
-		PiwikTracker::getInstance()->trackAction("download/remove", "/download/remove/" + p["TTH"], 0, &p);
+		PiwikTracker::getInstance()->trackAction("download/remove", &p);
 
 		userQueue.remove(q);
 		fileQueue.remove(q);
@@ -1990,7 +1990,7 @@ bool QueueManager::add(const string& aFile, int64_t aSize, const string& tth, co
 		PiwikTracker::varsMap p;
 		p["TTH"] = q->getTTH().toBase32();
 		p["size"] = Util::toString(q->getSize());
-		PiwikTracker::getInstance()->trackAction("download/add", "/download/add/" + p["TTH"], 0, &p);
+		PiwikTracker::getInstance()->trackAction("download/add", &p);
 	}
 
 	if(BOOLSETTING(AUTO_SEARCH)){

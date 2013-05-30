@@ -10,11 +10,9 @@
 
 struct PiwikTrackerInfo {
 	string url;
-	int siteId;
-	string siteName;
 
-	PiwikTrackerInfo(const string& aUrl, const int aSiteId, const string& aSiteName) 
-		: url(aUrl), siteId(aSiteId), siteName(aSiteName) {}
+	PiwikTrackerInfo(const string& aUrl) 
+		: url(aUrl) {}
 
 };
 
@@ -36,7 +34,7 @@ public:
 	typedef map<string, string>::iterator varsIterator;
 	typedef map<string, string>::const_iterator varsConstIterator;
 
-	void trackAction(const string& action, const string &URI, const varsMap* vars = 0, const varsMap* cvars = 0);
+	void trackAction(const string& action, const varsMap* vars = 0);
 	void shutdown();
 
 	void on(HttpConnectionListener::Data, HttpConnection*, const uint8_t*, size_t) throw() {}

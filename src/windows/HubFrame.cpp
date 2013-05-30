@@ -380,7 +380,9 @@ void HubFrame::commandMe(ChatCommandContext* context) {
 
 void HubFrame::activateChat(bool activateIfAlreadyCreated) {
   if (m_chatFrame == NULL) {
-	  PiwikTracker::getInstance()->trackAction("chat_activated", "/chat/" + client->getHubUrl());
+	PiwikTracker::varsMap p;
+	p["hub"] = client->getHubUrl();
+	PiwikTracker::getInstance()->trackAction("chat activated", &p);
     m_chatFrame = new HubChatFrame(this, this, this);
     m_chatFrame->addWindowListener(this);
     m_chatFrame->CreateEx(WinUtil::mdiClient, rcDefault);

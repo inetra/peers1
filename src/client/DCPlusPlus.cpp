@@ -94,7 +94,7 @@ void startup(ProgressCallback* callback, const StartupConfiguration* configurati
   ConfigurationPatcher::load();
   // allow localized defaults in string settings
   SettingsManager::getInstance()->setDefaults();
-  PiwikTracker::newInstance(PiwikTrackerInfo("http://analytics.cn.ru/piwik.php", 2, "peers.cn.ru"));
+  PiwikTracker::newInstance(PiwikTrackerInfo("http://analytics.cn.ru/collect"));
 
   FavoriteManager::getInstance()->load(dynamic_cast<const FavoriteManagerInitializer*>(configuration));
   CryptoManager::getInstance()->loadCertificates();
